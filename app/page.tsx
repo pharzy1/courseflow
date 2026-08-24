@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 type Course = { code:string; short:string; title:string; units:number; tags:string[]; seats:number; total:number; instructor:string; rating:number; time:string; days:string; color:string; keywords:string[] };
 type Block = { course:string; code:string; title:string; meta:string; day:number; start:number; span:number; color:string; time:string; dayName:string };
 type Priority = "morning" | "lunch" | "rating";
+type SavedSchedule = { selected:string[]; priorities:Priority[]; variant:number; savedAt:string };
 
 const courses: Course[] = [
   { code:"COMPSCI 61B", short:"CS 61B", title:"Data Structures", units:4, tags:["Major","Technical"], seats:12, total:320, instructor:"Paul Hilfinger", rating:4.8, time:"10:00–11:00 AM", days:"MWF", color:"blue", keywords:["computer science","cs61b","programming","algorithms"] },
@@ -46,21 +47,34 @@ export default function Home() {
   const [variant,setVariant]=useState(0);
   const [explain,setExplain]=useState(false);
   const [toast,setToast]=useState("");
+  const [savedSchedule,setSavedSchedule]=useState<SavedSchedule|null>(null);
+  const [selectedEvent,setSelectedEvent]=useState<Block|null>(null);
   const catalogRef=useRef<HTMLElement>(null), plannerRef=useRef<HTMLElement>(null), roadmapRef=useRef<HTMLElement>(null);
 
-  useEffect(()=>{ try { const raw=localStorage.getItem("courseflow-schedule"); if(raw){ const saved=JSON.parse(raw); if(Array.isArray(saved.selected)) setSelected(saved.selected); if(Array.isArray(saved.priorities)) setPriorities(saved.priorities); if(Number.isInteger(saved.variant)) setVariant(saved.variant); } } catch {} setHydrated(true); },[]);
+  useEffect(()=>{ try { const raw=localStorage.getItem("courseflow-schedule"); if(raw){ const saved=JSON.parse(raw) as SavedSchedule; if(Array.isArray(saved.selected)) setSelected(saved.selected); if(Array.isArray(saved.priorities)) setPriorities(saved.priorities); if(Number.isInteger(saved.variant)) setVariant(saved.variant); setSavedSchedule(saved); } } catch {} setHydrated(true); },[]);
   const selectedCourses=useMemo(()=>courses.filter(c=>selected.includes(c.code)),[selected]);
   const units=selectedCourses.reduce((sum,c)=>sum+c.units,0);
   const avgRating=selectedCourses.length ? selectedCourses.reduce((s,c)=>s+c.rating,0)/selectedCourses.length : 0;
-  const blocks=useMemo(()=>baseBlocks.filter(b=>selected.includes(b.course)).map(b=>{
-    if(variant===0) return b;
+  const blocksForVariant=(variantNumber:number)=>baseBlocks.filter(b=>selected.includes(b.course)).map(b=>{
+    if(variantNumber===0) return b;
     const nextStart=b.course==="COMPSCI 61B"?b.start+2:b.course==="DATA C100"?b.start-2:b.start;
     const nextTime=b.course==="COMPSCI 61B"?"11:00 AM–12:00 PM":b.course==="DATA C100"?"1:00–2:30 PM":b.time;
     return {...b,start:nextStart,time:nextTime};
-  }),[selected,variant]);
+  });
+  const blocks=useMemo(()=>blocksForVariant(variant),[selected,variant]);
   const conflicts=useMemo(()=>blocks.filter((b,i)=>blocks.some((o,j)=>j<i&&o.day===b.day&&Math.max(o.start,b.start)<Math.min(o.start+o.span/2,b.start+b.span/2))).length,[blocks]);
-  const freeMornings=5-new Set(blocks.filter(b=>b.start<3).map(b=>b.day)).size;
-  const score=selected.length ? Math.max(45,Math.min(99,Math.round(70+avgRating*4+freeMornings*2-conflicts*15+(variant?3:0)))) : null;
+  const scoreFor=(variantNumber:number)=>{
+    const candidate=blocksForVariant(variantNumber);
+    const candidateConflicts=candidate.filter((b,i)=>candidate.some((o,j)=>j<i&&o.day===b.day&&Math.max(o.start,b.start)<Math.min(o.start+o.span/2,b.start+b.span/2))).length;
+    const candidateFreeMornings=5-new Set(candidate.filter(b=>b.start<3).map(b=>b.day)).size;
+    const busyLunchDays=new Set(candidate.filter(b=>b.start<4&&b.start+b.span/2>3).map(b=>b.day)).size;
+    const lunchDays=5-busyLunchDays;
+    const contributions={base:70,rating:priorities.includes("rating")?Math.round(avgRating*4):0,morning:priorities.includes("morning")?candidateFreeMornings*2:0,lunch:priorities.includes("lunch")?lunchDays:0,conflicts:-(candidateConflicts*15)};
+    return {score:Math.max(0,Math.min(100,Object.values(contributions).reduce((a,b)=>a+b,0))),freeMornings:candidateFreeMornings,lunchDays,conflicts:candidateConflicts,contributions};
+  };
+  const scoreResult=selected.length?scoreFor(variant):null;
+  const score=scoreResult?.score??null;
+  const freeMornings=scoreResult?.freeMornings??0;
 
   const normalized=query.toLowerCase().replace(/\s+/g,"").replace("compsci","cs");
   const filtered=useMemo(()=>{
@@ -77,13 +91,15 @@ export default function Home() {
   const toggleCourse=(code:string)=>{setSelected(old=>old.includes(code)?old.filter(x=>x!==code):[...old,code]);setVariant(0);};
   const togglePriority=(p:Priority)=>setPriorities(old=>old.includes(p)?old.filter(x=>x!==p):[...old,p]);
   const navigate=(tab:string)=>{ setActiveTab(tab); setMobileNav(false); const ref=tab==="Discover"?catalogRef:tab==="My schedule"?plannerRef:roadmapRef; ref.current?.scrollIntoView({behavior:"smooth",block:"start"}); };
-  const save=()=>{localStorage.setItem("courseflow-schedule",JSON.stringify({selected,priorities,variant}));setToast("Saved on this device · reload to verify");setTimeout(()=>setToast(""),2600);};
-  const generate=()=>{if(!selected.length)return;setVariant(v=>v===0?1:0);setToast(`Generated Schedule ${variant===0?"B":"A"} from ${selected.length} selected courses`);setTimeout(()=>setToast(""),2600);};
+  const save=()=>{const snapshot={selected,priorities,variant,savedAt:new Date().toISOString()};localStorage.setItem("courseflow-schedule",JSON.stringify(snapshot));setSavedSchedule(snapshot);setToast("Saved on this device · reload to verify");setTimeout(()=>setToast(""),2600);};
+  const restore=()=>{if(!savedSchedule||!window.confirm("Replace unsaved changes with your last saved schedule?"))return;setSelected(savedSchedule.selected);setPriorities(savedSchedule.priorities);setVariant(savedSchedule.variant);setToast("Last saved schedule restored");setTimeout(()=>setToast(""),2600);};
+  const generate=()=>{if(!selected.length)return;const a=scoreFor(0).score,b=scoreFor(1).score;const best=b>a?1:0;setVariant(best);setToast(`Schedule ${best?"B":"A"} ranks highest for your active priorities (${Math.max(a,b)}/100)`);setTimeout(()=>setToast(""),3000);};
+  const isDirty=!!savedSchedule&&(JSON.stringify(selected)!==JSON.stringify(savedSchedule.selected)||JSON.stringify(priorities)!==JSON.stringify(savedSchedule.priorities)||variant!==savedSchedule.variant);
 
   return <main>
     <header className="topbar">
       <button className="brand" onClick={()=>navigate("Discover")} aria-label="CourseFlow home"><span className="brand-mark">CF</span><span>Course<span>Flow</span></span></button>
-      <nav aria-label="Primary navigation" className={mobileNav?"open":""}>{["Discover","My schedule","Roadmap"].map(tab=><button key={tab} aria-current={activeTab===tab?"page":undefined} className={activeTab===tab?"active":""} onClick={()=>navigate(tab)}>{tab}{tab==="My schedule"&&<i>{selected.length}</i>}</button>)}</nav>
+      <nav aria-label="Primary navigation" className={mobileNav?"open":""}>{["Discover","My schedule","Roadmap"].map(tab=><button key={tab} aria-current={activeTab===tab?"location":undefined} className={activeTab===tab?"active":""} onClick={()=>navigate(tab)}>{tab}{tab==="My schedule"&&<i>{selected.length}</i>}</button>)}</nav>
       <button className="mobile-menu" aria-label="Toggle navigation" aria-expanded={mobileNav} onClick={()=>setMobileNav(!mobileNav)}>Menu</button>
       <div className="term"><span>Fall 2026</span><b>PA</b></div>
     </header>
@@ -101,13 +117,15 @@ export default function Home() {
       </aside>
 
       <section className="planner" ref={plannerRef} id="schedule" aria-label="Schedule studio">
-        <div className="planner-head"><div><span className="kicker">SCHEDULE STUDIO</span><h2>Fall 2026</h2><p>{selected.length} {selected.length===1?"course":"courses"} · {units} units · Schedule {variant?"B":"A"}</p></div><div className="planner-actions"><button className="icon-button" aria-pressed={compact} onClick={()=>setCompact(!compact)}><span aria-hidden="true">{compact?"↗":"↙"}</span><span className="sr-only">{compact?"Expand":"Compact"} schedule</span></button><button className="save-button" disabled={!hydrated} onClick={save}>Save on device</button></div></div>
+        <div className="planner-head"><div><span className="kicker">SCHEDULE STUDIO</span><h2>Fall 2026</h2><p>{selected.length} {selected.length===1?"course":"courses"} · {units} units · Schedule {variant?"B":"A"}</p></div><div className="planner-actions"><button className="icon-button" aria-pressed={compact} onClick={()=>setCompact(!compact)}><span aria-hidden="true">{compact?"↗":"↙"}</span><span className="sr-only">{compact?"Expand":"Compact"} schedule</span></button>{savedSchedule&&<button className="restore-button" disabled={!isDirty} onClick={restore}>Restore saved</button>}<button className="save-button" disabled={!hydrated} onClick={save}>Save on device</button></div></div>
         {!selected.length?<div className="empty-schedule"><span>＋</span><h3>Start with a course</h3><p>Add classes from the explorer to calculate units, conflicts, and fit.</p><button onClick={()=>navigate("Discover")}>Browse courses</button></div>:<>
-          <div className="score-card"><div className="score"><strong>{score}</strong><span>/100</span></div><div className="score-copy"><b>{conflicts?"Needs attention":variant?"Optimized alternative":"Strong fit"}</b><span>Calculated from the current schedule</span></div><div className="score-metrics"><span><i className={conflicts?"red-dot":"green-dot"}/>{conflicts?`${conflicts} conflict${conflicts>1?"s":""}`:"No conflicts"}</span><span><i className="blue-dot"/>{freeMornings} free mornings</span><span><i className="gold-dot"/>{avgRating.toFixed(1)} avg. instructor</span></div><button className="why" aria-expanded={explain} aria-controls="score-explanation" onClick={()=>setExplain(!explain)}>Why this score? {explain?"↑":"↓"}</button></div>
-          {explain&&<div className="score-explanation" id="score-explanation"><div><b>Base feasibility</b><span>70 points</span></div><div><b>Instructor quality</b><span>+{Math.round(avgRating*4)}</span></div><div><b>Free mornings</b><span>+{freeMornings*2}</span></div><div><b>Conflicts</b><span>−{conflicts*15}</span></div><p>Scores are computed locally from the visible sample data and selected priorities.</p></div>}
-          <div className={`calendar ${compact?"compact":""}`} role="region" aria-label={`Weekly calendar for Schedule ${variant?"B":"A"}`}><div className="days"><span/><b>MON</b><b>TUE</b><b>WED</b><b>THU</b><b>FRI</b></div><div className="calendar-body"><div className="times">{["9 AM","10 AM","11 AM","12 PM","1 PM","2 PM","3 PM","4 PM"].map(t=><span key={t}>{t}</span>)}</div><div className="grid-lines">{Array.from({length:9}).map((_,i)=><i key={i}/>)}</div>{blocks.map((b,i)=><button key={`${b.course}-${b.day}`} className={`class-block ${b.color}`} style={{left:`calc(${b.day} * 20% + 5px)`,top:`${b.start*42+4}px`,height:`${b.span*21-6}px`}} aria-label={`${b.code}, ${b.title}, ${b.dayName} ${b.time}, ${b.meta}`}><b>{b.code}</b><span>{b.title}</span><small>{b.meta}</small></button>)}</div></div>
-          <details className="accessible-agenda"><summary>Schedule details</summary><ul>{blocks.map((b,i)=><li key={i}><b>{b.dayName}, {b.time}</b><span>{b.code} · {b.title}</span><small>{b.meta}</small></li>)}</ul></details>
-          <div className="preferences"><div><span className="kicker">YOUR PRIORITIES</span><h3>What makes a good schedule?</h3></div><div className="pref-chips">{(Object.keys(priorityLabels) as Priority[]).map(p=><button key={p} aria-pressed={priorities.includes(p)} className={priorities.includes(p)?"selected":""} onClick={()=>togglePriority(p)}>{p==="morning"?"☀":p==="lunch"?"▤":"★"} {priorityLabels[p]}</button>)}</div><button className="generate" disabled={!selected.length} onClick={generate}>Generate Schedule {variant?"A":"B"}<span>→</span></button></div>
+          <div className="score-card"><div className="score"><strong>{score}</strong><span>/100</span></div><div className="score-copy"><b>{conflicts?"Needs attention":"Preference fit"}</b><span>Calculated from the current schedule</span></div><div className="score-metrics"><span><i className={conflicts?"red-dot":"green-dot"}/>{conflicts?`${conflicts} conflict${conflicts>1?"s":""}`:"No conflicts"}</span><span><i className="blue-dot"/>{freeMornings} free mornings</span><span><i className="gold-dot"/>{avgRating.toFixed(1)} avg. instructor</span></div><button className="why" aria-expanded={explain} aria-controls="score-explanation" onClick={()=>setExplain(!explain)}>Why this score? {explain?"↑":"↓"}</button></div>
+          {explain&&scoreResult&&<div className="score-explanation" id="score-explanation"><div><b>Base feasibility</b><span>{scoreResult.contributions.base}</span></div>{priorities.includes("rating")&&<div><b>Instructor priority</b><span>+{scoreResult.contributions.rating}</span></div>}{priorities.includes("morning")&&<div><b>Free-morning priority</b><span>+{scoreResult.contributions.morning}</span></div>}{priorities.includes("lunch")&&<div><b>Lunch-break priority</b><span>+{scoreResult.contributions.lunch}</span></div>}<div><b>Conflict penalty</b><span>{scoreResult.contributions.conflicts}</span></div><p><b>Total: {scoreResult.score}/100.</b> Only active priorities contribute; Generate compares both visible schedule variants using this same calculation.</p></div>}
+          <p className="scroll-hint">Swipe or scroll horizontally to see Wednesday–Friday →</p>
+          <div className={`calendar ${compact?"compact":""}`} role="region" aria-label={`Weekly calendar for Schedule ${variant?"B":"A"}`}><div className="days"><span/><b>MON</b><b>TUE</b><b>WED</b><b>THU</b><b>FRI</b></div><div className="calendar-body"><div className="times">{["9 AM","10 AM","11 AM","12 PM","1 PM","2 PM","3 PM","4 PM"].map(t=><span key={t}>{t}</span>)}</div><div className="grid-lines">{Array.from({length:9}).map((_,i)=><i key={i}/>)}</div>{blocks.map(b=><button key={`${b.course}-${b.day}`} className={`class-block ${b.color}`} style={{left:`calc(${b.day} * 20% + 5px)`,top:`${b.start*42+4}px`,height:`${Math.max(44,b.span*21-6)}px`}} aria-pressed={selectedEvent?.course===b.course&&selectedEvent?.day===b.day} aria-label={`${b.code}, ${b.title}, ${b.dayName} ${b.time}, ${b.meta}`} onClick={()=>setSelectedEvent(b)}><b>{b.code}</b><span>{b.title}</span><small>{b.meta}</small></button>)}</div></div>
+          <section className="event-detail" aria-live="polite" aria-label="Selected class details">{selectedEvent?<><div className={`event-color ${selectedEvent.color}`}/><div><span className="kicker">SELECTED MEETING</span><h3>{selectedEvent.code} · {selectedEvent.title}</h3><p>{selectedEvent.dayName}, {selectedEvent.time} · {selectedEvent.meta}</p><small>{courses.find(c=>c.code===selectedEvent.course)?.units} units · {courses.find(c=>c.code===selectedEvent.course)?.seats||0} seats open</small></div><button onClick={()=>setSelectedEvent(null)} aria-label="Close class details">×</button></>:<p>Select any calendar event to inspect its complete meeting details.</p>}</section>
+          <details className="accessible-agenda"><summary>All schedule meetings</summary><ul>{blocks.map((b,i)=><li key={i}><b>{b.dayName}, {b.time}</b><span>{b.code} · {b.title}</span><small>{b.meta}</small></li>)}</ul></details>
+          <div className="preferences"><div><span className="kicker">YOUR PRIORITIES</span><h3>What makes a good schedule?</h3></div><div className="pref-chips">{(Object.keys(priorityLabels) as Priority[]).map(p=><button key={p} aria-pressed={priorities.includes(p)} className={priorities.includes(p)?"selected":""} onClick={()=>togglePriority(p)}>{p==="morning"?"☀":p==="lunch"?"▤":"★"} {priorityLabels[p]}</button>)}</div><button className="generate" disabled={!selected.length} onClick={generate}>Rank A vs. B<span>→</span></button></div>
         </>}
       </section>
     </section>
