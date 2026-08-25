@@ -44,13 +44,5 @@
     "vite": "8.0.13",
     "wrangler": "4.92.0"
   },
-  "pnpm": {
-    "ignoredBuiltDependencies": [
-      "esbuild",
-      "sharp",
-      "unrs-resolver",
-      "workerd"
-    ]
-  },
   "type": "module"
 }
