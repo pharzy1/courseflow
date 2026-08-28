@@ -5,6 +5,8 @@ export type Course = {
   code: string; short: string; title: string; units: number; tags: string[];
   seats: number; total: number; instructor: string; rating: number;
   time: string; days: string; color: string; keywords: string[];
+  grade: string; workload: number; demand: number; trend: number[];
+  requirements: string[]; prerequisites: string[]; description: string;
 };
 
 export type Block = {
@@ -20,13 +22,23 @@ export type ScoreResult = {
 export type RankedVariant = { variant: Variant; result: ScoreResult };
 
 export const courses: Course[] = [
-  {code:"COMPSCI 61B",short:"CS 61B",title:"Data Structures",units:4,tags:["Major","Technical"],seats:12,total:320,instructor:"Paul Hilfinger",rating:4.8,time:"10:00–11:00 AM",days:"MWF",color:"blue",keywords:["computer science","cs61b","programming","algorithms"]},
-  {code:"DATA C100",short:"DATA C100",title:"Principles & Techniques of Data Science",units:4,tags:["Major","Data"],seats:4,total:840,instructor:"Joseph Gonzalez",rating:4.7,time:"2:00–3:30 PM",days:"TuTh",color:"coral",keywords:["machine learning","data100","python","statistics"]},
-  {code:"STAT 134",short:"STAT 134",title:"Concepts of Probability",units:4,tags:["Major","Math"],seats:31,total:210,instructor:"Aditya Guntuboyina",rating:4.6,time:"9:30–11:00 AM",days:"TuTh",color:"violet",keywords:["probability","statistics","math"]},
-  {code:"DES INV 25",short:"DES INV 25",title:"Designing for Human Behavior",units:3,tags:["Breadth","Design"],seats:8,total:60,instructor:"Eric Paulos",rating:4.9,time:"1:00–2:30 PM",days:"MW",color:"green",keywords:["design","human behavior","ux"]},
-  {code:"ECON 100A",short:"ECON 100A",title:"Microeconomic Analysis",units:4,tags:["Breadth","Social"],seats:0,total:180,instructor:"Martha Olney",rating:4.5,time:"11:00–12:30 PM",days:"TuTh",color:"gold",keywords:["economics","microeconomics","social science"]},
-  {code:"INFO 159",short:"INFO 159",title:"Natural Language Processing",units:4,tags:["Technical","Conflict demo"],seats:18,total:120,instructor:"David Bamman",rating:4.8,time:"9:30–11:00 AM",days:"TuTh",color:"teal",keywords:["nlp","language models","ai","conflict demo"]},
+  {code:"COMPSCI 61B",short:"CS 61B",title:"Data Structures",units:4,tags:["Major","Technical"],seats:12,total:320,instructor:"Paul Hilfinger",rating:4.8,time:"10:00–11:00 AM",days:"MWF",color:"blue",keywords:["computer science","cs61b","programming","algorithms"],grade:"B+",workload:13,demand:96,trend:[78,84,90,96],requirements:["CS core","Upper-division gateway"],prerequisites:["COMPSCI 61A"],description:"Foundational data structures, algorithms, and software design."},
+  {code:"DATA C100",short:"DATA C100",title:"Principles & Techniques of Data Science",units:4,tags:["Major","Data"],seats:4,total:840,instructor:"Joseph Gonzalez",rating:4.7,time:"2:00–3:30 PM",days:"TuTh",color:"coral",keywords:["machine learning","data100","python","statistics"],grade:"A-",workload:12,demand:99,trend:[71,83,91,99],requirements:["Data Science core","Computational reasoning"],prerequisites:["DATA C8","COMPSCI 61A"],description:"End-to-end data analysis with inference, modeling, and scalable computation."},
+  {code:"STAT 134",short:"STAT 134",title:"Concepts of Probability",units:4,tags:["Major","Math"],seats:31,total:210,instructor:"Aditya Guntuboyina",rating:4.6,time:"9:30–11:00 AM",days:"TuTh",color:"violet",keywords:["probability","statistics","math"],grade:"B",workload:14,demand:85,trend:[66,73,79,85],requirements:["Statistics core","Probability"],prerequisites:["MATH 53","MATH 54"],description:"Rigorous probability theory for statistics, data science, and applied mathematics."},
+  {code:"DES INV 25",short:"DES INV 25",title:"Designing for Human Behavior",units:3,tags:["Breadth","Design"],seats:8,total:60,instructor:"Eric Paulos",rating:4.9,time:"1:00–2:30 PM",days:"MW",color:"green",keywords:["design","human behavior","ux"],grade:"A",workload:7,demand:94,trend:[69,74,86,94],requirements:["Arts & Literature breadth","Design innovation"],prerequisites:[],description:"Human-centered design methods grounded in behavioral observation and prototyping."},
+  {code:"ECON 100A",short:"ECON 100A",title:"Microeconomic Analysis",units:4,tags:["Breadth","Social"],seats:0,total:180,instructor:"Martha Olney",rating:4.5,time:"11:00–12:30 PM",days:"TuTh",color:"gold",keywords:["economics","microeconomics","social science"],grade:"B+",workload:11,demand:100,trend:[88,92,97,100],requirements:["Social & Behavioral breadth","Economics core"],prerequisites:["ECON 1","MATH 16A"],description:"Consumer and producer theory, market structures, and welfare analysis."},
+  {code:"INFO 159",short:"INFO 159",title:"Natural Language Processing",units:4,tags:["Technical","Conflict demo"],seats:18,total:120,instructor:"David Bamman",rating:4.8,time:"9:30–11:00 AM",days:"TuTh",color:"teal",keywords:["nlp","language models","ai","conflict demo"],grade:"A-",workload:12,demand:88,trend:[54,63,76,88],requirements:["Upper-division technical elective"],prerequisites:["COMPSCI 61B","DATA C100"],description:"Computational methods for understanding and generating human language."},
 ];
+
+export function courseSignal(course:Course) {
+  const availability=Math.round(course.seats/course.total*100);
+  const fit=Math.round(course.rating*15+Math.min(15,course.seats/course.total*200)+Math.max(0,25-course.workload));
+  return {availability,fit:Math.min(100,fit),risk:course.seats===0?"Waitlist":course.seats<10?"Closing fast":"Available"};
+}
+
+export function compareCourses(codes:string[]) {
+  return courses.filter(course=>codes.includes(course.code)).map(course=>({...course,...courseSignal(course)}));
+}
 
 const baseBlocks: Block[] = [
   {course:"COMPSCI 61B",code:"CS 61B",title:"Data Structures",meta:"Wheeler 150 · Hilfinger",day:0,start:1,span:2,color:"blue",time:"10:00–11:00 AM",dayName:"Monday"},
