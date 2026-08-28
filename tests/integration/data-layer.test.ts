@@ -13,10 +13,10 @@ test("real snapshot exposes provenance and supports catalog filters",async()=>{
   assert.equal(filtered.records.every(record=>record.department===department),true);
 });
 
-test("complete Fall 2026 snapshot includes every reported source section",async()=>{
+test("complete Fall 2026 snapshot exposes every distinct source section",async()=>{
   const repository=new SnapshotCourseRepository();
   const page=await repository.searchCatalog({term:"Fall 2026",limit:1});
-  assert.equal(page.total,6085);
+  assert.equal(page.total,5928);
 });
 
 test("snapshot pagination is bounded and anonymous-safe",async()=>{

@@ -6,7 +6,7 @@
 
 CourseFlow is a unified Berkeley course-intelligence and schedule-planning prototype. It connects discovery, historical signals, prerequisites, course comparison, degree value, workload planning, and conflict-free schedule ranking in one explainable workflow.
 
-Stage 2 of the real-data architecture is implemented: `/catalog` exposes all 6,085 Fall 2026 sections through a typed repository/API boundary, the scheduled importer can upsert catalog and enrollment history into Neon Postgres, and Clerk-aware accounts persist plans across devices when deployment keys are configured. Every imported record includes visible provenance.
+Stage 2 of the real-data architecture is implemented: `/catalog` exposes 5,928 distinct Fall 2026 sections normalized from 6,085 source listings through a typed repository/API boundary, the scheduled importer can upsert catalog and enrollment history into Neon Postgres, and Clerk-aware accounts persist plans across devices when deployment keys are configured. Every imported record includes visible provenance.
 
 > The planner demonstration still uses a small curated scheduling fixture; the separate real catalog is a dated, non-official BerkeleyTime snapshot. CourseFlow does not claim CalCentral integration or a degree audit.
 
@@ -19,7 +19,7 @@ Stage 2 of the real-data architecture is implemented: `/catalog` exposes all 6,0
 ## Why this project is different
 
 - **One canonical state:** selected courses drive units, blocks, conflicts, averages, scoring, roadmap totals, local fallback, and authenticated cloud restoration.
-- **Complete catalog adapter:** the Fall 2026 catalog contains 6,085 sections, bounded API pagination, department facets, enrollment filters, and record-level provenance.
+- **Complete catalog adapter:** the Fall 2026 catalog contains 5,928 distinct sections normalized from 6,085 source listings, bounded API pagination, department facets, enrollment filters, and record-level provenance.
 - **Production persistence boundary:** Neon stores users, plans, sections, grades, and enrollment observations; Clerk identity is verified on the server before any plan read or write.
 - **Unified course intelligence:** illustrative grade, workload, enrollment-momentum, prerequisite, and requirement signals live beside scheduling decisions.
 - **Decision Desk:** compare up to three courses without bouncing between catalog, grades, enrollment, and planning tools.
@@ -102,7 +102,7 @@ The remaining external activation step is provisioning production Clerk keys and
 
 ## Résumé-ready summary
 
-> Built a TypeScript course-intelligence and scheduling platform with a 6,085-section data pipeline, Neon-ready serverless persistence, Clerk-authenticated cross-device plans, explainable conflict-free ranking, and responsive WCAG-tested React workflows.
+> Built a TypeScript course-intelligence and scheduling platform with a 5,928-section canonical data pipeline (normalized from 6,085 source listings), Neon serverless persistence, Clerk-authenticated cross-device plans, explainable conflict-free ranking, and responsive WCAG-tested React workflows.
 
 ## License
 
