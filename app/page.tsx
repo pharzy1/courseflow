@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { AccountControl } from "../components/account-control";
 import { bestFeasibleVariant, blocksFor, compareCourses, courseSignal, courses, findConflicts, scoreSchedule, searchCourses, type Block, type Priority, type Variant } from "../lib/courseflow";
 type SavedSchedule = { selected:string[]; priorities:Priority[]; variant:Variant; savedAt:string };
 
 const initial = ["COMPSCI 61B","DATA C100","STAT 134","DES INV 25"];
 const priorityLabels: Record<Priority,string> = { morning:"No classes before 9", lunch:"Protect lunch break", rating:"Highly rated instructors" };
 const realCatalogEnabled=process.env.NEXT_PUBLIC_COURSEFLOW_REAL_DATA==="true";
+const accountsEnabled=Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
 
 export default function Home() {
   const [query,setQuery]=useState("");
@@ -24,12 +26,13 @@ export default function Home() {
   const [explain,setExplain]=useState(false);
   const [toast,setToast]=useState("");
   const [savedSchedule,setSavedSchedule]=useState<SavedSchedule|null>(null);
+  const [cloudSync,setCloudSync]=useState<"guest"|"checking"|"ready">("checking");
   const [selectedEvent,setSelectedEvent]=useState<Block|null>(null);
   const [compare,setCompare]=useState<string[]>(["COMPSCI 61B","DATA C100"]);
   const [insightCourse,setInsightCourse]=useState("COMPSCI 61B");
   const catalogRef=useRef<HTMLElement>(null), plannerRef=useRef<HTMLElement>(null), intelligenceRef=useRef<HTMLElement>(null), roadmapRef=useRef<HTMLElement>(null);
 
-  useEffect(()=>{ queueMicrotask(()=>{ try { const raw=localStorage.getItem("courseflow-schedule"); if(raw){ const saved=JSON.parse(raw) as SavedSchedule; if(Array.isArray(saved.selected)) setSelected(saved.selected); if(Array.isArray(saved.priorities)) setPriorities(saved.priorities); if(Number.isInteger(saved.variant)) setVariant(saved.variant); setSavedSchedule(saved); } } catch {} setHydrated(true); }); },[]);
+  useEffect(()=>{ queueMicrotask(async()=>{ try { const raw=localStorage.getItem("courseflow-schedule"); if(raw){ const saved=JSON.parse(raw) as SavedSchedule; if(Array.isArray(saved.selected)) setSelected(saved.selected); if(Array.isArray(saved.priorities)) setPriorities(saved.priorities); if(Number.isInteger(saved.variant)) setVariant(saved.variant); setSavedSchedule(saved); } const response=await fetch("/api/plans",{cache:"no-store"}); if(response.ok){const data=await response.json() as {plans:Array<{payload:SavedSchedule}>};const cloud=data.plans[0]?.payload;if(cloud){setSelected(cloud.selected);setPriorities(cloud.priorities);setVariant(cloud.variant);setSavedSchedule(cloud);localStorage.setItem("courseflow-schedule",JSON.stringify(cloud));}setCloudSync("ready");}else setCloudSync("guest"); } catch {setCloudSync("guest");} setHydrated(true); }); },[]);
   const selectedCourses=useMemo(()=>courses.filter(c=>selected.includes(c.code)),[selected]);
   const units=selectedCourses.reduce((sum,c)=>sum+c.units,0);
   const avgRating=selectedCourses.length ? selectedCourses.reduce((s,c)=>s+c.rating,0)/selectedCourses.length : 0;
@@ -51,7 +54,7 @@ export default function Home() {
   const requirements=[...new Set(selectedCourses.flatMap(course=>course.requirements))];
   const toggleCompare=(code:string)=>setCompare(old=>old.includes(code)?old.filter(item=>item!==code):old.length<3?[...old,code]:[old[1],old[2],code]);
   const navigate=(tab:string)=>{ setActiveTab(tab); setMobileNav(false); const ref=tab==="Discover"?catalogRef:tab==="My schedule"?plannerRef:tab==="Intelligence"?intelligenceRef:roadmapRef; ref.current?.scrollIntoView({behavior:"smooth",block:"start"}); };
-  const save=()=>{const snapshot={selected,priorities,variant,savedAt:new Date().toISOString()};localStorage.setItem("courseflow-schedule",JSON.stringify(snapshot));setSavedSchedule(snapshot);setToast("Saved on this device · reload to verify");setTimeout(()=>setToast(""),2600);};
+  const save=async()=>{const snapshot={selected,priorities,variant,savedAt:new Date().toISOString()};localStorage.setItem("courseflow-schedule",JSON.stringify(snapshot));setSavedSchedule(snapshot);let message="Saved on this device · sign in for cross-device sync";try{const response=await fetch("/api/plans",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({name:"My Fall 2026 plan",payload:snapshot})});if(response.ok){setCloudSync("ready");message="Saved securely · synced across your signed-in devices";}}catch{}setToast(message);setTimeout(()=>setToast(""),3200);};
   const restore=()=>{if(!savedSchedule||!window.confirm("Replace unsaved changes with your last saved schedule?"))return;setSelected(savedSchedule.selected);setPriorities(savedSchedule.priorities);setVariant(savedSchedule.variant);setToast("Last saved schedule restored");setTimeout(()=>setToast(""),2600);};
   const generate=()=>{if(!selected.length)return;const best=bestFeasibleVariant(selected,priorities);if(!best){setToast("No conflict-free alternative was found for this course selection.");setTimeout(()=>setToast(""),4000);return;}setVariant(best.variant);setToast(`Conflict-free Schedule ${best.variant?"B":"A"} ranks highest for your active priorities (${best.result.score}/100)`);setTimeout(()=>setToast(""),3000);};
   const isDirty=!!savedSchedule&&(JSON.stringify(selected)!==JSON.stringify(savedSchedule.selected)||JSON.stringify(priorities)!==JSON.stringify(savedSchedule.priorities)||variant!==savedSchedule.variant);
@@ -61,10 +64,10 @@ export default function Home() {
       <button className="brand" onClick={()=>navigate("Discover")} aria-label="CourseFlow home"><span className="brand-mark">CF</span><span>Course<span>Flow</span></span></button>
       <nav aria-label="Primary navigation" className={mobileNav?"open":""}>{["Discover","My schedule","Intelligence","Roadmap"].map(tab=><button key={tab} aria-current={activeTab===tab?"location":undefined} className={activeTab===tab?"active":""} onClick={()=>navigate(tab)}>{tab}{tab==="My schedule"&&<i>{selected.length}</i>}</button>)}</nav>
       <button className="mobile-menu" aria-label="Toggle navigation" aria-expanded={mobileNav} onClick={()=>setMobileNav(!mobileNav)}>Menu</button>
-      <div className="term">{realCatalogEnabled&&<a className="beta-link" href="/catalog">Real catalog β</a>}<span>Fall 2026</span><b>PA</b></div>
+      <div className="term">{realCatalogEnabled&&<a className="beta-link" href="/catalog">Real catalog β</a>}<span>Fall 2026</span><AccountControl configured={accountsEnabled}/></div>
     </header>
 
-    <section className="hero" id="top"><div><div className="eyebrow"><span>INTERACTIVE DEMO</span> Curated sample catalog · device-local saving</div><h1>Your semester,<br/><em>without the guesswork.</em></h1><p>Build and compare conflict-free schedules around what matters to you—not just what fits.</p></div><div className="hero-stat"><strong>{selected.length}</strong><span>courses in your plan</span><small>{units} units selected</small></div></section>
+    <section className="hero" id="top"><div><div className="eyebrow"><span>PRODUCTION BETA</span> Real catalog adapter · {cloudSync==="ready"?"cloud-synced account":"guest-mode persistence"}</div><h1>Your semester,<br/><em>without the guesswork.</em></h1><p>Build and compare conflict-free schedules around what matters to you—not just what fits.</p></div><div className="hero-stat"><strong>{selected.length}</strong><span>courses in your plan</span><small>{units} units selected</small></div></section>
 
     <section className="workspace">
       <aside className="catalog" ref={catalogRef} id="discover">

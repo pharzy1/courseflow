@@ -6,9 +6,9 @@
 
 CourseFlow is a unified Berkeley course-intelligence and schedule-planning prototype. It connects discovery, historical signals, prerequisites, course comparison, degree value, workload planning, and conflict-free schedule ranking in one explainable workflow.
 
-Stage 1 of the real-data architecture is now feature-flagged: `/catalog` reads a versioned Fall 2026 snapshot through a typed repository/API boundary that can switch to Neon Postgres without changing the UI. Every imported record includes visible provenance.
+Stage 2 of the real-data architecture is implemented: `/catalog` exposes all 6,085 Fall 2026 sections through a typed repository/API boundary, the scheduled importer can upsert catalog and enrollment history into Neon Postgres, and Clerk-aware accounts persist plans across devices when deployment keys are configured. Every imported record includes visible provenance.
 
-> This repository intentionally demonstrates a production-minded frontend and deterministic scheduling engine. Course and enrollment values are illustrative; it does not claim live Berkeley data, cloud accounts, or a degree audit.
+> The planner demonstration still uses a small curated scheduling fixture; the separate real catalog is a dated, non-official BerkeleyTime snapshot. CourseFlow does not claim CalCentral integration or a degree audit.
 
 ## Live product
 
@@ -18,7 +18,9 @@ Stage 1 of the real-data architecture is now feature-flagged: `/catalog` reads a
 
 ## Why this project is different
 
-- **One canonical state:** selected courses drive units, blocks, conflicts, averages, scoring, roadmap totals, saving, and restoration.
+- **One canonical state:** selected courses drive units, blocks, conflicts, averages, scoring, roadmap totals, local fallback, and authenticated cloud restoration.
+- **Complete catalog adapter:** the Fall 2026 catalog contains 6,085 sections, bounded API pagination, department facets, enrollment filters, and record-level provenance.
+- **Production persistence boundary:** Neon stores users, plans, sections, grades, and enrollment observations; Clerk identity is verified on the server before any plan read or write.
 - **Unified course intelligence:** illustrative grade, workload, enrollment-momentum, prerequisite, and requirement signals live beside scheduling decisions.
 - **Decision Desk:** compare up to three courses without bouncing between catalog, grades, enrollment, and planning tools.
 - **Explainable ranking:** the headline score and visible contribution breakdown come from the same `ScoreResult` object.
@@ -52,7 +54,7 @@ The engine in [`lib/courseflow.ts`](lib/courseflow.ts) has no React or browser d
 | Layer | What it proves | Command |
 |---|---|---|
 | Unit | Search, score reconciliation, feasibility, all course subsets, and course-intelligence calculations | `pnpm test:unit` |
-| Integration | Snapshot ingestion contract, provenance, filters, and bounded pagination | `pnpm test:integration` |
+| Integration | Complete snapshot count, provenance, facets, filters, and bounded pagination | `pnpm test:integration` |
 | Build | TypeScript and production bundling | `pnpm build` |
 | End-to-end | Search → select → rank → save → reload, plus conflict resolution | `pnpm test:e2e` |
 | Accessibility | Automated WCAG A/AA checks with axe on desktop and mobile | `pnpm test:accessibility` |
@@ -89,15 +91,18 @@ Open `http://localhost:3000`.
 - GitHub Actions
 - Sites deployment
 
-## Current scope and next boundary
+## Runtime modes
 
-CourseFlow currently persists an anonymous snapshot in `localStorage`. The clean next boundary is an authenticated API adapter that replaces local storage without changing the scheduling engine. Live course ingestion, cloud persistence, notifications, and degree-audit integration are deliberately outside this release.
+- `COURSEFLOW_DATA_MODE=snapshot` serves the complete versioned catalog bundled with a release.
+- `COURSEFLOW_DATA_MODE=neon` serves the same API contract from Neon.
+- Clerk keys activate sign-in and cross-device plans; without them, anonymous local saving continues safely.
+- The daily refresh job paginates the entire source and upserts Neon when its repository secret is configured.
 
-The approved production direction is Neon Postgres plus optional Clerk accounts. Both remain disabled until deployment credentials are provisioned; anonymous browsing and the deterministic snapshot fallback continue to work. See [`docs/DATA_SOURCES.md`](docs/DATA_SOURCES.md).
+The remaining external activation step is provisioning production Clerk keys and applying the checked-in schema to the connected Neon project. See [`docs/DATA_SOURCES.md`](docs/DATA_SOURCES.md).
 
 ## Résumé-ready summary
 
-> Built a TypeScript course-intelligence and scheduling engine that unifies prerequisite graphs, workload and enrollment signals, multi-course comparison, explainable preference ranking, conflict-free timetable generation, and responsive WCAG-tested React workflows.
+> Built a TypeScript course-intelligence and scheduling platform with a 6,085-section data pipeline, Neon-ready serverless persistence, Clerk-authenticated cross-device plans, explainable conflict-free ranking, and responsive WCAG-tested React workflows.
 
 ## License
 

@@ -14,6 +14,6 @@ export class SnapshotCourseRepository implements CourseDataRepository{
       .filter(record=>query.unitsMax===undefined||record.unitsMin<=query.unitsMax);
     const total=filtered.length,offset=query.offset??0,limit=Math.min(query.limit??50,100);
     filtered=filtered.slice(offset,offset+limit);
-    return {records:filtered,total,mode:"snapshot",generatedAt:seed.generatedAt};
+    return {records:filtered,total,mode:"snapshot",generatedAt:seed.generatedAt,facets:{departments:[...new Set(records.filter(record=>record.term===query.term).map(record=>record.department))].sort()}};
   }
 }

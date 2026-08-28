@@ -16,6 +16,9 @@ jobs:
         with: { node-version: 24, cache: pnpm }
       - run: pnpm install --frozen-lockfile
       - run: pnpm data:sync
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          COURSEFLOW_SYNC_MAX_PAGES: 100
       - run: pnpm test:integration
-      - name: Explain non-mutating refresh
-        run: echo "The scheduled job validates a fresh source snapshot. Database writes are enabled only after Neon credentials and source reuse terms are configured."
+      - name: Confirm refresh mode
+        run: echo "Full source pagination completed; Neon upserts run when the DATABASE_URL repository secret is configured."

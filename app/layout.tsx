@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
+import { ClerkProvider } from "@clerk/nextjs";
+import { authConfigured } from "../lib/auth";
 import "./globals.css";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -18,5 +20,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{children}</body></html>;
+  const document=<html lang="en"><body>{children}</body></html>;
+  return authConfigured()?<ClerkProvider>{document}</ClerkProvider>:document;
 }
