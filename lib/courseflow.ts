@@ -17,6 +17,8 @@ export type ScoreResult = {
   contributions: { base:number; rating:number; morning:number; lunch:number; conflicts:number };
 };
 
+export type RankedVariant = { variant: Variant; result: ScoreResult };
+
 export const courses: Course[] = [
   {code:"COMPSCI 61B",short:"CS 61B",title:"Data Structures",units:4,tags:["Major","Technical"],seats:12,total:320,instructor:"Paul Hilfinger",rating:4.8,time:"10:00–11:00 AM",days:"MWF",color:"blue",keywords:["computer science","cs61b","programming","algorithms"]},
   {code:"DATA C100",short:"DATA C100",title:"Principles & Techniques of Data Science",units:4,tags:["Major","Data"],seats:4,total:840,instructor:"Joseph Gonzalez",rating:4.7,time:"2:00–3:30 PM",days:"TuTh",color:"coral",keywords:["machine learning","data100","python","statistics"]},
@@ -45,8 +47,8 @@ const baseBlocks: Block[] = [
 export function blocksFor(selected:string[], variant:Variant):Block[] {
   return baseBlocks.filter(b=>selected.includes(b.course)).map(b=>{
     if(variant===0) return {...b};
-    const start=b.course==="COMPSCI 61B"?b.start+2:b.course==="DATA C100"?b.start-2:b.course==="INFO 159"?b.start+3:b.start;
-    const time=b.course==="COMPSCI 61B"?"11:00 AM–12:00 PM":b.course==="DATA C100"?"1:00–2:30 PM":b.course==="INFO 159"?"12:30–2:00 PM":b.time;
+    const start=b.course==="COMPSCI 61B"?b.start+2:b.course==="DATA C100"?b.start-2:b.course==="INFO 159"?6:b.start;
+    const time=b.course==="COMPSCI 61B"?"11:00 AM–12:00 PM":b.course==="DATA C100"?"1:00–2:30 PM":b.course==="INFO 159"?"3:00–4:30 PM":b.time;
     return {...b,start,time};
   });
 }
@@ -75,7 +77,13 @@ export function scoreSchedule(selected:string[], variant:Variant, priorities:Pri
 }
 
 export function rankVariants(selected:string[],priorities:Priority[]) {
-  return ([0,1] as Variant[]).map(variant=>({variant,result:scoreSchedule(selected,variant,priorities)})).sort((a,b)=>b.result.score-a.result.score||a.variant-b.variant);
+  return ([0,1] as Variant[])
+    .map(variant=>({variant,result:scoreSchedule(selected,variant,priorities)}))
+    .sort((a,b)=>Number(a.result.conflictCount>0)-Number(b.result.conflictCount>0)||b.result.score-a.result.score||a.variant-b.variant);
+}
+
+export function bestFeasibleVariant(selected:string[],priorities:Priority[]):RankedVariant|null {
+  return rankVariants(selected,priorities).find(candidate=>candidate.result.conflictCount===0)??null;
 }
 
 export function searchCourses(query:string,quickFilter:string,department:string,sort:string):Course[] {
