@@ -19,14 +19,15 @@ test("search, selection, scoring, and persistence work end to end",async({page})
 });
 
 test("conflict fixture is detected and alternative generation resolves it",async({page})=>{
-  for(const code of ["COMPSCI 61B","DATA C100","DES INV 25"]) await page.getByLabel(`Remove ${code}`).click();
   await page.getByLabel("Add INFO 159").click();
   await expect(page.getByRole("alert")).toContainText("STAT 134 overlaps INFO 159");
   await page.getByRole("button",{name:"Rank A vs. B"}).click();
   await expect(page.getByRole("alert")).toHaveCount(0);
+  await expect(page.getByRole("status")).toContainText("Conflict-free Schedule B ranks highest");
+  await expect(page.getByRole("button",{name:/INFO 159.*3:00–4:30 PM/})).toHaveCount(2);
 });
 
 test("accessibility: core page has no serious axe violations",async({page})=>{
-  const results=await new AxeBuilder({page}).exclude(".calendar").withTags(["wcag2a","wcag2aa","wcag21a","wcag21aa"]).analyze();
+  const results=await new AxeBuilder({page}).withTags(["wcag2a","wcag2aa","wcag21a","wcag21aa"]).analyze();
   expect(results.violations.filter(v=>["critical","serious"].includes(v.impact??""))).toEqual([]);
 });
