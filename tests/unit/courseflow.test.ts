@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { blocksFor, findConflicts, rankVariants, scoreSchedule, searchCourses } from "../../lib/courseflow";
+import { bestFeasibleVariant, blocksFor, courses, findConflicts, rankVariants, scoreSchedule, searchCourses } from "../../lib/courseflow";
 
 const defaultCourses=["COMPSCI 61B","DATA C100","STAT 134","DES INV 25"];
 
@@ -27,11 +27,25 @@ test("priorities alter contributions and can change the winning variant",()=>{
 });
 
 test("conflict fixture produces visible overlaps and a deterministic penalty",()=>{
-  const selected=["STAT 134","INFO 159"];
+  const selected=[...defaultCourses,"INFO 159"];
   const overlaps=findConflicts(blocksFor(selected,0));
   assert.equal(overlaps.length,2);
   assert.equal(scoreSchedule(selected,0,[]).contributions.conflicts,-30);
   assert.equal(findConflicts(blocksFor(selected,1)).length,0);
+  const winner=bestFeasibleVariant(selected,["morning","lunch","rating"]);
+  assert.equal(winner?.variant,1);
+  assert.equal(winner?.result.conflictCount,0);
+});
+
+test("every selectable course subset has a conflict-free ranked winner",()=>{
+  const codes=courses.map(course=>course.code);
+  for(let mask=1;mask<2**codes.length;mask++){
+    const selected=codes.filter((_,index)=>mask&(1<<index));
+    const winner=bestFeasibleVariant(selected,["morning","lunch","rating"]);
+    assert.ok(winner,`expected a feasible variant for ${selected.join(", ")}`);
+    assert.equal(winner.result.conflictCount,0,`winner conflicts for ${selected.join(", ")}`);
+    assert.equal(rankVariants(selected,[])[0].result.conflictCount,0);
+  }
 });
 
 test("empty schedules never receive an artificial score",()=>{
