@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { bestFeasibleVariant, blocksFor, courses, findConflicts, rankVariants, scoreSchedule, searchCourses } from "../../lib/courseflow";
+import { bestFeasibleVariant, blocksFor, compareCourses, courseSignal, courses, findConflicts, rankVariants, scoreSchedule, searchCourses } from "../../lib/courseflow";
 
 const defaultCourses=["COMPSCI 61B","DATA C100","STAT 134","DES INV 25"];
 
@@ -50,4 +50,12 @@ test("every selectable course subset has a conflict-free ranked winner",()=>{
 
 test("empty schedules never receive an artificial score",()=>{
   assert.equal(scoreSchedule([],0,["morning","lunch","rating"]).score,0);
+});
+
+test("course intelligence is transparent and comparison preserves catalog order",()=>{
+  const data100=courses.find(course=>course.code==="DATA C100")!;
+  assert.deepEqual(courseSignal(data100),{availability:0,fit:84,risk:"Closing fast"});
+  const compared=compareCourses(["DATA C100","COMPSCI 61B"]);
+  assert.deepEqual(compared.map(course=>course.code),["COMPSCI 61B","DATA C100"]);
+  assert.equal(compared.every(course=>course.requirements.length>0&&course.trend.length===4),true);
 });
