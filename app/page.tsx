@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { blocksFor, courses, findConflicts, rankVariants, scoreSchedule, searchCourses, type Block, type Priority, type Variant } from "../lib/courseflow";
+import { bestFeasibleVariant, blocksFor, courses, findConflicts, scoreSchedule, searchCourses, type Block, type Priority, type Variant } from "../lib/courseflow";
 type SavedSchedule = { selected:string[]; priorities:Priority[]; variant:Variant; savedAt:string };
 
 const initial = ["COMPSCI 61B","DATA C100","STAT 134","DES INV 25"];
@@ -44,7 +44,7 @@ export default function Home() {
   const navigate=(tab:string)=>{ setActiveTab(tab); setMobileNav(false); const ref=tab==="Discover"?catalogRef:tab==="My schedule"?plannerRef:roadmapRef; ref.current?.scrollIntoView({behavior:"smooth",block:"start"}); };
   const save=()=>{const snapshot={selected,priorities,variant,savedAt:new Date().toISOString()};localStorage.setItem("courseflow-schedule",JSON.stringify(snapshot));setSavedSchedule(snapshot);setToast("Saved on this device · reload to verify");setTimeout(()=>setToast(""),2600);};
   const restore=()=>{if(!savedSchedule||!window.confirm("Replace unsaved changes with your last saved schedule?"))return;setSelected(savedSchedule.selected);setPriorities(savedSchedule.priorities);setVariant(savedSchedule.variant);setToast("Last saved schedule restored");setTimeout(()=>setToast(""),2600);};
-  const generate=()=>{if(!selected.length)return;const [{variant:best,result}]=rankVariants(selected,priorities);setVariant(best);setToast(`Schedule ${best?"B":"A"} ranks highest for your active priorities (${result.score}/100)`);setTimeout(()=>setToast(""),3000);};
+  const generate=()=>{if(!selected.length)return;const best=bestFeasibleVariant(selected,priorities);if(!best){setToast("No conflict-free alternative was found for this course selection.");setTimeout(()=>setToast(""),4000);return;}setVariant(best.variant);setToast(`Conflict-free Schedule ${best.variant?"B":"A"} ranks highest for your active priorities (${best.result.score}/100)`);setTimeout(()=>setToast(""),3000);};
   const isDirty=!!savedSchedule&&(JSON.stringify(selected)!==JSON.stringify(savedSchedule.selected)||JSON.stringify(priorities)!==JSON.stringify(savedSchedule.priorities)||variant!==savedSchedule.variant);
 
   return <main>
