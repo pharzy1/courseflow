@@ -31,3 +31,13 @@ test("accessibility: core page has no serious axe violations",async({page})=>{
   const results=await new AxeBuilder({page}).withTags(["wcag2a","wcag2aa","wcag21a","wcag21aa"]).analyze();
   expect(results.violations.filter(v=>["critical","serious"].includes(v.impact??""))).toEqual([]);
 });
+
+test("course intelligence connects discovery, comparison, and semester health",async({page})=>{
+  if((page.viewportSize()?.width??1000)<=760) await page.getByRole("button",{name:"Toggle navigation"}).click();
+  await page.getByRole("button",{name:"Intelligence"}).click();
+  await expect(page.getByRole("heading",{name:"One decision, every signal."})).toBeVisible();
+  await page.getByLabel("Explore course intelligence").selectOption("INFO 159");
+  await expect(page.locator(".prereq-flow")).toContainText("COMPSCI 61B");
+  await expect(page.getByRole("region",{name:"Course comparison"})).toContainText("Decision fit");
+  await expect(page.getByText("46 hours outside class")).toBeVisible();
+});
