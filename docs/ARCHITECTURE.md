@@ -62,7 +62,7 @@ The result is clamped to 0–100. The UI renders values directly from `ScoreResu
 
 ## Conflict fixture
 
-INFO 159 and STAT 134 meet Tuesday/Thursday at 9:30–11:00 in Schedule A. Selecting both produces two conflict pairs and a 30-point penalty. Schedule B moves INFO 159 to 12:30–2:00, allowing generation and tests to demonstrate resolution.
+INFO 159 and STAT 134 meet Tuesday/Thursday at 9:30–11:00 in Schedule A. Selecting both produces two conflict pairs and a 30-point penalty. Schedule B moves INFO 159 to 3:00–4:30 PM, after DATA C100, so the normal five-course path resolves every overlap. Ranking treats feasibility as a gate: only a zero-conflict candidate can be announced as the winner.
 
 ## State invariants
 
