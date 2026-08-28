@@ -22,6 +22,23 @@ flowchart TD
   P <-->|"explicit save / restore + load"| LS
 ```
 
+## Feature-flagged real-data topology
+
+```mermaid
+flowchart LR
+  UI["/catalog client"] --> API["Typed REST catalog route"]
+  API --> R["CourseDataRepository"]
+  R -->|"default"| S["Versioned real-data snapshot"]
+  R -->|"COURSEFLOW_DATA_MODE=neon"| N["Neon Postgres"]
+  BT["BerkeleyTime public GraphQL adapter"] --> S
+  SP["UC Berkeley SPoCC adapter"] -. "enabled after endpoint approval" .-> R
+  R --> P["Per-record provenance"]
+```
+
+The UI depends only on `CourseDataRepository`. The default snapshot is deterministic and anonymous-safe; production can switch to Neon with `DATABASE_URL` and `COURSEFLOW_DATA_MODE=neon`. Auth is a separate optional boundary so missing Clerk keys cannot block public catalog reads.
+
+The Postgres model covers sources, courses, sections, grade distributions, enrollment snapshots, user profiles, and saved plans. The first migration is checked into `migrations/`; it has not been applied because the connected Neon account still requires an organization selection.
+
 ## Domain model
 
 - `Course` describes catalog metadata and the stable course identifier.
@@ -82,6 +99,8 @@ INFO 159 and STAT 134 meet Tuesday/Thursday at 9:30–11:00 in Schedule A. Selec
 - `tests/unit/courseflow.test.ts` verifies domain and intelligence invariants without a browser.
 - `tests/e2e/courseflow.spec.ts` verifies the schedule and course-intelligence workflows at desktop, tablet, and mobile sizes plus WCAG rules.
 - `.github/workflows/ci.yml` makes both suites a repeatable merge/push check.
+- `tests/integration/data-layer.test.ts` verifies the real snapshot contract and provenance independently of the UI.
+- `.github/workflows/data-refresh.yml` performs a daily read-only refresh validation; database mutation remains disabled until credentials and reuse terms are configured.
 
 ## Evolution path
 

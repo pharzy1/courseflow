@@ -1,0 +1,21 @@
+name: Catalog snapshot refresh
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 10 * * *"
+permissions:
+  contents: read
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 11.19.0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm data:sync
+      - run: pnpm test:integration
+      - name: Explain non-mutating refresh
+        run: echo "The scheduled job validates a fresh source snapshot. Database writes are enabled only after Neon credentials and source reuse terms are configured."

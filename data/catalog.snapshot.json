@@ -1,0 +1,4298 @@
+{
+  "generatedAt": "2026-08-28T21:41:02.459Z",
+  "totalAvailable": 6085,
+  "records": [
+    {
+      "id": "2268-1-AHMA-298-003",
+      "courseId": "161257",
+      "code": "AHMA 298",
+      "subject": "AHMA",
+      "number": "298",
+      "title": "Special Study",
+      "description": "Normally reserved for students writing the doctoral dissertation.",
+      "department": "AHMA",
+      "unitsMin": 2,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "003",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Carlos Norena"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 1,
+      "waitlisted": 0,
+      "waitlistCapacity": 0,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-298-015",
+      "courseId": "101334",
+      "code": "ARESEC 298",
+      "subject": "ARESEC",
+      "number": "298",
+      "title": "Special Study for Graduate Students",
+      "description": "All properly qualified graduate students who wish to pursue a special field of study may do so if their proposed program of study is acceptable to the member here of the staff with whom they work.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "015",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Leo Simon"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-298-007",
+      "courseId": "101334",
+      "code": "ARESEC 298",
+      "subject": "ARESEC",
+      "number": "298",
+      "title": "Special Study for Graduate Students",
+      "description": "All properly qualified graduate students who wish to pursue a special field of study may do so if their proposed program of study is acceptable to the member here of the staff with whom they work.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "007",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Marco Gonzalez-Navarro"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-298-008",
+      "courseId": "101334",
+      "code": "ARESEC 298",
+      "subject": "ARESEC",
+      "number": "298",
+      "title": "Special Study for Graduate Students",
+      "description": "All properly qualified graduate students who wish to pursue a special field of study may do so if their proposed program of study is acceptable to the member here of the staff with whom they work.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "008",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Larry Karp"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-298-010",
+      "courseId": "101334",
+      "code": "ARESEC 298",
+      "subject": "ARESEC",
+      "number": "298",
+      "title": "Special Study for Graduate Students",
+      "description": "All properly qualified graduate students who wish to pursue a special field of study may do so if their proposed program of study is acceptable to the member here of the staff with whom they work.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "010",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Jeremy Magruder"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-298-012",
+      "courseId": "101334",
+      "code": "ARESEC 298",
+      "subject": "ARESEC",
+      "number": "298",
+      "title": "Special Study for Graduate Students",
+      "description": "All properly qualified graduate students who wish to pursue a special field of study may do so if their proposed program of study is acceptable to the member here of the staff with whom they work.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "012",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Gordon Rausser"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-298-013",
+      "courseId": "101334",
+      "code": "ARESEC 298",
+      "subject": "ARESEC",
+      "number": "298",
+      "title": "Special Study for Graduate Students",
+      "description": "All properly qualified graduate students who wish to pursue a special field of study may do so if their proposed program of study is acceptable to the member here of the staff with whom they work.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "013",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "David Roland Holst"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-298-003",
+      "courseId": "101334",
+      "code": "ARESEC 298",
+      "subject": "ARESEC",
+      "number": "298",
+      "title": "Special Study for Graduate Students",
+      "description": "All properly qualified graduate students who wish to pursue a special field of study may do so if their proposed program of study is acceptable to the member here of the staff with whom they work.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "003",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": []
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 18,
+      "waitlisted": 0,
+      "waitlistCapacity": 18,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-298-017",
+      "courseId": "101334",
+      "code": "ARESEC 298",
+      "subject": "ARESEC",
+      "number": "298",
+      "title": "Special Study for Graduate Students",
+      "description": "All properly qualified graduate students who wish to pursue a special field of study may do so if their proposed program of study is acceptable to the member here of the staff with whom they work.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "017",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "James Sallee"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-298-014",
+      "courseId": "101334",
+      "code": "ARESEC 298",
+      "subject": "ARESEC",
+      "number": "298",
+      "title": "Special Study for Graduate Students",
+      "description": "All properly qualified graduate students who wish to pursue a special field of study may do so if their proposed program of study is acceptable to the member here of the staff with whom they work.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "014",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Elisabeth Sadoulet"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-298-011",
+      "courseId": "101334",
+      "code": "ARESEC 298",
+      "subject": "ARESEC",
+      "number": "298",
+      "title": "Special Study for Graduate Students",
+      "description": "All properly qualified graduate students who wish to pursue a special field of study may do so if their proposed program of study is acceptable to the member here of the staff with whom they work.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "011",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Jeffrey Perloff"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-298-019",
+      "courseId": "101334",
+      "code": "ARESEC 298",
+      "subject": "ARESEC",
+      "number": "298",
+      "title": "Special Study for Graduate Students",
+      "description": "All properly qualified graduate students who wish to pursue a special field of study may do so if their proposed program of study is acceptable to the member here of the staff with whom they work.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "019",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Brian Wright"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-298-005",
+      "courseId": "101334",
+      "code": "ARESEC 298",
+      "subject": "ARESEC",
+      "number": "298",
+      "title": "Special Study for Graduate Students",
+      "description": "All properly qualified graduate students who wish to pursue a special field of study may do so if their proposed program of study is acceptable to the member here of the staff with whom they work.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "005",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Thibault Fally"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-298-020",
+      "courseId": "101334",
+      "code": "ARESEC 298",
+      "subject": "ARESEC",
+      "number": "298",
+      "title": "Special Study for Graduate Students",
+      "description": "All properly qualified graduate students who wish to pursue a special field of study may do so if their proposed program of study is acceptable to the member here of the staff with whom they work.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "020",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "David Zilberman"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-400-013",
+      "courseId": "101338",
+      "code": "ARESEC 400",
+      "subject": "ARESEC",
+      "number": "400",
+      "title": "Professional Training in Research Methodology",
+      "description": "Individual training for graduate students in planning and performing research under the supervision of a faculty adviser, intended to provide academic credit for the experience obtained while holding a research assistantship.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "013",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Elisabeth Sadoulet"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-400-005",
+      "courseId": "101338",
+      "code": "ARESEC 400",
+      "subject": "ARESEC",
+      "number": "400",
+      "title": "Professional Training in Research Methodology",
+      "description": "Individual training for graduate students in planning and performing research under the supervision of a faculty adviser, intended to provide academic credit for the experience obtained while holding a research assistantship.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "005",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": []
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-400-014",
+      "courseId": "101338",
+      "code": "ARESEC 400",
+      "subject": "ARESEC",
+      "number": "400",
+      "title": "Professional Training in Research Methodology",
+      "description": "Individual training for graduate students in planning and performing research under the supervision of a faculty adviser, intended to provide academic credit for the experience obtained while holding a research assistantship.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "014",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": []
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-400-017",
+      "courseId": "101338",
+      "code": "ARESEC 400",
+      "subject": "ARESEC",
+      "number": "400",
+      "title": "Professional Training in Research Methodology",
+      "description": "Individual training for graduate students in planning and performing research under the supervision of a faculty adviser, intended to provide academic credit for the experience obtained while holding a research assistantship.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "017",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Sofia Villas-Boas"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-400-012",
+      "courseId": "101338",
+      "code": "ARESEC 400",
+      "subject": "ARESEC",
+      "number": "400",
+      "title": "Professional Training in Research Methodology",
+      "description": "Individual training for graduate students in planning and performing research under the supervision of a faculty adviser, intended to provide academic credit for the experience obtained while holding a research assistantship.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "012",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Gordon Rausser"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-400-011",
+      "courseId": "101338",
+      "code": "ARESEC 400",
+      "subject": "ARESEC",
+      "number": "400",
+      "title": "Professional Training in Research Methodology",
+      "description": "Individual training for graduate students in planning and performing research under the supervision of a faculty adviser, intended to provide academic credit for the experience obtained while holding a research assistantship.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "011",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Jeffrey Perloff"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-400-016",
+      "courseId": "101338",
+      "code": "ARESEC 400",
+      "subject": "ARESEC",
+      "number": "400",
+      "title": "Professional Training in Research Methodology",
+      "description": "Individual training for graduate students in planning and performing research under the supervision of a faculty adviser, intended to provide academic credit for the experience obtained while holding a research assistantship.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "016",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Christian Traeger"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-400-019",
+      "courseId": "101338",
+      "code": "ARESEC 400",
+      "subject": "ARESEC",
+      "number": "400",
+      "title": "Professional Training in Research Methodology",
+      "description": "Individual training for graduate students in planning and performing research under the supervision of a faculty adviser, intended to provide academic credit for the experience obtained while holding a research assistantship.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "019",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "David Zilberman"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-400-018",
+      "courseId": "101338",
+      "code": "ARESEC 400",
+      "subject": "ARESEC",
+      "number": "400",
+      "title": "Professional Training in Research Methodology",
+      "description": "Individual training for graduate students in planning and performing research under the supervision of a faculty adviser, intended to provide academic credit for the experience obtained while holding a research assistantship.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "018",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Brian Wright"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-400-009",
+      "courseId": "101338",
+      "code": "ARESEC 400",
+      "subject": "ARESEC",
+      "number": "400",
+      "title": "Professional Training in Research Methodology",
+      "description": "Individual training for graduate students in planning and performing research under the supervision of a faculty adviser, intended to provide academic credit for the experience obtained while holding a research assistantship.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "009",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Ethan Ligon"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-400-007",
+      "courseId": "101338",
+      "code": "ARESEC 400",
+      "subject": "ARESEC",
+      "number": "400",
+      "title": "Professional Training in Research Methodology",
+      "description": "Individual training for graduate students in planning and performing research under the supervision of a faculty adviser, intended to provide academic credit for the experience obtained while holding a research assistantship.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "007",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": []
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-400-004",
+      "courseId": "101338",
+      "code": "ARESEC 400",
+      "subject": "ARESEC",
+      "number": "400",
+      "title": "Professional Training in Research Methodology",
+      "description": "Individual training for graduate students in planning and performing research under the supervision of a faculty adviser, intended to provide academic credit for the experience obtained while holding a research assistantship.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "004",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Alain Dejanvry"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-400-006",
+      "courseId": "101338",
+      "code": "ARESEC 400",
+      "subject": "ARESEC",
+      "number": "400",
+      "title": "Professional Training in Research Methodology",
+      "description": "Individual training for graduate students in planning and performing research under the supervision of a faculty adviser, intended to provide academic credit for the experience obtained while holding a research assistantship.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 6,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "006",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Meredith Fowlie"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-602-008",
+      "courseId": "101340",
+      "code": "ARESEC 602",
+      "subject": "ARESEC",
+      "number": "602",
+      "title": "Individual Study for Doctoral Students",
+      "description": "Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates of the Ph.D. May not be used for unit or residence requirements for the doctoral degree.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "008",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Larry Karp"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-602-014",
+      "courseId": "101340",
+      "code": "ARESEC 602",
+      "subject": "ARESEC",
+      "number": "602",
+      "title": "Individual Study for Doctoral Students",
+      "description": "Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates of the Ph.D. May not be used for unit or residence requirements for the doctoral degree.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "014",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Elisabeth Sadoulet"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-602-005",
+      "courseId": "101340",
+      "code": "ARESEC 602",
+      "subject": "ARESEC",
+      "number": "602",
+      "title": "Individual Study for Doctoral Students",
+      "description": "Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates of the Ph.D. May not be used for unit or residence requirements for the doctoral degree.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "005",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "James Sallee"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-602-019",
+      "courseId": "101340",
+      "code": "ARESEC 602",
+      "subject": "ARESEC",
+      "number": "602",
+      "title": "Individual Study for Doctoral Students",
+      "description": "Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates of the Ph.D. May not be used for unit or residence requirements for the doctoral degree.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "019",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Brian Wright"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-602-020",
+      "courseId": "101340",
+      "code": "ARESEC 602",
+      "subject": "ARESEC",
+      "number": "602",
+      "title": "Individual Study for Doctoral Students",
+      "description": "Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates of the Ph.D. May not be used for unit or residence requirements for the doctoral degree.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "020",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "David Zilberman"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-602-004",
+      "courseId": "101340",
+      "code": "ARESEC 602",
+      "subject": "ARESEC",
+      "number": "602",
+      "title": "Individual Study for Doctoral Students",
+      "description": "Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates of the Ph.D. May not be used for unit or residence requirements for the doctoral degree.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "004",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Alain Dejanvry"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-602-017",
+      "courseId": "101340",
+      "code": "ARESEC 602",
+      "subject": "ARESEC",
+      "number": "602",
+      "title": "Individual Study for Doctoral Students",
+      "description": "Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates of the Ph.D. May not be used for unit or residence requirements for the doctoral degree.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "017",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Marco Gonzalez-Navarro"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-602-016",
+      "courseId": "101340",
+      "code": "ARESEC 602",
+      "subject": "ARESEC",
+      "number": "602",
+      "title": "Individual Study for Doctoral Students",
+      "description": "Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates of the Ph.D. May not be used for unit or residence requirements for the doctoral degree.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "016",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "David Sunding"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-602-015",
+      "courseId": "101340",
+      "code": "ARESEC 602",
+      "subject": "ARESEC",
+      "number": "602",
+      "title": "Individual Study for Doctoral Students",
+      "description": "Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates of the Ph.D. May not be used for unit or residence requirements for the doctoral degree.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "015",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Francis Annan"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-602-011",
+      "courseId": "101340",
+      "code": "ARESEC 602",
+      "subject": "ARESEC",
+      "number": "602",
+      "title": "Individual Study for Doctoral Students",
+      "description": "Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates of the Ph.D. May not be used for unit or residence requirements for the doctoral degree.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "011",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Jeffrey Perloff"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-602-009",
+      "courseId": "101340",
+      "code": "ARESEC 602",
+      "subject": "ARESEC",
+      "number": "602",
+      "title": "Individual Study for Doctoral Students",
+      "description": "Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates of the Ph.D. May not be used for unit or residence requirements for the doctoral degree.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "009",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Ethan Ligon"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-602-007",
+      "courseId": "101340",
+      "code": "ARESEC 602",
+      "subject": "ARESEC",
+      "number": "602",
+      "title": "Individual Study for Doctoral Students",
+      "description": "Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates of the Ph.D. May not be used for unit or residence requirements for the doctoral degree.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "007",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Aprajit Mahajan"
+          ]
+        }
+      ],
+      "enrolled": 2,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-602-012",
+      "courseId": "101340",
+      "code": "ARESEC 602",
+      "subject": "ARESEC",
+      "number": "602",
+      "title": "Individual Study for Doctoral Students",
+      "description": "Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates of the Ph.D. May not be used for unit or residence requirements for the doctoral degree.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "012",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Gordon Rausser"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-602-023",
+      "courseId": "101340",
+      "code": "ARESEC 602",
+      "subject": "ARESEC",
+      "number": "602",
+      "title": "Individual Study for Doctoral Students",
+      "description": "Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates of the Ph.D. May not be used for unit or residence requirements for the doctoral degree.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "023",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Tamma Carleton"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 1,
+      "waitlisted": 0,
+      "waitlistCapacity": 0,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-602-018",
+      "courseId": "101340",
+      "code": "ARESEC 602",
+      "subject": "ARESEC",
+      "number": "602",
+      "title": "Individual Study for Doctoral Students",
+      "description": "Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates of the Ph.D. May not be used for unit or residence requirements for the doctoral degree.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "018",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Sofia Villas-Boas"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ARESEC-602-013",
+      "courseId": "101340",
+      "code": "ARESEC 602",
+      "subject": "ARESEC",
+      "number": "602",
+      "title": "Individual Study for Doctoral Students",
+      "description": "Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates of the Ph.D. May not be used for unit or residence requirements for the doctoral degree.",
+      "department": "ARESEC",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "013",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Kirill Borusyak"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 100,
+      "waitlisted": 0,
+      "waitlistCapacity": 100,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ART-295-009",
+      "courseId": "101429",
+      "code": "ART 295",
+      "subject": "ART",
+      "number": "295",
+      "title": "Independent Study for M.F.A. Students",
+      "description": "Special study for MFA students under the guidance of MFA Committee members as well as other faculty.",
+      "department": "ART",
+      "unitsMin": 4,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "009",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Jeremy Mores McWreath"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 5,
+      "waitlisted": 0,
+      "waitlistCapacity": 0,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ART-295-12",
+      "courseId": "101429",
+      "code": "ART 295",
+      "subject": "ART",
+      "number": "295",
+      "title": "Independent Study for M.F.A. Students",
+      "description": "Special study for MFA students under the guidance of MFA Committee members as well as other faculty.",
+      "department": "ART",
+      "unitsMin": 4,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "12",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Stephanie Syjuco"
+          ]
+        }
+      ],
+      "enrolled": 2,
+      "capacity": 5,
+      "waitlisted": 0,
+      "waitlistCapacity": 0,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ART-295-008",
+      "courseId": "101429",
+      "code": "ART 295",
+      "subject": "ART",
+      "number": "295",
+      "title": "Independent Study for M.F.A. Students",
+      "description": "Special study for MFA students under the guidance of MFA Committee members as well as other faculty.",
+      "department": "ART",
+      "unitsMin": 4,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "008",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Luanne Redeye"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 5,
+      "waitlisted": 0,
+      "waitlistCapacity": 0,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ART-295-10",
+      "courseId": "101429",
+      "code": "ART 295",
+      "subject": "ART",
+      "number": "295",
+      "title": "Independent Study for M.F.A. Students",
+      "description": "Special study for MFA students under the guidance of MFA Committee members as well as other faculty.",
+      "department": "ART",
+      "unitsMin": 4,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "10",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Jill Miller"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 5,
+      "waitlisted": 0,
+      "waitlistCapacity": 0,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ART-295-006",
+      "courseId": "101429",
+      "code": "ART 295",
+      "subject": "ART",
+      "number": "295",
+      "title": "Independent Study for M.F.A. Students",
+      "description": "Special study for MFA students under the guidance of MFA Committee members as well as other faculty.",
+      "department": "ART",
+      "unitsMin": 4,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "006",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Anne Walsh"
+          ]
+        }
+      ],
+      "enrolled": 2,
+      "capacity": 5,
+      "waitlisted": 0,
+      "waitlistCapacity": 0,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ART-295-005",
+      "courseId": "101429",
+      "code": "ART 295",
+      "subject": "ART",
+      "number": "295",
+      "title": "Independent Study for M.F.A. Students",
+      "description": "Special study for MFA students under the guidance of MFA Committee members as well as other faculty.",
+      "department": "ART",
+      "unitsMin": 4,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "005",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Xandra Ibarra"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 5,
+      "waitlisted": 0,
+      "waitlistCapacity": 0,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ART-295-13",
+      "courseId": "101429",
+      "code": "ART 295",
+      "subject": "ART",
+      "number": "295",
+      "title": "Independent Study for M.F.A. Students",
+      "description": "Special study for MFA students under the guidance of MFA Committee members as well as other faculty.",
+      "department": "ART",
+      "unitsMin": 4,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "13",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Angela Marino"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 5,
+      "waitlisted": 0,
+      "waitlistCapacity": 0,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ART-295-11",
+      "courseId": "101429",
+      "code": "ART 295",
+      "subject": "ART",
+      "number": "295",
+      "title": "Independent Study for M.F.A. Students",
+      "description": "Special study for MFA students under the guidance of MFA Committee members as well as other faculty.",
+      "department": "ART",
+      "unitsMin": 4,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "11",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Emily Gui"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 5,
+      "waitlisted": 0,
+      "waitlistCapacity": 0,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ART-295-003",
+      "courseId": "101429",
+      "code": "ART 295",
+      "subject": "ART",
+      "number": "295",
+      "title": "Independent Study for M.F.A. Students",
+      "description": "Special study for MFA students under the guidance of MFA Committee members as well as other faculty.",
+      "department": "ART",
+      "unitsMin": 4,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "003",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Brody Reiman"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 5,
+      "waitlisted": 0,
+      "waitlistCapacity": 0,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-047",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "047",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Ellie Tubman"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 5,
+      "waitlisted": 0,
+      "waitlistCapacity": 1,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-046",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "046",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Yuan Cao"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 10,
+      "waitlisted": 0,
+      "waitlistCapacity": 0,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-044",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "044",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Rachel Slaybaugh"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 20,
+      "waitlisted": 0,
+      "waitlistCapacity": 0,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-041",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "041",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Karl Van Bibber"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 5,
+      "waitlisted": 0,
+      "waitlistCapacity": 5,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-003",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "003",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "12:00:00",
+          "endTime": "12:59:00",
+          "location": null,
+          "instructors": [
+            "Na Ji"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-042",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "042",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Mark Asta"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 5,
+      "waitlisted": 0,
+      "waitlistCapacity": 5,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-038",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "038",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Jeffrey Reimer"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-048",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "048",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Shawn Shadden"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 1,
+      "waitlisted": 0,
+      "waitlistCapacity": 1,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-045",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "045",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Paulo Monteiro"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 1,
+      "waitlisted": 0,
+      "waitlistCapacity": 0,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-049",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "049",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Thomas Philip"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 5,
+      "waitlisted": 0,
+      "waitlistCapacity": 0,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-50",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "50",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Chiara Salemi"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 1,
+      "waitlisted": 0,
+      "waitlistCapacity": 0,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-037",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "037",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Oscar Dubon"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-031",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "031",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Graham Fleming"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-032",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "032",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Andrew Neureuther"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-033",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "033",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "K Whaley"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-035",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "035",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Junqiao Wu"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-030",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "030",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Sayeef Salahuddin"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-027",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "027",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Roya Maboudian"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-028",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "028",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Xiang Zhang"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-024",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "024",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Mohammad Kaazem Pur Mofrad"
+          ]
+        }
+      ],
+      "enrolled": 2,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-036",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "036",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Phillip Colella"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-029",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "029",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Michael Lieberman"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-025",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "025",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Ali Javey"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-023",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "023",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Gopala Anumanchipalli"
+          ]
+        }
+      ],
+      "enrolled": 2,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-016",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "016",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Ahmad Omar"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-015",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "015",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Hartmut Haeffner"
+          ]
+        }
+      ],
+      "enrolled": 3,
+      "capacity": 3,
+      "waitlisted": 0,
+      "waitlistCapacity": 3,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-018",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "018",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Alessandra Lanzara"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-014",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "014",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Eric Ma"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-013",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "013",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Roger Falcone"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-010",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "010",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Jie Yao"
+          ]
+        }
+      ],
+      "enrolled": 3,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-009",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "009",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Ashok Ajoy"
+          ]
+        }
+      ],
+      "enrolled": 4,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-002",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "002",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Jasmina Vujic"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-020",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "020",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Feng Wang"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-012",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "012",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Carl Schroeder"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-008",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "008",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Michael Crommie"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-021",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "021",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Irfan Siddiqi"
+          ]
+        }
+      ],
+      "enrolled": 2,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-005",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "005",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Seung-Wuk Lee"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 99,
+      "waitlisted": 0,
+      "waitlistCapacity": 99,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-AST-299-001",
+      "courseId": "101593",
+      "code": "AST 299",
+      "subject": "AST",
+      "number": "299",
+      "title": "Individual Study or Research",
+      "description": "Investigations of advanced problems in applied science and technology. Sponsored by Engineering Interdisciplinary Studies Center.",
+      "department": "AST",
+      "unitsMin": 1,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "001",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Boubacar Kante"
+          ]
+        }
+      ],
+      "enrolled": 2,
+      "capacity": 10,
+      "waitlisted": 0,
+      "waitlistCapacity": 5,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ASTRON-299-012",
+      "courseId": "101641",
+      "code": "ASTRON 299",
+      "subject": "ASTRON",
+      "number": "299",
+      "title": "Advanced Study and Research",
+      "description": "",
+      "department": "ASTRON",
+      "unitsMin": 2,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "012",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Aaron Parsons"
+          ]
+        }
+      ],
+      "enrolled": 2,
+      "capacity": 12,
+      "waitlisted": 0,
+      "waitlistCapacity": 5,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ASTRON-299-008",
+      "courseId": "101641",
+      "code": "ASTRON 299",
+      "subject": "ASTRON",
+      "number": "299",
+      "title": "Advanced Study and Research",
+      "description": "",
+      "department": "ASTRON",
+      "unitsMin": 2,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "008",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Wenbin Lu"
+          ]
+        }
+      ],
+      "enrolled": 3,
+      "capacity": 15,
+      "waitlisted": 0,
+      "waitlistCapacity": 5,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ASTRON-299-007",
+      "courseId": "101641",
+      "code": "ASTRON 299",
+      "subject": "ASTRON",
+      "number": "299",
+      "title": "Advanced Study and Research",
+      "description": "",
+      "department": "ASTRON",
+      "unitsMin": 2,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "007",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Courtney Dressing"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 5,
+      "waitlisted": 0,
+      "waitlistCapacity": 5,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ASTRON-299-017",
+      "courseId": "101641",
+      "code": "ASTRON 299",
+      "subject": "ASTRON",
+      "number": "299",
+      "title": "Advanced Study and Research",
+      "description": "",
+      "department": "ASTRON",
+      "unitsMin": 2,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "017",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Michael Bottom"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 5,
+      "waitlisted": 0,
+      "waitlistCapacity": 5,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ASTRON-299-016",
+      "courseId": "101641",
+      "code": "ASTRON 299",
+      "subject": "ASTRON",
+      "number": "299",
+      "title": "Advanced Study and Research",
+      "description": "",
+      "department": "ASTRON",
+      "unitsMin": 2,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "016",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Daniel Stark"
+          ]
+        }
+      ],
+      "enrolled": 1,
+      "capacity": 10,
+      "waitlisted": 0,
+      "waitlistCapacity": 5,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-ASTRON-299-011",
+      "courseId": "101641",
+      "code": "ASTRON 299",
+      "subject": "ASTRON",
+      "number": "299",
+      "title": "Advanced Study and Research",
+      "description": "",
+      "department": "ASTRON",
+      "unitsMin": 2,
+      "unitsMax": 12,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "011",
+      "component": "IND",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Chung-Pei Ma"
+          ]
+        }
+      ],
+      "enrolled": 2,
+      "capacity": 5,
+      "waitlisted": 0,
+      "waitlistCapacity": 5,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-BIOENG-298-008",
+      "courseId": "102115",
+      "code": "BIOENG 298",
+      "subject": "BIOENG",
+      "number": "298",
+      "title": "Group Studies, Seminars, or Group Research",
+      "description": "Advanced studies in various subjects through special seminars on topics to be selected each year. Informal group studies of special problems, group participation in comprehensive design problems, or group research on complete problems for analysis and experimentation.",
+      "department": "BIOENG",
+      "unitsMin": 1,
+      "unitsMax": 8,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "008",
+      "component": "GRP",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Kevin Healy"
+          ]
+        }
+      ],
+      "enrolled": 2,
+      "capacity": 25,
+      "waitlisted": 0,
+      "waitlistCapacity": 10,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-BIOENG-298-007",
+      "courseId": "102115",
+      "code": "BIOENG 298",
+      "subject": "BIOENG",
+      "number": "298",
+      "title": "Group Studies, Seminars, or Group Research",
+      "description": "Advanced studies in various subjects through special seminars on topics to be selected each year. Informal group studies of special problems, group participation in comprehensive design problems, or group research on complete problems for analysis and experimentation.",
+      "department": "BIOENG",
+      "unitsMin": 1,
+      "unitsMax": 8,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "007",
+      "component": "GRP",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Teresa Head-Gordon"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 25,
+      "waitlisted": 0,
+      "waitlistCapacity": 10,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-BIOENG-298-005",
+      "courseId": "102115",
+      "code": "BIOENG 298",
+      "subject": "BIOENG",
+      "number": "298",
+      "title": "Group Studies, Seminars, or Group Research",
+      "description": "Advanced studies in various subjects through special seminars on topics to be selected each year. Informal group studies of special problems, group participation in comprehensive design problems, or group research on complete problems for analysis and experimentation.",
+      "department": "BIOENG",
+      "unitsMin": 1,
+      "unitsMax": 8,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "005",
+      "component": "GRP",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Steven Conolly"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 25,
+      "waitlisted": 0,
+      "waitlistCapacity": 10,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    },
+    {
+      "id": "2268-1-BIOENG-298-003",
+      "courseId": "102115",
+      "code": "BIOENG 298",
+      "subject": "BIOENG",
+      "number": "298",
+      "title": "Group Studies, Seminars, or Group Research",
+      "description": "Advanced studies in various subjects through special seminars on topics to be selected each year. Informal group studies of special problems, group participation in comprehensive design problems, or group research on complete problems for analysis and experimentation.",
+      "department": "BIOENG",
+      "unitsMin": 1,
+      "unitsMax": 8,
+      "level": "Graduate",
+      "requirements": [],
+      "prerequisites": [],
+      "crossListings": [],
+      "term": "Fall 2026",
+      "sectionNumber": "003",
+      "component": "GRP",
+      "meetings": [
+        {
+          "days": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00",
+          "location": null,
+          "instructors": [
+            "Michael Yartsev"
+          ]
+        }
+      ],
+      "enrolled": 0,
+      "capacity": 25,
+      "waitlisted": 0,
+      "waitlistCapacity": 10,
+      "averageGrade": null,
+      "provenance": {
+        "sourceId": "berkeleytime-public-graphql",
+        "sourceName": "BerkeleyTime public GraphQL catalog",
+        "sourceUrl": "https://berkeleytime.com/api/graphql",
+        "official": false,
+        "retrievedAt": "2026-08-28T21:41:02.459Z",
+        "license": null
+      }
+    }
+  ]
+}

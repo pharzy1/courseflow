@@ -6,6 +6,7 @@ type SavedSchedule = { selected:string[]; priorities:Priority[]; variant:Variant
 
 const initial = ["COMPSCI 61B","DATA C100","STAT 134","DES INV 25"];
 const priorityLabels: Record<Priority,string> = { morning:"No classes before 9", lunch:"Protect lunch break", rating:"Highly rated instructors" };
+const realCatalogEnabled=process.env.NEXT_PUBLIC_COURSEFLOW_REAL_DATA==="true";
 
 export default function Home() {
   const [query,setQuery]=useState("");
@@ -60,7 +61,7 @@ export default function Home() {
       <button className="brand" onClick={()=>navigate("Discover")} aria-label="CourseFlow home"><span className="brand-mark">CF</span><span>Course<span>Flow</span></span></button>
       <nav aria-label="Primary navigation" className={mobileNav?"open":""}>{["Discover","My schedule","Intelligence","Roadmap"].map(tab=><button key={tab} aria-current={activeTab===tab?"location":undefined} className={activeTab===tab?"active":""} onClick={()=>navigate(tab)}>{tab}{tab==="My schedule"&&<i>{selected.length}</i>}</button>)}</nav>
       <button className="mobile-menu" aria-label="Toggle navigation" aria-expanded={mobileNav} onClick={()=>setMobileNav(!mobileNav)}>Menu</button>
-      <div className="term"><span>Fall 2026</span><b>PA</b></div>
+      <div className="term">{realCatalogEnabled&&<a className="beta-link" href="/catalog">Real catalog β</a>}<span>Fall 2026</span><b>PA</b></div>
     </header>
 
     <section className="hero" id="top"><div><div className="eyebrow"><span>INTERACTIVE DEMO</span> Curated sample catalog · device-local saving</div><h1>Your semester,<br/><em>without the guesswork.</em></h1><p>Build and compare conflict-free schedules around what matters to you—not just what fits.</p></div><div className="hero-stat"><strong>{selected.length}</strong><span>courses in your plan</span><small>{units} units selected</small></div></section>

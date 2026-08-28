@@ -1,0 +1,20 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { SnapshotCourseRepository } from "../../lib/data/snapshot";
+
+test("real snapshot exposes provenance and supports catalog filters",async()=>{
+  const repository=new SnapshotCourseRepository();
+  const page=await repository.searchCatalog({term:"Fall 2026",limit:10});
+  assert.ok(page.total>0);
+  assert.equal(page.records.every(record=>record.provenance.sourceUrl.startsWith("https://")&&record.provenance.retrievedAt.length>10),true);
+  const department=page.records[0].department;
+  const filtered=await repository.searchCatalog({term:"Fall 2026",department,limit:100});
+  assert.equal(filtered.records.every(record=>record.department===department),true);
+});
+
+test("snapshot pagination is bounded and anonymous-safe",async()=>{
+  const repository=new SnapshotCourseRepository();
+  const page=await repository.searchCatalog({term:"Fall 2026",limit:1000,offset:0});
+  assert.ok(page.records.length<=100);
+  assert.equal(page.mode,"snapshot");
+});

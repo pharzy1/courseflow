@@ -6,6 +6,8 @@
 
 CourseFlow is a unified Berkeley course-intelligence and schedule-planning prototype. It connects discovery, historical signals, prerequisites, course comparison, degree value, workload planning, and conflict-free schedule ranking in one explainable workflow.
 
+Stage 1 of the real-data architecture is now feature-flagged: `/catalog` reads a versioned Fall 2026 snapshot through a typed repository/API boundary that can switch to Neon Postgres without changing the UI. Every imported record includes visible provenance.
+
 > This repository intentionally demonstrates a production-minded frontend and deterministic scheduling engine. Course and enrollment values are illustrative; it does not claim live Berkeley data, cloud accounts, or a degree audit.
 
 ## Live product
@@ -50,6 +52,7 @@ The engine in [`lib/courseflow.ts`](lib/courseflow.ts) has no React or browser d
 | Layer | What it proves | Command |
 |---|---|---|
 | Unit | Search, score reconciliation, feasibility, all course subsets, and course-intelligence calculations | `pnpm test:unit` |
+| Integration | Snapshot ingestion contract, provenance, filters, and bounded pagination | `pnpm test:integration` |
 | Build | TypeScript and production bundling | `pnpm build` |
 | End-to-end | Search → select → rank → save → reload, plus conflict resolution | `pnpm test:e2e` |
 | Accessibility | Automated WCAG A/AA checks with axe on desktop and mobile | `pnpm test:accessibility` |
@@ -89,6 +92,8 @@ Open `http://localhost:3000`.
 ## Current scope and next boundary
 
 CourseFlow currently persists an anonymous snapshot in `localStorage`. The clean next boundary is an authenticated API adapter that replaces local storage without changing the scheduling engine. Live course ingestion, cloud persistence, notifications, and degree-audit integration are deliberately outside this release.
+
+The approved production direction is Neon Postgres plus optional Clerk accounts. Both remain disabled until deployment credentials are provisioned; anonymous browsing and the deterministic snapshot fallback continue to work. See [`docs/DATA_SOURCES.md`](docs/DATA_SOURCES.md).
 
 ## Résumé-ready summary
 

@@ -16,8 +16,11 @@
     "test:ci": "pnpm test:unit && pnpm build && playwright test",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern playwright-report --ignore-pattern test-results",
     "db:generate": "drizzle-kit generate"
+    ,"data:sync": "tsx scripts/sync-catalog.ts"
+    ,"test:integration": "node --import tsx --test tests/integration/*.test.ts"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "drizzle-orm": "0.45.2",
     "next": "16.2.6",
     "react": "19.2.6",

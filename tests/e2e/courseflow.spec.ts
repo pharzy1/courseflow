@@ -41,3 +41,12 @@ test("course intelligence connects discovery, comparison, and semester health",a
   await expect(page.getByRole("region",{name:"Course comparison"})).toContainText("Decision fit");
   await expect(page.getByText("46 hours outside class")).toBeVisible();
 });
+
+test("real-data catalog exposes provenance and filters the snapshot",async({page})=>{
+  await page.goto("/catalog");
+  await expect(page.getByText("Data provenance")).toBeVisible();
+  await expect(page.getByText("Source: BerkeleyTime public GraphQL",{exact:true})).toBeVisible();
+  await page.getByLabel("Search real catalog").fill("AHMA 298");
+  await expect(page.getByText("AHMA 298 · 003")).toBeVisible();
+  await expect(page.getByText("Official: No · transitional adapter")).toBeVisible();
+});
