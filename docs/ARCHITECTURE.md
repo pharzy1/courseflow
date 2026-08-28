@@ -25,6 +25,7 @@ flowchart TD
 ## Domain model
 
 - `Course` describes catalog metadata and the stable course identifier.
+- `Course` also owns the illustrative intelligence inputs: grade median, workload, demand history, prerequisites, and requirements.
 - `Block` is one meeting on one weekday with a normalized start and duration.
 - `Priority` is a closed union: `morning | lunch | rating`.
 - `Variant` is currently `0 | 1`, representing two deterministic section combinations.
@@ -73,11 +74,13 @@ INFO 159 and STAT 134 meet Tuesday/Thursday at 9:30–11:00 in Schedule A. Selec
 - Score and explanation share one engine result.
 - The roadmap current term reads the same count and unit values.
 - Save and restore serialize the same state required to reproduce the schedule.
+- Course comparison is derived from stable course IDs and cannot mutate schedule state.
+- `courseSignal` is the single calculation used by cards, the intelligence workspace, and comparisons.
 
 ## Test boundaries
 
-- `tests/unit/courseflow.test.ts` verifies domain invariants without a browser.
-- `tests/e2e/courseflow.spec.ts` verifies the user-observable workflow and WCAG rules.
+- `tests/unit/courseflow.test.ts` verifies domain and intelligence invariants without a browser.
+- `tests/e2e/courseflow.spec.ts` verifies the schedule and course-intelligence workflows at desktop, tablet, and mobile sizes plus WCAG rules.
 - `.github/workflows/ci.yml` makes both suites a repeatable merge/push check.
 
 ## Evolution path
