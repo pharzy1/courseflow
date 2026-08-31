@@ -20,6 +20,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const document=<html lang="en"><body>{children}</body></html>;
-  return authConfigured()?<ClerkProvider>{document}</ClerkProvider>:document;
+  return <html lang="en"><body>{authConfigured()?<ClerkProvider>{children}</ClerkProvider>:children}</body></html>;
 }
