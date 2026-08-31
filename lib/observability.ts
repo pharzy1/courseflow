@@ -1,0 +1,3 @@
+export type LogLevel="info"|"warn"|"error";
+export function operationalLog(level:LogLevel,event:string,fields:Record<string,unknown>={}){const record={timestamp:new Date().toISOString(),level,event,service:"courseflow-web",...fields};const output=JSON.stringify(record);if(level==="error")console.error(output);else if(level==="warn")console.warn(output);else console.info(output);return record;}
+export async function measured<T>(event:string,work:()=>Promise<T>){const started=Date.now();try{const value=await work();operationalLog("info",event,{ok:true,durationMs:Date.now()-started});return value;}catch(error){operationalLog("error",event,{ok:false,durationMs:Date.now()-started,error:error instanceof Error?error.message:"Unknown error"});throw error;}}

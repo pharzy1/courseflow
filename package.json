@@ -14,6 +14,7 @@
     "test:e2e": "playwright test",
     "test:accessibility": "playwright test --grep accessibility",
     "test:ci": "pnpm test:unit && pnpm test:integration && pnpm build && playwright test",
+    "test:performance": "node scripts/check-performance-budget.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern playwright-report --ignore-pattern test-results",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "tsx scripts/migrate-database.ts",

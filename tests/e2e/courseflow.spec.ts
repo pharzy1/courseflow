@@ -71,3 +71,14 @@ test("degree pathfinder explains unlocks and invalid sequences",async({page})=>{
 test("roadmap API protects student degree data",async({request})=>{
   expect((await request.get("/api/roadmap")).status()).toBe(401);
 });
+
+test("engineering status exposes truthful operational checks",async({page,request})=>{
+  const response=await request.get("/api/health");
+  expect(response.ok()).toBe(true);
+  const health=await response.json();
+  expect(["operational","degraded"]).toContain(health.status);
+  await page.goto("/status");
+  await expect(page.getByRole("heading",{name:"Trust, made observable."})).toBeVisible();
+  await expect(page.getByRole("heading",{name:"Production readiness"})).toBeVisible();
+  await expect(page.getByText("These checks are derived from live infrastructure—not static marketing claims.")).toBeVisible();
+});
