@@ -4,6 +4,9 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { authConfigured } from "../lib/auth";
 import "./globals.css";
 
+// Account controls depend on the active production Clerk environment.
+export const dynamic="force-dynamic";
+
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
   const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
