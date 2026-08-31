@@ -20,7 +20,7 @@ async function fetchPage(page:number){
   let lastError:unknown;
   for(let attempt=1;attempt<=3;attempt++){
     try{
-      const response=await fetch(endpoint,{method:"POST",signal:AbortSignal.timeout(requestTimeoutMs),headers:{"content-type":"application/json","user-agent":"CourseFlow independent student project"},body:JSON.stringify({query,variables:{year,semester,page,pageSize}})});
+      const response=await fetch(endpoint,{method:"POST",signal:AbortSignal.timeout(requestTimeoutMs),headers:{accept:"application/json","content-type":"application/json",origin:"https://berkeleytime.com",referer:"https://berkeleytime.com/","user-agent":"Mozilla/5.0 (compatible; CourseFlow/1.0; +https://github.com/pharzy1/courseflow)"},body:JSON.stringify({query,variables:{year,semester,page,pageSize}})});
       if(!response.ok)throw new Error(`Catalog source returned ${response.status}`);
       const payload=await response.json() as {data?:{catalogSearch?:{totalCount:number;results:SourceRecord[]}};errors?:unknown};
       if(!payload.data?.catalogSearch)throw new Error(`Catalog response invalid: ${JSON.stringify(payload.errors)}`);

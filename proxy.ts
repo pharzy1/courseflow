@@ -1,6 +1,10 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
+import { NextResponse } from "next/server";
+import { authConfigured } from "./lib/auth";
 
-export default clerkMiddleware({frontendApiProxy:{enabled:true}});
+const anonymousMiddleware=()=>NextResponse.next();
+
+export default authConfigured()?clerkMiddleware({frontendApiProxy:{enabled:true}}):anonymousMiddleware;
 
 export const config={matcher:[
   "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
