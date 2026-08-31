@@ -48,5 +48,6 @@ test("real-data catalog exposes provenance and filters the snapshot",async({page
   await expect(page.getByText("Source: BerkeleyTime public GraphQL",{exact:true})).toBeVisible();
   await page.getByLabel("Search real catalog").fill("AHMA 298");
   await expect(page.getByText("AHMA 298 · 003")).toBeVisible();
+  await expect(page.getByRole("link",{name:"View enrollment history for AHMA 298 section 003"})).toBeVisible();
   await expect(page.getByText("Official: No · transitional adapter")).toBeVisible();
 });
