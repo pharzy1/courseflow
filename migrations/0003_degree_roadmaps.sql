@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS degree_roadmaps (id text PRIMARY KEY,user_id text NOT NULL UNIQUE REFERENCES user_profiles(id),payload jsonb NOT NULL DEFAULT '{}'::jsonb,created_at timestamptz NOT NULL,updated_at timestamptz NOT NULL);

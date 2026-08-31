@@ -57,3 +57,17 @@ test("watchlist API protects account-scoped enrollment data",async({request})=>{
   const response=await request.get("/api/watchlists");
   expect(response.status()).toBe(401);
 });
+
+test("degree pathfinder explains unlocks and invalid sequences",async({page})=>{
+  await page.goto("/roadmap");
+  await expect(page.getByRole("heading",{name:"Plan the path, not just the term."})).toBeVisible();
+  await page.getByLabel("Focus course").selectOption("INFO 159");
+  await expect(page.getByText("Requires",{exact:true})).toBeVisible();
+  await page.getByRole("combobox",{name:"Term"}).selectOption("Fall 2026");
+  await expect(page.getByText("INFO 159 requires COMPSCI 61B in an earlier term.")).toBeVisible();
+  await expect(page.getByText("Planning aid—not an official degree audit.")).toBeVisible();
+});
+
+test("roadmap API protects student degree data",async({request})=>{
+  expect((await request.get("/api/roadmap")).status()).toBe(401);
+});
