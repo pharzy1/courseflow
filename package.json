@@ -31,6 +31,8 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
+    "@clerk/backend": "^3.16.13",
+    "@clerk/testing": "^2.2.31",
     "@cloudflare/vite-plugin": "1.37.1",
     "@playwright/test": "^1.62.1",
     "@tailwindcss/postcss": "4.2.1",
