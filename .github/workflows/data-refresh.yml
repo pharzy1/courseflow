@@ -16,6 +16,9 @@ jobs:
       - name: Invoke production ingestion worker
         env:
           COURSEFLOW_REFRESH_SECRET: ${{ secrets.COURSEFLOW_REFRESH_SECRET }}
-        run: curl --fail-with-body --retry 2 --max-time 300 -X POST -H "Authorization: Bearer $COURSEFLOW_REFRESH_SECRET" https://berkeley-courseflow.zesty-mole-4007.chatgpt.site/api/ops/catalog-refresh
+        run: |
+          curl --fail-with-body --retry 2 --max-time 300 -X POST \
+            -H "Authorization: Bearer $COURSEFLOW_REFRESH_SECRET" \
+            https://berkeley-courseflow.zesty-mole-4007.chatgpt.site/api/ops/catalog-refresh
       - name: Confirm refresh mode
         run: echo "Production worker completed full catalog pagination and Neon enrollment observation."
