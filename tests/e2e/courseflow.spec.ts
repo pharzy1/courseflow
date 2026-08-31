@@ -49,5 +49,11 @@ test("real-data catalog exposes provenance and filters the snapshot",async({page
   await page.getByLabel("Search real catalog").fill("AHMA 298");
   await expect(page.getByText("AHMA 298 · 003")).toBeVisible();
   await expect(page.getByRole("link",{name:"View enrollment history for AHMA 298 section 003"})).toBeVisible();
+  await expect(page.getByRole("article").filter({hasText:"AHMA 298 · 003"}).getByRole("button",{name:/Watch section/})).toBeVisible();
   await expect(page.getByText("Official: No · transitional adapter")).toBeVisible();
+});
+
+test("watchlist API protects account-scoped enrollment data",async({request})=>{
+  const response=await request.get("/api/watchlists");
+  expect(response.status()).toBe(401);
 });

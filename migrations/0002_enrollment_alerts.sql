@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS enrollment_watches (id text PRIMARY KEY,user_id text NOT NULL REFERENCES user_profiles(id),section_id text NOT NULL REFERENCES sections(id),notify_open boolean NOT NULL DEFAULT true,notify_waitlist boolean NOT NULL DEFAULT true,email_enabled boolean NOT NULL DEFAULT false,created_at timestamptz NOT NULL);
+CREATE UNIQUE INDEX IF NOT EXISTS enrollment_watches_user_section_idx ON enrollment_watches(user_id,section_id);
+CREATE INDEX IF NOT EXISTS enrollment_watches_section_idx ON enrollment_watches(section_id);
+CREATE TABLE IF NOT EXISTS enrollment_alerts (id text PRIMARY KEY,watch_id text NOT NULL REFERENCES enrollment_watches(id),user_id text NOT NULL REFERENCES user_profiles(id),section_id text NOT NULL REFERENCES sections(id),kind text NOT NULL,message text NOT NULL,dedupe_key text NOT NULL UNIQUE,read_at timestamptz,email_status text NOT NULL DEFAULT 'not_requested',created_at timestamptz NOT NULL);
+CREATE INDEX IF NOT EXISTS enrollment_alerts_user_time_idx ON enrollment_alerts(user_id,created_at);

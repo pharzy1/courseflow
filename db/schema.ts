@@ -25,3 +25,9 @@ export const userProfiles=pgTable("user_profiles",{
 export const savedPlans=pgTable("saved_plans",{
   id:text("id").primaryKey(),userId:text("user_id").notNull().references(()=>userProfiles.id),name:text("name").notNull(),payload:jsonb("payload").$type<Record<string,unknown>>().notNull(),createdAt:timestamp("created_at",{withTimezone:true}).notNull(),updatedAt:timestamp("updated_at",{withTimezone:true}).notNull(),
 },table=>[index("saved_plans_user_idx").on(table.userId)]);
+export const enrollmentWatches=pgTable("enrollment_watches",{
+  id:text("id").primaryKey(),userId:text("user_id").notNull().references(()=>userProfiles.id),sectionId:text("section_id").notNull().references(()=>sections.id),notifyOpen:boolean("notify_open").notNull().default(true),notifyWaitlist:boolean("notify_waitlist").notNull().default(true),emailEnabled:boolean("email_enabled").notNull().default(false),createdAt:timestamp("created_at",{withTimezone:true}).notNull(),
+},table=>[uniqueIndex("enrollment_watches_user_section_idx").on(table.userId,table.sectionId),index("enrollment_watches_section_idx").on(table.sectionId)]);
+export const enrollmentAlerts=pgTable("enrollment_alerts",{
+  id:text("id").primaryKey(),watchId:text("watch_id").notNull().references(()=>enrollmentWatches.id),userId:text("user_id").notNull().references(()=>userProfiles.id),sectionId:text("section_id").notNull().references(()=>sections.id),kind:text("kind").notNull(),message:text("message").notNull(),dedupeKey:text("dedupe_key").notNull().unique(),readAt:timestamp("read_at",{withTimezone:true}),emailStatus:text("email_status").notNull().default("not_requested"),createdAt:timestamp("created_at",{withTimezone:true}).notNull(),
+},table=>[index("enrollment_alerts_user_time_idx").on(table.userId,table.createdAt)]);

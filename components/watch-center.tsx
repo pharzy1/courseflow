@@ -1,0 +1,23 @@
+"use client";
+import { useEffect,useState } from "react";
+import type { EnrollmentWatch,UserAlert } from "../lib/watchlists";
+type State={watches:EnrollmentWatch[];alerts:UserAlert[]};
+
+export function WatchCenter({configured}:{configured:boolean}){
+  const [open,setOpen]=useState(false),[state,setState]=useState<State|null>(null),[busy,setBusy]=useState(false);
+  const load=()=>fetch("/api/watchlists",{cache:"no-store"}).then(async response=>response.ok?response.json() as Promise<State>:null).then(setState).catch(()=>setState(null));
+  useEffect(()=>{if(configured)void load();},[configured]);
+  useEffect(()=>{const refresh=()=>void load();window.addEventListener("courseflow-watch-updated",refresh);return()=>window.removeEventListener("courseflow-watch-updated",refresh);},[]);
+  if(!configured)return null;
+  const unread=state?.alerts.filter(alert=>!alert.read).length??0;
+  const remove=async(sectionId:string)=>{setBusy(true);const response=await fetch(`/api/watchlists?sectionId=${encodeURIComponent(sectionId)}`,{method:"DELETE"});if(response.ok)setState(await response.json());setBusy(false);};
+  const email=async(watch:EnrollmentWatch)=>{setBusy(true);const response=await fetch("/api/watchlists",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({sectionId:watch.sectionId,emailEnabled:!watch.emailEnabled})});if(response.ok)setState(await response.json());setBusy(false);};
+  const read=async()=>{setBusy(true);const response=await fetch("/api/watchlists",{method:"PATCH"});if(response.ok)setState(await response.json());setBusy(false);};
+  return <div className="watch-center"><button className="watch-center-toggle" aria-expanded={open} onClick={()=>setOpen(!open)}>Enrollment alerts{unread>0?<i>{unread}</i>:null}</button>{open?<section aria-label="Enrollment watchlist"><div className="watch-center-head"><div><span className="kicker">PERSONAL SIGNALS</span><h2>Enrollment watchlist</h2></div><button onClick={()=>setOpen(false)} aria-label="Close enrollment watchlist">×</button></div>{state===null?<p>Sign in to watch live Berkeley sections.</p>:<><h3>Watching {state.watches.length} section{state.watches.length===1?"":"s"}</h3><div className="watch-list">{state.watches.length?state.watches.map(watch=><article key={watch.id}><div><b>{watch.code} · {watch.sectionNumber}</b><span>{watch.capacity-watch.enrolled>0?`${watch.capacity-watch.enrolled} open`:"Full"} · {watch.waitlisted} waitlisted</span><span>In-app on · Email {watch.emailEnabled?"on":"off"}</span></div><div className="watch-actions"><button disabled={busy} onClick={()=>email(watch)}>{watch.emailEnabled?"Disable email":"Enable email"}</button><button disabled={busy} onClick={()=>remove(watch.sectionId)}>Stop</button></div></article>):<p>No sections watched yet. Add one from the real catalog.</p>}</div><div className="alert-head"><h3>Recent alerts</h3>{unread>0?<button disabled={busy} onClick={read}>Mark all read</button>:null}</div><div className="alert-list" aria-live="polite">{state.alerts.length?state.alerts.map(alert=><article className={alert.read?"":"unread"} key={alert.id}><b>{alert.kind.replaceAll("_"," ")}</b><p>{alert.message}</p><span>{new Date(alert.createdAt).toLocaleString()} · Email: {alert.emailStatus.replaceAll("_"," ")}</span></article>):<p>New seat openings and waitlist movement will appear here.</p>}</div></>}</section>:null}</div>;
+}
+
+export function WatchButton({sectionId,configured}:{sectionId:string;configured:boolean}){
+  const [watching,setWatching]=useState(false),[busy,setBusy]=useState(false);
+  const toggle=async()=>{if(!configured){window.location.href="/sign-in";return;}setBusy(true);const response=await fetch(watching?`/api/watchlists?sectionId=${encodeURIComponent(sectionId)}`:"/api/watchlists",watching?{method:"DELETE"}:{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({sectionId,emailEnabled:false})});if(response.ok){setWatching(!watching);window.dispatchEvent(new Event("courseflow-watch-updated"));}setBusy(false);};
+  return <button className="watch-button" aria-pressed={watching} aria-label={`${watching?"Watching":"Watch section"} ${sectionId}`} disabled={busy} onClick={toggle}>{watching?"Watching":"Watch section"}</button>;
+}
