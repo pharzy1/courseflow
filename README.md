@@ -97,7 +97,7 @@ Open `http://localhost:3000`.
 - `COURSEFLOW_DATA_MODE=snapshot` serves the complete versioned catalog bundled with a release.
 - `COURSEFLOW_DATA_MODE=neon` serves the same API contract from Neon.
 - Clerk keys activate sign-in and the cross-device plan library; without them, anonymous local saving continues safely.
-- The 15-minute refresh job paginates the entire source, upserts Neon, records immutable enrollment observations, and exposes the last successful retrieval time.
+- The 15-minute scheduler calls a secret-protected production worker that paginates the entire source, upserts Neon, records immutable enrollment observations, and exposes the last successful retrieval time.
 
 Production Clerk and Neon are activated. See [`docs/DATA_SOURCES.md`](docs/DATA_SOURCES.md) for the source contract, provenance policy, and operational limits.
 

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { SnapshotCourseRepository } from "../../lib/data/snapshot";
 import { catalogFreshness } from "../../lib/data/types";
+import { POST as refreshCatalog } from "../../app/api/ops/catalog-refresh/route";
 
 test("real snapshot exposes provenance and supports catalog filters",async()=>{
   const repository=new SnapshotCourseRepository();
@@ -32,4 +33,9 @@ test("catalog freshness is derived from the recorded source timestamp",()=>{
   assert.equal(catalogFreshness("2026-08-31T11:45:00.000Z",now),"live");
   assert.equal(catalogFreshness("2026-08-31T11:00:00.000Z",now),"aging");
   assert.equal(catalogFreshness("2026-08-31T08:00:00.000Z",now),"stale");
+});
+
+test("production refresh worker rejects unauthenticated requests",async()=>{
+  const response=await refreshCatalog(new Request("https://courseflow.test/api/ops/catalog-refresh",{method:"POST"}));
+  assert.equal(response.status,401);
 });

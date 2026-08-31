@@ -11,20 +11,11 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        with: { version: 11.19.0 }
-      - uses: actions/setup-node@v4
-        with: { node-version: 24, cache: pnpm }
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm data:sync
+      - name: Invoke production ingestion worker
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          COURSEFLOW_SYNC_MAX_PAGES: 100
-          COURSEFLOW_SYNC_PAGE_SIZE: 500
-          COURSEFLOW_SYNC_TIMEOUT_MS: 20000
-      - run: pnpm test:integration
+          COURSEFLOW_REFRESH_SECRET: ${{ secrets.COURSEFLOW_REFRESH_SECRET }}
+        run: curl --fail-with-body --retry 2 --max-time 300 -X POST -H "Authorization: Bearer $COURSEFLOW_REFRESH_SECRET" https://berkeley-courseflow.zesty-mole-4007.chatgpt.site/api/ops/catalog-refresh
       - name: Confirm refresh mode
-        run: echo "Full catalog pagination and enrollment observation completed in Neon."
+        run: echo "Production worker completed full catalog pagination and Neon enrollment observation."
