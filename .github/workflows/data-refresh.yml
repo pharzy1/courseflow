@@ -1,13 +1,17 @@
-name: Catalog snapshot refresh
+name: Catalog and enrollment refresh
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 10 * * *"
+    - cron: "7,22,37,52 * * * *"
+concurrency:
+  group: courseflow-data-refresh
+  cancel-in-progress: false
 permissions:
   contents: read
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -19,6 +23,8 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           COURSEFLOW_SYNC_MAX_PAGES: 100
+          COURSEFLOW_SYNC_PAGE_SIZE: 500
+          COURSEFLOW_SYNC_TIMEOUT_MS: 20000
       - run: pnpm test:integration
       - name: Confirm refresh mode
-        run: echo "Full source pagination completed; Neon upserts run when the DATABASE_URL repository secret is configured."
+        run: echo "Full catalog pagination and enrollment observation completed in Neon."

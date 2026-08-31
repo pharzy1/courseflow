@@ -7,6 +7,8 @@ const endpoint=process.env.BERKELEYTIME_GRAPHQL_URL??"https://berkeleytime.com/a
 const year=Number(process.env.COURSEFLOW_SYNC_YEAR??2026),semester=process.env.COURSEFLOW_SYNC_SEMESTER??"Fall";
 const pageSize=Math.min(Number(process.env.COURSEFLOW_SYNC_PAGE_SIZE??500),500);
 const maxPages=Math.max(1,Number(process.env.COURSEFLOW_SYNC_MAX_PAGES??100));
+const requestTimeoutMs=Math.max(5_000,Number(process.env.COURSEFLOW_SYNC_TIMEOUT_MS??20_000));
+const syncStartedAt=Date.now();
 type Instructor={givenName?:string|null;familyName?:string|null};
 type SourceMeeting={days?:boolean[];startTime?:string|null;endTime?:string|null;location?:string|null;instructors?:Instructor[]};
 type SourceRecord={termId:string;sessionId:string;subject:string;courseNumber:string;number:string;courseId:string;courseTitle?:string|null;courseDescription?:string|null;unitsMin:number;unitsMax:number;level?:string|null;breadthRequirements?:string[];universityRequirements?:string[];enrolledCount?:number;maxEnroll?:number;waitlistedCount?:number;maxWaitlist?:number;primaryComponent?:string|null;meetings?:SourceMeeting[]};
@@ -15,11 +17,17 @@ const query=`query Snapshot($year:Int!,$semester:Semester!,$page:Int!,$pageSize:
 const retrievedAt=new Date().toISOString(),dayNames=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 
 async function fetchPage(page:number){
-  const response=await fetch(endpoint,{method:"POST",headers:{"content-type":"application/json","user-agent":"CourseFlow independent student project"},body:JSON.stringify({query,variables:{year,semester,page,pageSize}})});
-  if(!response.ok)throw new Error(`Catalog source returned ${response.status}`);
-  const payload=await response.json() as {data?:{catalogSearch?:{totalCount:number;results:SourceRecord[]}};errors?:unknown};
-  if(!payload.data?.catalogSearch)throw new Error(`Catalog response invalid: ${JSON.stringify(payload.errors)}`);
-  return payload.data.catalogSearch;
+  let lastError:unknown;
+  for(let attempt=1;attempt<=3;attempt++){
+    try{
+      const response=await fetch(endpoint,{method:"POST",signal:AbortSignal.timeout(requestTimeoutMs),headers:{"content-type":"application/json","user-agent":"CourseFlow independent student project"},body:JSON.stringify({query,variables:{year,semester,page,pageSize}})});
+      if(!response.ok)throw new Error(`Catalog source returned ${response.status}`);
+      const payload=await response.json() as {data?:{catalogSearch?:{totalCount:number;results:SourceRecord[]}};errors?:unknown};
+      if(!payload.data?.catalogSearch)throw new Error(`Catalog response invalid: ${JSON.stringify(payload.errors)}`);
+      return payload.data.catalogSearch;
+    }catch(error){lastError=error;if(attempt<3)await new Promise(resolve=>setTimeout(resolve,attempt*750));}
+  }
+  throw lastError instanceof Error?lastError:new Error(`Catalog page ${page} failed after three attempts`);
 }
 
 function normalize(item:SourceRecord):CatalogRecord{return {
@@ -43,6 +51,7 @@ if(process.env.DATABASE_URL){
   const writeBatchSize=50;
   for(let index=0;index<uniqueCourses.length;index+=writeBatchSize){const values=uniqueCourses.slice(index,index+writeBatchSize).map(record=>({id:record.courseId,subject:record.subject,number:record.number,title:record.title,description:record.description,department:record.department,unitsMin:String(record.unitsMin),unitsMax:String(record.unitsMax),level:record.level,prerequisites:record.prerequisites,requirementTags:record.requirements,crossListings:record.crossListings,sourceId,updatedAt:now}));await db.insert(courses).values(values).onConflictDoUpdate({target:courses.id,set:{title:sql`excluded.title`,description:sql`excluded.description`,unitsMin:sql`excluded.units_min`,unitsMax:sql`excluded.units_max`,level:sql`excluded.level`,requirementTags:sql`excluded.requirement_tags`,updatedAt:now}});}
   for(let index=0;index<canonicalRecords.length;index+=writeBatchSize){const batch=canonicalRecords.slice(index,index+writeBatchSize);await db.insert(sections).values(batch.map(record=>({id:record.id,courseId:record.courseId,term:record.term,sectionNumber:record.sectionNumber,component:record.component,instructors:[...new Set(record.meetings.flatMap(meeting=>meeting.instructors))],meetings:record.meetings.map(meeting=>({days:meeting.days,startTime:meeting.startTime,endTime:meeting.endTime,location:meeting.location})),enrolled:record.enrolled,capacity:record.capacity,waitlisted:record.waitlisted,waitlistCapacity:record.waitlistCapacity,sourceId,updatedAt:now}))).onConflictDoUpdate({target:sections.id,set:{component:sql`excluded.component`,instructors:sql`excluded.instructors`,meetings:sql`excluded.meetings`,enrolled:sql`excluded.enrolled`,capacity:sql`excluded.capacity`,waitlisted:sql`excluded.waitlisted`,waitlistCapacity:sql`excluded.waitlist_capacity`,updatedAt:now}});await db.insert(enrollmentSnapshots).values(batch.map(record=>({sectionId:record.id,observedAt:now,enrolled:record.enrolled,capacity:record.capacity,waitlisted:record.waitlisted,sourceId}))).onConflictDoNothing();}
+  await db.update(sources).set({retrievedAt:now,metadata:{term:`${semester} ${year}`,sourceRows:first.totalCount,distinctSections:canonicalRecords.length,pages,lastSuccessfulSync:retrievedAt,durationMs:Date.now()-syncStartedAt}}).where(sql`${sources.id}=${sourceId}`);
   console.log(`Upserted ${uniqueCourses.length} courses and ${canonicalRecords.length} distinct sections into Neon (${first.totalCount} source rows)`);
 }
 console.log(`Wrote ${canonicalRecords.length} distinct sections from ${first.totalCount} source rows to data/catalog.snapshot.json`);

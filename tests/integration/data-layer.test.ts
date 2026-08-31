@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { SnapshotCourseRepository } from "../../lib/data/snapshot";
+import { catalogFreshness } from "../../lib/data/types";
 
 test("real snapshot exposes provenance and supports catalog filters",async()=>{
   const repository=new SnapshotCourseRepository();
@@ -24,4 +25,11 @@ test("snapshot pagination is bounded and anonymous-safe",async()=>{
   const page=await repository.searchCatalog({term:"Fall 2026",limit:1000,offset:0});
   assert.ok(page.records.length<=100);
   assert.equal(page.mode,"snapshot");
+});
+
+test("catalog freshness is derived from the recorded source timestamp",()=>{
+  const now=Date.parse("2026-08-31T12:00:00.000Z");
+  assert.equal(catalogFreshness("2026-08-31T11:45:00.000Z",now),"live");
+  assert.equal(catalogFreshness("2026-08-31T11:00:00.000Z",now),"aging");
+  assert.equal(catalogFreshness("2026-08-31T08:00:00.000Z",now),"stale");
 });

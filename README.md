@@ -6,7 +6,7 @@
 
 CourseFlow is a unified Berkeley course-intelligence and schedule-planning prototype. It connects discovery, historical signals, prerequisites, course comparison, degree value, workload planning, and conflict-free schedule ranking in one explainable workflow.
 
-Stage 2 of the real-data architecture is implemented: `/catalog` exposes 5,928 distinct Fall 2026 sections normalized from 6,085 source listings through a typed repository/API boundary, the scheduled importer can upsert catalog and enrollment history into Neon Postgres, and Clerk-aware accounts persist plans across devices when deployment keys are configured. Every imported record includes visible provenance.
+Stage 2 of the real-data architecture is implemented: `/catalog` exposes thousands of Fall 2026 sections through a typed repository/API boundary, the resilient importer refreshes catalog and enrollment history in Neon Postgres every 15 minutes, and Clerk-aware accounts persist plans across devices. Every imported record includes visible provenance and the catalog reports its feed freshness truthfully.
 
 > The planner demonstration still uses a small curated scheduling fixture; the separate real catalog is a dated, non-official BerkeleyTime snapshot. CourseFlow does not claim CalCentral integration or a degree audit.
 
@@ -19,7 +19,7 @@ Stage 2 of the real-data architecture is implemented: `/catalog` exposes 5,928 d
 ## Why this project is different
 
 - **One canonical state:** selected courses drive units, blocks, conflicts, averages, scoring, roadmap totals, local fallback, and authenticated cloud restoration.
-- **Complete catalog adapter:** the Fall 2026 catalog contains 5,928 distinct sections normalized from 6,085 source listings, bounded API pagination, department facets, enrollment filters, and record-level provenance.
+- **Complete catalog adapter:** the Fall 2026 catalog uses bounded API pagination, retries and timeouts, department facets, enrollment filters, record-level provenance, and an observable freshness state.
 - **Production persistence boundary:** Neon stores users, plans, sections, grades, and enrollment observations; Clerk identity is verified on the server before any plan read or write.
 - **Cross-device plan library:** authenticated students can create, restore, duplicate, rename, and delete up to 20 named plans, with automatic device-plan migration and ownership-scoped mutations.
 - **Unified course intelligence:** illustrative grade, workload, enrollment-momentum, prerequisite, and requirement signals live beside scheduling decisions.
@@ -97,9 +97,9 @@ Open `http://localhost:3000`.
 - `COURSEFLOW_DATA_MODE=snapshot` serves the complete versioned catalog bundled with a release.
 - `COURSEFLOW_DATA_MODE=neon` serves the same API contract from Neon.
 - Clerk keys activate sign-in and the cross-device plan library; without them, anonymous local saving continues safely.
-- The daily refresh job paginates the entire source and upserts Neon when its repository secret is configured.
+- The 15-minute refresh job paginates the entire source, upserts Neon, records immutable enrollment observations, and exposes the last successful retrieval time.
 
-The remaining external activation step is provisioning production Clerk keys and applying the checked-in schema to the connected Neon project. See [`docs/DATA_SOURCES.md`](docs/DATA_SOURCES.md).
+Production Clerk and Neon are activated. See [`docs/DATA_SOURCES.md`](docs/DATA_SOURCES.md) for the source contract, provenance policy, and operational limits.
 
 ## Résumé-ready summary
 
