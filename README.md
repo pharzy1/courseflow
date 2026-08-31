@@ -21,6 +21,7 @@ Stage 2 of the real-data architecture is implemented: `/catalog` exposes 5,928 d
 - **One canonical state:** selected courses drive units, blocks, conflicts, averages, scoring, roadmap totals, local fallback, and authenticated cloud restoration.
 - **Complete catalog adapter:** the Fall 2026 catalog contains 5,928 distinct sections normalized from 6,085 source listings, bounded API pagination, department facets, enrollment filters, and record-level provenance.
 - **Production persistence boundary:** Neon stores users, plans, sections, grades, and enrollment observations; Clerk identity is verified on the server before any plan read or write.
+- **Cross-device plan library:** authenticated students can create, restore, duplicate, rename, and delete up to 20 named plans, with automatic device-plan migration and ownership-scoped mutations.
 - **Unified course intelligence:** illustrative grade, workload, enrollment-momentum, prerequisite, and requirement signals live beside scheduling decisions.
 - **Decision Desk:** compare up to three courses without bouncing between catalog, grades, enrollment, and planning tools.
 - **Explainable ranking:** the headline score and visible contribution breakdown come from the same `ScoreResult` object.
@@ -95,7 +96,7 @@ Open `http://localhost:3000`.
 
 - `COURSEFLOW_DATA_MODE=snapshot` serves the complete versioned catalog bundled with a release.
 - `COURSEFLOW_DATA_MODE=neon` serves the same API contract from Neon.
-- Clerk keys activate sign-in and cross-device plans; without them, anonymous local saving continues safely.
+- Clerk keys activate sign-in and the cross-device plan library; without them, anonymous local saving continues safely.
 - The daily refresh job paginates the entire source and upserts Neon when its repository secret is configured.
 
 The remaining external activation step is provisioning production Clerk keys and applying the checked-in schema to the connected Neon project. See [`docs/DATA_SOURCES.md`](docs/DATA_SOURCES.md).

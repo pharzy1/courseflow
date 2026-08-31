@@ -1,5 +1,5 @@
 import { getOptionalIdentity } from "../../../lib/auth";
-import { listPlans,parsePlanPayload,savePlan } from "../../../lib/plans";
+import { createPlan,listPlans,parsePlanName,parsePlanPayload,savePlan } from "../../../lib/plans";
 
 const privateHeaders={"cache-control":"private, no-store","vary":"Cookie, Authorization"};
 
@@ -11,6 +11,15 @@ export async function GET(){
 }
 
 export async function POST(request:Request){
+  const identity=await getOptionalIdentity();
+  if(!identity)return Response.json({error:"Authentication required"},{status:401,headers:privateHeaders});
+  try{
+    const body=await request.json() as {name?:unknown;payload?:unknown};
+    return Response.json({plan:await createPlan(identity,parsePlanName(body.name),parsePlanPayload(body.payload))},{status:201,headers:privateHeaders});
+  }catch(error){return Response.json({error:"Plan could not be saved",detail:error instanceof Error?error.message:"Unknown error"},{status:400,headers:privateHeaders});}
+}
+
+export async function PUT(request:Request){
   const identity=await getOptionalIdentity();
   if(!identity)return Response.json({error:"Authentication required"},{status:401,headers:privateHeaders});
   try{
