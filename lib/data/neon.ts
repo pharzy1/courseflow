@@ -7,7 +7,7 @@ export class NeonCourseRepository implements CourseDataRepository{
   async searchCatalog(query:CatalogQuery):Promise<CatalogPage>{
     const db=getDb();
     const conditions=[eq(sections.term,query.term)];
-    if(query.search)conditions.push(or(ilike(courses.subject,`%${query.search}%`),ilike(courses.number,`%${query.search}%`),ilike(courses.title,`%${query.search}%`))!);
+    if(query.search){const search=query.search.trim();conditions.push(or(ilike(courses.subject,`%${search}%`),ilike(courses.number,`%${search}%`),ilike(courses.title,`%${search}%`),ilike(sql`${courses.subject} || ' ' || ${courses.number}`,`%${search}%`))!);}
     if(query.department)conditions.push(eq(courses.department,query.department));
     if(query.openOnly)conditions.push(sql`${sections.enrolled}<${sections.capacity}`);
     if(query.level)conditions.push(eq(courses.level,query.level));
