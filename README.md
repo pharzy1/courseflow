@@ -1,7 +1,7 @@
 # CourseFlow
 
 [![CI](https://github.com/pharzy1/courseflow/actions/workflows/ci.yml/badge.svg)](https://github.com/pharzy1/courseflow/actions/workflows/ci.yml)
-[![Live demo](https://img.shields.io/badge/demo-live-1768e5)](https://berkeley-courseflow.zesty-mole-4007.chatgpt.site)
+[![Live demo](https://img.shields.io/badge/demo-live-1768e5)](https://courseflowplanner.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6)](https://www.typescriptlang.org/)
 
 CourseFlow is a unified Berkeley course-intelligence and schedule-planning prototype. It connects discovery, historical signals, prerequisites, course comparison, degree value, workload planning, and conflict-free schedule ranking in one explainable workflow.
@@ -12,7 +12,7 @@ Stage 2 of the real-data architecture is implemented: `/catalog` exposes thousan
 
 ## Live product
 
-**[Launch CourseFlow →](https://berkeley-courseflow.zesty-mole-4007.chatgpt.site)**
+**[Launch CourseFlow →](https://courseflowplanner.com)**
 
 ![CourseFlow social preview](public/og.png)
 
