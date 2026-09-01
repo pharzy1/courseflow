@@ -1,0 +1,2 @@
+import { getAcademicProgram } from "../../../lib/academic";
+export async function GET(){try{const program=await getAcademicProgram();return program?Response.json({program},{headers:{"cache-control":"public, max-age=300"}}):Response.json({error:"Academic program has not been verified yet"},{status:404});}catch(error){return Response.json({error:"Academic program unavailable",detail:error instanceof Error?error.message:"Unknown error"},{status:503});}}

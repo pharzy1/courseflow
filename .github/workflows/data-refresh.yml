@@ -17,8 +17,11 @@ jobs:
         env:
           COURSEFLOW_REFRESH_SECRET: ${{ secrets.COURSEFLOW_REFRESH_SECRET }}
         run: |
-          curl --fail-with-body --retry 2 --max-time 300 -X POST \
+          curl --fail-with-body --retry 3 --retry-all-errors --retry-delay 5 --max-time 300 -X POST \
             -H "Authorization: Bearer $COURSEFLOW_REFRESH_SECRET" \
             https://berkeley-courseflow.zesty-mole-4007.chatgpt.site/api/ops/catalog-refresh
       - name: Confirm refresh mode
         run: echo "Production worker completed full catalog pagination and Neon enrollment observation."
+      - name: Surface terminal refresh failure
+        if: failure()
+        run: echo "::error::CourseFlow production refresh failed after all retry attempts. Inspect the worker response and refresh_runs evidence."
