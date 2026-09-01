@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { ClerkProvider } from "@clerk/nextjs";
-import { authConfigured } from "../lib/auth";
+import { authConfigured,clerkProxyUrl,clerkPublishableKey } from "../lib/auth";
 import "./globals.css";
 
 // Account controls depend on the active production Clerk environment.
@@ -23,5 +23,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{authConfigured()?<ClerkProvider>{children}</ClerkProvider>:children}</body></html>;
+  const publishableKey=clerkPublishableKey();
+  return <html lang="en"><body>{authConfigured()&&publishableKey?<ClerkProvider publishableKey={publishableKey} proxyUrl={clerkProxyUrl()}>{children}</ClerkProvider>:children}</body></html>;
 }
