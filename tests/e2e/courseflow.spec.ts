@@ -56,6 +56,8 @@ test("real-data catalog exposes provenance and filters the snapshot",async({page
 test("watchlist API protects account-scoped enrollment data",async({request})=>{
   const response=await request.get("/api/watchlists");
   expect(response.status()).toBe(401);
+  expect((await request.put("/api/watchlists",{data:{emailEnabled:true,frequency:"immediate",quietStart:22,quietEnd:7,timezone:"America/Los_Angeles"}})).status()).toBe(401);
+  expect((await request.post("/api/notifications/unsubscribe?token=tampered")).status()).toBe(400);
 });
 
 test("degree pathfinder explains unlocks and invalid sequences",async({page})=>{
