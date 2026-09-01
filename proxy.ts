@@ -4,10 +4,9 @@ import { authConfigured } from "./lib/auth";
 
 const anonymousMiddleware=()=>NextResponse.next();
 
-export default authConfigured()?clerkMiddleware({frontendApiProxy:{enabled:true}}):anonymousMiddleware;
+export default authConfigured()?clerkMiddleware():anonymousMiddleware;
 
 export const config={matcher:[
   "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
   "/(api|trpc)(.*)",
-  "/__clerk/:path*",
 ]};
