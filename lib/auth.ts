@@ -1,6 +1,6 @@
 export type CourseFlowIdentity={userId:string;email:string|null;provider:"clerk"};
 export function clerkPublishableKey(){return process.env["NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY"]?.trim()||null;}
-export function clerkProxyUrl(){return process.env["NEXT_PUBLIC_CLERK_PROXY_URL"]?.trim()||undefined;}
+export function clerkProxyUrl(){const value=process.env["NEXT_PUBLIC_CLERK_PROXY_URL"]?.trim();return value?(value.endsWith("/")?value:`${value}/`):undefined;}
 export function authConfigured(){return Boolean(clerkPublishableKey()&&process.env.CLERK_SECRET_KEY);}
 export async function getOptionalIdentity():Promise<CourseFlowIdentity|null>{
   if(!authConfigured())return null;
