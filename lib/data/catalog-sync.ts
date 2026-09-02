@@ -2,45 +2,29 @@ import { sql } from "drizzle-orm";
 import { getDb } from "../../db";
 import { courses,enrollmentSnapshots,sections,sources } from "../../db/schema";
 import type { CatalogRecord } from "./types";
+import { BerkeleyTimeCatalogAdapter } from "./sources/berkeleytime-catalog";
+import type { CatalogIngestionAdapter,SourceCatalogRecord } from "./sources/catalog-source";
 
-type Instructor={givenName?:string|null;familyName?:string|null};
-type SourceMeeting={days?:boolean[];startTime?:string|null;endTime?:string|null;location?:string|null;instructors?:Instructor[]};
-type SourceRecord={termId?:string;sessionId:string;subject:string;courseNumber:string;number:string;courseId?:string;title?:string|null;courseTitle?:string|null;courseDescription?:string|null;unitsMin:number;unitsMax:number;level?:string|null;breadthRequirements?:string[];universityRequirements?:string[];enrolledCount?:number;maxEnroll?:number;waitlistedCount?:number;maxWaitlist?:number;allTimeAverageGrade?:number|null;primaryComponent?:string|null;meetings?:SourceMeeting[]};
-type SourcePage={totalCount:number;results:SourceRecord[]};
 export type CatalogSyncResult={generatedAt:string;sourceRows:number;distinctSections:number;courses:number;pages:number;durationMs:number;records:CatalogRecord[]};
-
-// BerkeleyTime's reviewed public GetCatalogSearch operation. The public gateway
-// rejects arbitrary GraphQL source and accepts only this stable operation ID.
-const catalogOperationId="1ca3cf6917e03729d6cddb6fdb92a508daa862d82c0ff3c29c06686bb8339cd8";
 const dayNames=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 
-export async function syncCatalog(options:{writeDatabase?:boolean}={}):Promise<CatalogSyncResult>{
-  const endpoint=process.env.BERKELEYTIME_GRAPHQL_URL??"https://berkeleytime.com/api/graphql";
+export async function syncCatalog(options:{writeDatabase?:boolean;adapter?:CatalogIngestionAdapter}={}):Promise<CatalogSyncResult>{
+  const adapter=options.adapter??new BerkeleyTimeCatalogAdapter(),source=adapter.descriptor;
   const year=Number(process.env.COURSEFLOW_SYNC_YEAR??2026),semester=process.env.COURSEFLOW_SYNC_SEMESTER??"Fall";
   const termId=process.env.COURSEFLOW_SYNC_TERM_ID??(year===2026&&semester==="Fall"?"2268":`${year}-${semester}`);
   const pageSize=Math.min(Number(process.env.COURSEFLOW_SYNC_PAGE_SIZE??500),500);
   const maxPages=Math.max(1,Number(process.env.COURSEFLOW_SYNC_MAX_PAGES??100));
   const timeout=Math.max(5_000,Number(process.env.COURSEFLOW_SYNC_TIMEOUT_MS??20_000));
   const started=Date.now(),generatedAt=new Date().toISOString();
-  async function fetchPage(page:number):Promise<SourcePage>{
-    let lastError:unknown;
-    for(let attempt=1;attempt<=3;attempt++)try{
-      const response=await fetch(endpoint,{method:"POST",signal:AbortSignal.timeout(timeout),headers:{accept:"application/json","content-type":"application/json","user-agent":"CourseFlow/1.0 (+https://github.com/pharzy1/courseflow)"},body:JSON.stringify({id:catalogOperationId,variables:{year,semester,sortBy:"RELEVANCE",sortOrder:"ASC",page,pageSize,semanticSearch:false}})});
-      if(!response.ok){const detail=(await response.text()).slice(0,500);throw new Error(`Catalog source returned ${response.status}: ${detail}`);}
-      const payload=await response.json() as {data?:{catalogSearch?:SourcePage};errors?:unknown};
-      if(!payload.data?.catalogSearch)throw new Error(`Catalog response invalid: ${JSON.stringify(payload.errors)}`);
-      return payload.data.catalogSearch;
-    }catch(error){lastError=error;if(attempt<3)await new Promise(resolve=>setTimeout(resolve,attempt*750));}
-    throw lastError instanceof Error?lastError:new Error(`Catalog page ${page} failed`);
-  }
-  const normalize=(item:SourceRecord):CatalogRecord=>({id:`${item.termId??termId}-${item.sessionId}-${item.subject}-${item.courseNumber}-${item.number}`,courseId:item.courseId?String(item.courseId):`bt-${item.subject}-${item.courseNumber}`,code:`${item.subject} ${item.courseNumber}`,subject:item.subject,number:item.courseNumber,title:item.courseTitle??item.title??`${item.subject} ${item.courseNumber}`,description:item.courseDescription??"",department:item.subject,unitsMin:item.unitsMin,unitsMax:item.unitsMax,level:item.level??null,requirements:[...(item.breadthRequirements??[]),...(item.universityRequirements??[])],prerequisites:[],crossListings:[],term:`${semester} ${year}`,sectionNumber:item.number,component:item.primaryComponent??null,meetings:(item.meetings??[]).map(meeting=>({days:(meeting.days??[]).map((active,index)=>active?dayNames[index]:null).filter((day):day is string=>Boolean(day)),startTime:meeting.startTime??null,endTime:meeting.endTime??null,location:meeting.location??null,instructors:(meeting.instructors??[]).map(instructor=>[instructor.givenName,instructor.familyName].filter(Boolean).join(" "))})),enrolled:item.enrolledCount??0,capacity:item.maxEnroll??0,waitlisted:item.waitlistedCount??0,waitlistCapacity:item.maxWaitlist??0,averageGrade:item.allTimeAverageGrade??null,medianGrade:null,gradeSampleSize:0,provenance:{sourceId:"berkeleytime-public-graphql",sourceName:"BerkeleyTime public GraphQL catalog",sourceUrl:endpoint,official:false,retrievedAt:generatedAt,license:null}});
+  const fetchPage=(page:number)=>adapter.fetchPage({year,semester,page,pageSize,timeoutMs:timeout});
+  const normalize=(item:SourceCatalogRecord):CatalogRecord=>({id:`${item.termId??termId}-${item.sessionId}-${item.subject}-${item.courseNumber}-${item.number}`,courseId:item.courseId?String(item.courseId):`${source.id}-${item.subject}-${item.courseNumber}`,code:`${item.subject} ${item.courseNumber}`,subject:item.subject,number:item.courseNumber,title:item.courseTitle??item.title??`${item.subject} ${item.courseNumber}`,description:item.courseDescription??"",department:item.subject,unitsMin:item.unitsMin,unitsMax:item.unitsMax,level:item.level??null,requirements:[...(item.breadthRequirements??[]),...(item.universityRequirements??[])],prerequisites:[],crossListings:[],term:`${semester} ${year}`,sectionNumber:item.number,component:item.primaryComponent??null,meetings:(item.meetings??[]).map(meeting=>({days:(meeting.days??[]).map((active,index)=>active?dayNames[index]:null).filter((day):day is string=>Boolean(day)),startTime:meeting.startTime??null,endTime:meeting.endTime??null,location:meeting.location??null,instructors:(meeting.instructors??[]).map(instructor=>[instructor.givenName,instructor.familyName].filter(Boolean).join(" "))})),enrolled:item.enrolledCount??0,capacity:item.maxEnroll??0,waitlisted:item.waitlistedCount??0,waitlistCapacity:item.maxWaitlist??0,averageGrade:item.allTimeAverageGrade??null,medianGrade:null,gradeSampleSize:0,provenance:{sourceId:source.id,sourceName:source.name,sourceUrl:source.url,official:source.official,retrievedAt:generatedAt,license:source.license}});
   const first=await fetchPage(1),records=first.results.map(normalize),effectivePageSize=Math.max(1,first.results.length),pages=Math.min(maxPages,Math.ceil(first.totalCount/effectivePageSize));
   for(let page=2;page<=pages;page++)records.push(...(await fetchPage(page)).results.map(normalize));
   const canonical=[...new Map(records.map(record=>[record.id,record])).values()];
   let uniqueCourses=[...new Map(canonical.map(record=>[record.courseId,record])).values()];
   if(options.writeDatabase!==false){
-    const db=getDb(),now=new Date(generatedAt),sourceId="berkeleytime-public-graphql",batchSize=50;
-    await db.insert(sources).values({id:sourceId,name:"BerkeleyTime public GraphQL catalog",url:endpoint,official:false,retrievedAt:now,license:null,metadata:{}}).onConflictDoNothing();
+    const db=getDb(),now=new Date(generatedAt),sourceId=source.id,batchSize=50;
+    await db.insert(sources).values({id:sourceId,name:source.name,url:source.url,official:source.official,retrievedAt:now,license:source.license,metadata:{kind:source.kind}}).onConflictDoNothing();
     const existingCourses=await db.select({id:courses.id,subject:courses.subject,number:courses.number}).from(courses);
     const existingIds=new Map(existingCourses.map(course=>[`${course.subject}\u0000${course.number}`,course.id]));
     for(const record of canonical)record.courseId=existingIds.get(`${record.subject}\u0000${record.number}`)??record.courseId;

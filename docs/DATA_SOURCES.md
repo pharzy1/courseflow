@@ -1,6 +1,6 @@
 # CourseFlow data sources
 
-CourseFlow separates source adapters from the UI and database. Every record carries a source URL, retrieval timestamp, official/non-official flag, and license field.
+CourseFlow separates source adapters from the UI and database. Every record carries a source URL, retrieval timestamp, official/non-official flag, and license field. Candidate-source promotion rules and the current Berkeley access findings are documented in [`OFFICIAL_SOURCE_MIGRATION.md`](./OFFICIAL_SOURCE_MIGRATION.md).
 
 ## Approved Stage 1 sources
 

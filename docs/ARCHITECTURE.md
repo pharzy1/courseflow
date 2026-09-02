@@ -39,6 +39,8 @@ flowchart LR
 
 The UI depends only on `CourseDataRepository`. The default snapshot is deterministic and anonymous-safe; production can switch to Neon with `DATABASE_URL` and `COURSEFLOW_DATA_MODE=neon`. Auth is a separate optional boundary so missing Clerk keys cannot block public catalog reads.
 
+Ingestion also depends on `CatalogIngestionAdapter`, which owns source-specific transport and exposes a normalized paginated contract. `compareCatalogSources` measures candidate coverage plus title, units, component, meeting, and enrollment agreement against the production baseline before a source may be promoted. See [the official-source migration decision](./OFFICIAL_SOURCE_MIGRATION.md).
+
 The Postgres model covers sources, courses, sections, grade distributions, enrollment snapshots, user profiles, and saved plans. Historical grades use the existing `grade_distributions` table, so all-time and filtered cohorts share one auditable storage contract. The grade-source interface is deliberately replaceable; the current BerkeleyTime implementation is transitional and explicitly non-official.
 
 ## Domain model
