@@ -3,13 +3,14 @@ import { getDb } from "../../db";
 import { courses,enrollmentSnapshots,sections,sources } from "../../db/schema";
 import type { CatalogRecord } from "./types";
 import { BerkeleyTimeCatalogAdapter } from "./sources/berkeleytime-catalog";
+import { HybridCatalogAdapter } from "./sources/hybrid-catalog";
 import type { CatalogIngestionAdapter,SourceCatalogRecord } from "./sources/catalog-source";
 
 export type CatalogSyncResult={generatedAt:string;sourceRows:number;distinctSections:number;courses:number;pages:number;durationMs:number;records:CatalogRecord[]};
 const dayNames=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 
 export async function syncCatalog(options:{writeDatabase?:boolean;adapter?:CatalogIngestionAdapter}={}):Promise<CatalogSyncResult>{
-  const adapter=options.adapter??new BerkeleyTimeCatalogAdapter(),source=adapter.descriptor;
+  const adapter=options.adapter??(process.env.COURSEFLOW_CATALOG_SOURCE==="hybrid"?new HybridCatalogAdapter():new BerkeleyTimeCatalogAdapter()),source=adapter.descriptor;
   const year=Number(process.env.COURSEFLOW_SYNC_YEAR??2026),semester=process.env.COURSEFLOW_SYNC_SEMESTER??"Fall";
   const termId=process.env.COURSEFLOW_SYNC_TERM_ID??(year===2026&&semester==="Fall"?"2268":`${year}-${semester}`);
   const pageSize=Math.min(Number(process.env.COURSEFLOW_SYNC_PAGE_SIZE??500),500);

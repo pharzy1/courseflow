@@ -21,4 +21,10 @@ Date reviewed: 2026-09-02
 
 ## Decision required
 
-Approval is required before CourseFlow automates either official-source path. The recommended choice is the **API Central + reviewed Coursedog export hybrid**, with BerkeleyTime retained as an explicit fallback during validation. A public Class Schedule HTML crawler is not recommended because its discovery path is disallowed by the current robots policy.
+The **API Central + reviewed Coursedog export hybrid** was approved on 2026-09-02, with BerkeleyTime retained as an explicit fallback during validation. A public Class Schedule HTML crawler remains excluded because its discovery path is disallowed by the current robots policy.
+
+## Initial official-export validation
+
+The public Coursedog export returned 27,029 unique course keys. Against a deterministic 250-course sample from CourseFlow's production snapshot, course-key coverage and normalized title agreement were both 100%. Unit-range agreement was 92.8%; inspection showed that the official catalog describes allowable course ranges (for example, 1–4 units) while the term section carries the selected value (for example, 4 units). CourseFlow therefore promotes official titles and descriptions only. Section units remain sourced from the term-specific section feed until the approved Class Schedule API is available.
+
+The hybrid adapter is implemented behind `COURSEFLOW_CATALOG_SOURCE=hybrid` but must remain disabled in production until automated export reuse is confirmed. The prepared [API Central request](./API_CENTRAL_ACCESS_REQUEST.md) documents the requested fields, privacy boundary, polling limits, and validation controls.
