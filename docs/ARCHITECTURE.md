@@ -31,13 +31,15 @@ flowchart LR
   R -->|"default"| S["Versioned real-data snapshot"]
   R -->|"COURSEFLOW_DATA_MODE=neon"| N["Neon Postgres"]
   BT["BerkeleyTime public GraphQL adapter"] --> S
+  BG["Transitional grade adapter"] --> G["Neon grade distributions"]
+  G --> API
   SP["UC Berkeley SPoCC adapter"] -. "enabled after endpoint approval" .-> R
   R --> P["Per-record provenance"]
 ```
 
 The UI depends only on `CourseDataRepository`. The default snapshot is deterministic and anonymous-safe; production can switch to Neon with `DATABASE_URL` and `COURSEFLOW_DATA_MODE=neon`. Auth is a separate optional boundary so missing Clerk keys cannot block public catalog reads.
 
-The Postgres model covers sources, courses, sections, grade distributions, enrollment snapshots, user profiles, and saved plans. The first migration is checked into `migrations/`; it has not been applied because the connected Neon account still requires an organization selection.
+The Postgres model covers sources, courses, sections, grade distributions, enrollment snapshots, user profiles, and saved plans. Historical grades use the existing `grade_distributions` table, so all-time and filtered cohorts share one auditable storage contract. The grade-source interface is deliberately replaceable; the current BerkeleyTime implementation is transitional and explicitly non-official.
 
 ## Domain model
 

@@ -45,12 +45,25 @@ test("course intelligence connects discovery, comparison, and semester health",a
 test("real-data catalog exposes provenance and filters the snapshot",async({page})=>{
   await page.goto("/catalog");
   await expect(page.getByText("Data provenance")).toBeVisible();
-  await expect(page.getByText("Source: BerkeleyTime public GraphQL",{exact:true})).toBeVisible();
+  await expect(page.getByText("Catalog: BerkeleyTime public GraphQL",{exact:true})).toBeVisible();
   await page.getByLabel("Search real catalog").fill("AHMA 298");
   await expect(page.getByText("AHMA 298 · 003")).toBeVisible();
-  await expect(page.getByRole("link",{name:"View enrollment history for AHMA 298 section 003"})).toBeVisible();
+  await expect(page.getByRole("link",{name:"Enrollment history for AHMA 298 section 003"})).toBeVisible();
   await expect(page.getByRole("article").filter({hasText:"AHMA 298 · 003"}).getByRole("button",{name:/Watch section/})).toBeVisible();
-  await expect(page.getByText("Official: No · transitional adapter")).toBeVisible();
+  await expect(page.getByText("Official: No · transitional adapters")).toBeVisible();
+});
+
+test("historical grade explorer exposes filters, provenance, and an accessible table",async({page})=>{
+  await page.route("**/api/grades/104426**",route=>route.fulfill({contentType:"application/json",body:JSON.stringify({course:{id:"104426",code:"COMPSCI 61B",title:"The Structure and Interpretation of Computer Programs"},term:"All terms",instructor:"All instructors",counts:{A:120,B:60,C:20},mean:3.45,median:"A",sampleSize:200,updatedAt:"2026-09-01T00:00:00.000Z",provenance:{sourceName:"BerkeleyTime public grade distributions",sourceUrl:"https://berkeleytime.com/api/graphql",official:false},options:{terms:[{value:"2026|Spring|1",label:"Spring 2026"}],instructors:[{value:"Hug|Joshua",label:"Joshua Hug"}]}})}));
+  await page.goto("/grades/104426");
+  await expect(page.getByRole("heading",{name:"The Structure and Interpretation of Computer Programs"})).toBeVisible();
+  await expect(page.getByText("8,301 historical",{exact:false})).toHaveCount(0);
+  await expect(page.getByText("200")).toBeVisible();
+  await expect(page.getByText("No — transitional adapter")).toBeVisible();
+  await page.getByText("View accessible grade table").click();
+  await expect(page.getByRole("table")).toContainText("60.0%");
+  const results=await new AxeBuilder({page}).withTags(["wcag2a","wcag2aa","wcag21a","wcag21aa"]).analyze();
+  expect(results.violations.filter(v=>["critical","serious"].includes(v.impact??""))).toEqual([]);
 });
 
 test("watchlist API protects account-scoped enrollment data",async({request})=>{

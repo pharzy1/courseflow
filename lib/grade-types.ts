@@ -1,0 +1,3 @@
+export const letterGradePoints:Record<string,number>={"A+":4,"A":4,"A-":3.7,"B+":3.3,"B":3,"B-":2.7,"C+":2.3,"C":2,"C-":1.7,"D+":1.3,"D":1,"D-":0.7,"F":0};
+export const letterGradeOrder=["A+","A","A-","B+","B","B-","C+","C","C-","D+","D","D-","F"];
+export type GradeDetail={course:{id:string;code:string;title:string};term:string;instructor:string;counts:Record<string,number>;mean:number|null;median:string|null;sampleSize:number;updatedAt:string;provenance:{sourceName:string;sourceUrl:string;official:false};options:{terms:Array<{value:string;label:string}>;instructors:Array<{value:string;label:string}>}};
