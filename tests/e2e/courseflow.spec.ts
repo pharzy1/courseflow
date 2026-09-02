@@ -50,8 +50,13 @@ test("real-data catalog exposes provenance and filters the snapshot",async({page
   await page.getByLabel("Search real catalog").fill("AHMA 298");
   await expect(page.getByText("AHMA 298 · 003")).toBeVisible();
   await expect(page.getByRole("link",{name:"Enrollment history for AHMA 298 section 003"})).toBeVisible();
-  await expect(page.getByRole("article").filter({hasText:"AHMA 298 · 003"}).getByRole("button",{name:/Watch section/})).toBeVisible();
-  await expect(page.getByRole("article").filter({hasText:"AHMA 298 · 003"}).getByText("Metadata fallback",{exact:true})).toBeVisible();
+  const course=page.getByRole("article").filter({hasText:"AHMA 298 · 003"});
+  await expect(course.getByRole("button",{name:/Watch section/})).toBeVisible();
+  await expect(course.getByText("Metadata fallback",{exact:true})).toBeVisible();
+  await course.getByRole("button",{name:"Add to schedule pool"}).click();
+  await expect(page.getByRole("heading",{name:"1 section · 1 course"})).toBeVisible();
+  await page.getByRole("button",{name:"Generate conflict-free schedules"}).click();
+  await expect(page.getByRole("heading",{name:"1 best conflict-free option"})).toBeVisible();
 });
 
 test("historical grade explorer exposes filters, provenance, and an accessible table",async({page})=>{

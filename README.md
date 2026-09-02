@@ -6,9 +6,9 @@
 
 CourseFlow is a unified Berkeley course-intelligence and schedule-planning prototype. It connects discovery, historical signals, prerequisites, course comparison, degree value, workload planning, and conflict-free schedule ranking in one explainable workflow.
 
-Stage 2 of the real-data architecture is implemented: `/catalog` exposes thousands of Fall 2026 sections through a typed repository/API boundary, the resilient importer refreshes catalog and enrollment history in Neon Postgres every 15 minutes, and Clerk-aware accounts persist plans across devices. Every imported record includes visible provenance and the catalog reports its feed freshness truthfully.
+Stage 2 of the real-data architecture is implemented: `/catalog` exposes thousands of Fall 2026 sections through a typed repository/API boundary, the resilient importer refreshes catalog and enrollment history in Neon Postgres every 15 minutes, and Clerk-aware accounts persist plans across devices. The catalog now connects real section discovery to meeting-time comparison and conflict-free schedule generation, with visible source provenance on every record.
 
-> The planner demonstration still uses a small curated scheduling fixture; the separate real catalog is a dated, non-official BerkeleyTime snapshot. CourseFlow does not claim CalCentral integration or a degree audit.
+> Course metadata is overlaid from UC Berkeley's official public catalog; section, enrollment, and grade facts remain transparently labeled transitional data while API Central access is pending. CourseFlow does not claim CalCentral integration or a degree audit.
 
 ## Live product
 
@@ -20,6 +20,7 @@ Stage 2 of the real-data architecture is implemented: `/catalog` exposes thousan
 
 - **One canonical state:** selected courses drive units, blocks, conflicts, averages, scoring, roadmap totals, local fallback, and authenticated cloud restoration.
 - **Complete catalog adapter:** the Fall 2026 catalog uses bounded API pagination, retries and timeouts, department facets, enrollment filters, record-level provenance, and an observable freshness state.
+- **Real-section schedule studio:** students can compare alternative sections by meeting time, seats, and historical grade signal, then generate ranked combinations that reject actual meeting overlaps.
 - **Production persistence boundary:** Neon stores users, plans, sections, grades, and enrollment observations; Clerk identity is verified on the server before any plan read or write.
 - **Cross-device plan library:** authenticated students can create, restore, duplicate, rename, and delete up to 20 named plans, with automatic device-plan migration and ownership-scoped mutations.
 - **Unified course intelligence:** illustrative grade, workload, enrollment-momentum, prerequisite, and requirement signals live beside scheduling decisions.
@@ -81,7 +82,8 @@ Open `http://localhost:3000`.
 4. Rank A vs. B to see the engine choose the higher-scoring alternative.
 5. Save, make unsaved changes, restore, and reload.
 6. Open **Intelligence**, switch courses, inspect prerequisite paths, and compare up to three choices.
-7. Navigate entirely by keyboard or open **All schedule meetings** for the semantic alternative.
+7. Open the real catalog, add multiple section alternatives to the schedule pool, and generate conflict-free combinations.
+8. Navigate entirely by keyboard or open **All schedule meetings** for the semantic alternative.
 
 ## Technology
 
@@ -103,7 +105,7 @@ Production Clerk and Neon are activated. See [`docs/DATA_SOURCES.md`](docs/DATA_
 
 ## Résumé-ready summary
 
-> Built a TypeScript course-intelligence and scheduling platform with a 5,928-section canonical data pipeline (normalized from 6,085 source listings), Neon serverless persistence, Clerk-authenticated cross-device plans, explainable conflict-free ranking, and responsive WCAG-tested React workflows.
+> Built a TypeScript course-intelligence and scheduling platform with a 5,900+ section hybrid data pipeline, Neon serverless persistence, Clerk-authenticated plans, real-section comparison, explainable conflict-free ranking, source-quality gates, and responsive WCAG-tested React workflows.
 
 ## License
 
