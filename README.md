@@ -106,6 +106,15 @@ Open `http://localhost:3000`.
 
 Production Clerk and Neon are activated. See [`docs/DATA_SOURCES.md`](docs/DATA_SOURCES.md) for the source contract, provenance policy, and operational limits.
 
+## Production evidence and validation
+
+- [`docs/ENGINEERING_EVIDENCE.md`](docs/ENGINEERING_EVIDENCE.md) — architecture and test evidence
+- [`docs/INDEPENDENT_QA_BRIEF.md`](docs/INDEPENDENT_QA_BRIEF.md) — adversarial regression instructions
+- [`docs/USER_RESEARCH_KIT.md`](docs/USER_RESEARCH_KIT.md) — privacy-safe Berkeley student study
+- [`docs/OPERATIONS.md`](docs/OPERATIONS.md) — service objectives, monitoring, recovery, and incident response
+- [`docs/API_CENTRAL_ACCESS_REQUEST.md`](docs/API_CENTRAL_ACCESS_REQUEST.md) — official-data access request
+- [`docs/RECRUITER_BRIEF.md`](docs/RECRUITER_BRIEF.md) — truthful résumé narrative and claim boundaries
+
 ## Résumé-ready summary
 
 > Built a TypeScript course-intelligence and scheduling platform with a 5,900+ section hybrid data pipeline, Neon serverless persistence, Clerk-authenticated plans, real-section comparison, explainable conflict-free ranking, source-quality gates, and responsive WCAG-tested React workflows.

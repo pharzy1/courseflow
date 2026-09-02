@@ -90,6 +90,13 @@ test("real-section cloud payloads are accepted only behind authentication",async
   expect((await request.post("/api/plans",{data:{name:"Real plan",payload}})).status()).toBe(401);
 });
 
+test("analytics accepts only bounded allowlisted product events",async({request})=>{
+  expect((await request.post("/api/analytics",{data:{event:"schedule_generated",properties:{sections:3}}})).status()).toBe(204);
+  expect((await request.post("/api/analytics",{data:{event:"email_address_collected",properties:{email:"private@example.com"}}})).status()).toBe(400);
+});
+
+test("production responses include baseline security headers",async({request})=>{const response=await request.get("/");expect(response.headers()["x-content-type-options"]).toBe("nosniff");expect(response.headers()["x-frame-options"]).toBe("DENY");expect(response.headers()["permissions-policy"]).toContain("camera=()");});
+
 test("degree pathfinder explains unlocks and invalid sequences",async({page})=>{
   await page.goto("/roadmap");
   await expect(page.getByRole("heading",{name:"Plan the path, not just the term."})).toBeVisible();
