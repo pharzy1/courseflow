@@ -7,6 +7,12 @@ test("cloud plan boundary accepts canonical schedule snapshots",()=>{
   assert.deepEqual(parsePlanPayload(payload),payload);
 });
 
+test("cloud plan boundary accepts bounded real-section plans",()=>{
+  const payload={kind:"real-sections" as const,sectionIds:["2026-fall-123","2026-fall-456"],savedAt:"2026-09-02T00:00:00.000Z"};
+  assert.deepEqual(parsePlanPayload(payload),payload);
+  assert.throws(()=>parsePlanPayload({...payload,sectionIds:Array.from({length:19},(_,index)=>`section-${index}`)}));
+});
+
 test("cloud plan boundary rejects malformed or unbounded state",()=>{
   assert.throws(()=>parsePlanPayload({selected:"COMPSCI 61B",priorities:[],variant:0,savedAt:"now"}));
   assert.throws(()=>parsePlanPayload({selected:[],priorities:[],variant:4,savedAt:"now"}));

@@ -1,4 +1,4 @@
-import { and,desc,eq,gte,ilike,lte,or,sql } from "drizzle-orm";
+import { and,desc,eq,gte,ilike,inArray,lte,or,sql } from "drizzle-orm";
 import { alias } from "drizzle-orm/pg-core";
 import { courses,gradeDistributions,sections,sources } from "../../db/schema";
 import { getDb } from "../../db";
@@ -8,6 +8,7 @@ export class NeonCourseRepository implements CourseDataRepository{
   async searchCatalog(query:CatalogQuery):Promise<CatalogPage>{
     const db=getDb();
     const conditions=[eq(sections.term,query.term)];
+    if(query.ids?.length)conditions.push(inArray(sections.id,query.ids));
     if(query.search){const search=query.search.trim();conditions.push(or(ilike(courses.subject,`%${search}%`),ilike(courses.number,`%${search}%`),ilike(courses.title,`%${search}%`),ilike(sql`${courses.subject} || ' ' || ${courses.number}`,`%${search}%`))!);}
     if(query.department)conditions.push(eq(courses.department,query.department));
     if(query.openOnly)conditions.push(sql`${sections.enrolled}<${sections.capacity}`);

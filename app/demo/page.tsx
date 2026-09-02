@@ -69,7 +69,7 @@ export default function Home() {
       <button className="mobile-menu" aria-label="Toggle navigation" aria-expanded={mobileNav} onClick={()=>setMobileNav(!mobileNav)}>Menu</button>
       <div className="term">{realCatalogEnabled&&<Link className="beta-link" href="/">Live catalog</Link>}<span>Curated demo</span><AccountControl configured={accountsEnabled}/></div>
     </header>
-    <CloudPlanManager configured={accountsEnabled} current={{selected,priorities,variant,savedAt:new Date().toISOString()}} onRestore={restoreCloud}/>
+    <CloudPlanManager configured={accountsEnabled} current={{selected,priorities,variant,savedAt:new Date().toISOString()}} onRestore={snapshot=>{if(snapshot.kind!=="real-sections")restoreCloud(snapshot);}}/>
 
     <section className="hero" id="top"><div><div className="eyebrow"><span>PRODUCTION BETA</span> Real catalog adapter · {cloudSync==="ready"?"cloud-synced account":"guest-mode persistence"}</div><h1>Your semester,<br/><em>without the guesswork.</em></h1><p>Build and compare conflict-free schedules around what matters to you—not just what fits.</p></div><div className="hero-stat"><strong>{selected.length}</strong><span>courses in your plan</span><small>{units} units selected</small></div></section>
 

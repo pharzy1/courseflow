@@ -4,14 +4,17 @@ import { getDb } from "../db";
 import { savedPlans,userProfiles } from "../db/schema";
 import type { CourseFlowIdentity } from "./auth";
 
-export type PlanPayload={selected:string[];priorities:string[];variant:0|1;savedAt:string};
+export type CuratedPlanPayload={kind?:"curated";selected:string[];priorities:string[];variant:0|1;savedAt:string};
+export type RealSectionPlanPayload={kind:"real-sections";sectionIds:string[];savedAt:string};
+export type PlanPayload=CuratedPlanPayload|RealSectionPlanPayload;
 export type CloudPlan={id:string;name:string;payload:PlanPayload;updatedAt:string};
 export const MAX_CLOUD_PLANS=20;
 
 function validPayload(value:unknown):value is PlanPayload{
   if(!value||typeof value!=="object")return false;
-  const candidate=value as Partial<PlanPayload>;
-  return Array.isArray(candidate.selected)&&candidate.selected.length<=50&&candidate.selected.every(item=>typeof item==="string"&&item.length<=40)&&Array.isArray(candidate.priorities)&&candidate.priorities.length<=10&&candidate.priorities.every(item=>typeof item==="string"&&item.length<=40)&&(candidate.variant===0||candidate.variant===1)&&typeof candidate.savedAt==="string"&&!Number.isNaN(Date.parse(candidate.savedAt));
+  const candidate=value as Record<string,unknown>,validDate=typeof candidate.savedAt==="string"&&!Number.isNaN(Date.parse(candidate.savedAt));
+  if(candidate.kind==="real-sections")return validDate&&Array.isArray(candidate.sectionIds)&&candidate.sectionIds.length<=18&&candidate.sectionIds.every(item=>typeof item==="string"&&item.length<=120);
+  return (candidate.kind===undefined||candidate.kind==="curated")&&validDate&&Array.isArray(candidate.selected)&&candidate.selected.length<=50&&candidate.selected.every(item=>typeof item==="string"&&item.length<=40)&&Array.isArray(candidate.priorities)&&candidate.priorities.length<=10&&candidate.priorities.every(item=>typeof item==="string"&&item.length<=40)&&(candidate.variant===0||candidate.variant===1);
 }
 
 export function parsePlanPayload(value:unknown){if(!validPayload(value))throw new Error("Invalid plan payload");return value;}

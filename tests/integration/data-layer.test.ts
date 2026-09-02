@@ -28,6 +28,15 @@ test("snapshot pagination is bounded and anonymous-safe",async()=>{
   assert.equal(page.mode,"snapshot");
 });
 
+test("saved real-section identifiers rehydrate only their current catalog records",async()=>{
+  const repository=new SnapshotCourseRepository();
+  const source=await repository.searchCatalog({term:"Fall 2026",limit:3});
+  const ids=[source.records[0].id,source.records[2].id];
+  const restored=await repository.searchCatalog({term:"Fall 2026",ids,limit:18});
+  assert.equal(restored.total,2);
+  assert.deepEqual(new Set(restored.records.map(record=>record.id)),new Set(ids));
+});
+
 test("catalog freshness is derived from the recorded source timestamp",()=>{
   const now=Date.parse("2026-08-31T12:00:00.000Z");
   assert.equal(catalogFreshness("2026-08-31T11:45:00.000Z",now),"live");

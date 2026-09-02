@@ -33,6 +33,8 @@ test.describe("authenticated cloud plan lifecycle",()=>{
     await clerk.signIn({page:ownerPage,emailAddress:emails[0]});
     await ownerPage.reload();
     await expect(ownerPage.getByText("Cloud sync on")).toBeVisible();
+    await ownerPage.getByLabel("Search real catalog").fill("AHMA 298");
+    await ownerPage.getByRole("article").filter({hasText:"AHMA 298 · 003"}).getByRole("button",{name:"Add to schedule pool"}).click();
     await ownerPage.getByRole("button",{name:"Cloud plans"}).click();
     const planName=`Cross-device ${stamp}`;
     await ownerPage.getByLabel("Plan name").fill(planName);
@@ -53,6 +55,7 @@ test.describe("authenticated cloud plan lifecycle",()=>{
     await expect(restoredPage.getByText(planName,{exact:true})).toBeVisible();
     await restoredPage.getByRole("button",{name:"Restore",exact:true}).click();
     await expect(restoredPage.getByText(`${planName} restored.`,{exact:true})).toBeVisible();
+    await expect(restoredPage.getByRole("heading",{name:"1 section · 1 course"})).toBeVisible();
     await restoredContext.close();
 
     const intruderContext=await browser.newContext(),intruderPage=await intruderContext.newPage();

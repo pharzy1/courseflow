@@ -81,6 +81,11 @@ test("watchlist API protects account-scoped enrollment data",async({request})=>{
   expect((await request.post("/api/notifications/unsubscribe?token=tampered")).status()).toBe(400);
 });
 
+test("real-section cloud payloads are accepted only behind authentication",async({request})=>{
+  const payload={kind:"real-sections",sectionIds:["sample-section"],savedAt:new Date().toISOString()};
+  expect((await request.post("/api/plans",{data:{name:"Real plan",payload}})).status()).toBe(401);
+});
+
 test("degree pathfinder explains unlocks and invalid sequences",async({page})=>{
   await page.goto("/roadmap");
   await expect(page.getByRole("heading",{name:"Plan the path, not just the term."})).toBeVisible();

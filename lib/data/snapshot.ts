@@ -6,6 +6,7 @@ export class SnapshotCourseRepository implements CourseDataRepository{
   async searchCatalog(query:CatalogQuery):Promise<CatalogPage>{
     const needle=(query.search??"").trim().toLowerCase();
     let filtered=records.filter(record=>record.term===query.term)
+      .filter(record=>!query.ids?.length||query.ids.includes(record.id))
       .filter(record=>!needle||`${record.code} ${record.title} ${record.description}`.toLowerCase().includes(needle))
       .filter(record=>!query.department||record.department===query.department)
       .filter(record=>!query.openOnly||record.enrolled<record.capacity)
