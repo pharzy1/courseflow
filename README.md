@@ -21,6 +21,8 @@ The live homepage exposes thousands of Fall 2026 sections through a typed reposi
 - **One canonical state:** selected courses drive units, blocks, conflicts, averages, scoring, roadmap totals, local fallback, and authenticated cloud restoration.
 - **Complete catalog adapter:** the Fall 2026 catalog uses bounded API pagination, retries and timeouts, department facets, enrollment filters, record-level provenance, and an observable freshness state.
 - **Real-section schedule studio:** students can compare alternative sections by meeting time, seats, and historical grade signal, then generate ranked combinations that reject actual meeting overlaps.
+- **Preference-aware optimizer:** hard time constraints eliminate invalid candidates before an explainable ranking scores preferred hours, lunch protection, compactness, days off, seats, and clearly labeled historical signals.
+- **Portable schedules:** generated options include weekly calendars, reconciled score evidence, shareable URLs, and standards-based `.ics` export.
 - **Production persistence boundary:** Neon stores users, plans, sections, grades, and enrollment observations; Clerk identity is verified on the server before any plan read or write.
 - **Cross-device plan library:** authenticated students can create, restore, duplicate, rename, and delete up to 20 named curated or real-section plans, with fresh catalog rehydration and ownership-scoped mutations.
 - **Unified course intelligence:** illustrative grade, workload, enrollment-momentum, prerequisite, and requirement signals live beside scheduling decisions.

@@ -1,26 +1,46 @@
 import type { CatalogRecord,Meeting } from "./data/types";
 
-export type GeneratedSchedule={id:string;sections:CatalogRecord[];score:number;openSeats:number;earliestStart:number|null};
+export type SchedulePreferences={earliestStart:number;latestEnd:number;protectLunch:boolean;preferCompact:boolean;preferDaysOff:boolean;prioritizeSeats:boolean;prioritizeGrades:boolean};
+export type ScheduleConstraints={noClassesBefore:number|null;noClassesAfter:number|null;blockedDays:string[]};
+export type ScoreContribution={label:string;points:number;detail:string};
+export type GeneratedSchedule={id:string;sections:CatalogRecord[];score:number;openSeats:number;earliestStart:number|null;latestEnd:number|null;daysOnCampus:number;contributions:ScoreContribution[]};
+export const defaultSchedulePreferences:SchedulePreferences={earliestStart:9*60,latestEnd:17*60,protectLunch:true,preferCompact:true,preferDaysOff:true,prioritizeSeats:true,prioritizeGrades:false};
+export const defaultScheduleConstraints:ScheduleConstraints={noClassesBefore:null,noClassesAfter:null,blockedDays:[]};
 
 export function timeMinutes(value:string|null){if(!value)return null;const match=value.match(/^(\d{1,2}):(\d{2})/);if(!match)return null;const result=Number(match[1])*60+Number(match[2]);return result===0?null:result;}
-
-export function meetingsConflict(left:Meeting,right:Meeting){
-  if(!left.days.some(day=>right.days.includes(day)))return false;
-  const leftStart=timeMinutes(left.startTime),leftEnd=timeMinutes(left.endTime),rightStart=timeMinutes(right.startTime),rightEnd=timeMinutes(right.endTime);
-  return leftStart!==null&&leftEnd!==null&&rightStart!==null&&rightEnd!==null&&leftStart<rightEnd&&rightStart<leftEnd;
-}
-
+export function meetingsConflict(left:Meeting,right:Meeting){if(!left.days.some(day=>right.days.includes(day)))return false;const a=timeMinutes(left.startTime),b=timeMinutes(left.endTime),c=timeMinutes(right.startTime),d=timeMinutes(right.endTime);return a!==null&&b!==null&&c!==null&&d!==null&&a<d&&c<b;}
 export function sectionsConflict(left:CatalogRecord,right:CatalogRecord){return left.meetings.some(a=>right.meetings.some(b=>meetingsConflict(a,b)));}
 
-export function generateConflictFreeSchedules(pool:CatalogRecord[],limit=5):GeneratedSchedule[]{
-  const grouped=new Map<string,CatalogRecord[]>();for(const section of pool)grouped.set(section.code,[...(grouped.get(section.code)??[]),section]);
-  const groups=[...grouped.values()].slice(0,8),combinations:CatalogRecord[][]=[];
-  const visit=(index:number,current:CatalogRecord[])=>{if(combinations.length>=5000)return;if(index===groups.length){if(current.length)combinations.push([...current]);return;}for(const section of groups[index])if(!current.some(chosen=>sectionsConflict(chosen,section))){current.push(section);visit(index+1,current);current.pop();}};
-  visit(0,[]);
-  return combinations.map((sections,index)=>{const starts=sections.flatMap(section=>section.meetings.map(meeting=>timeMinutes(meeting.startTime))).filter((value):value is number=>value!==null),openSeats=sections.reduce((total,section)=>total+Math.max(0,section.capacity-section.enrolled),0),earliestStart=starts.length?Math.min(...starts):null,score=Math.max(0,Math.min(100,70+Math.min(20,openSeats)+(earliestStart===null?0:Math.min(10,Math.max(0,(earliestStart-8*60)/60)))));return{id:`schedule-${index}`,sections,score:Math.round(score),openSeats,earliestStart};}).sort((a,b)=>b.score-a.score||b.openSeats-a.openSeats).slice(0,limit);
+function gradeValue(grade:string|null){const grades=["F","D-","D","D+","C-","C","C+","B-","B","B+","A-","A","A+"];return grade?Math.max(0,grades.indexOf(grade))/(grades.length-1):0;}
+function violatesConstraints(section:CatalogRecord,constraints:ScheduleConstraints){return section.meetings.some(meeting=>meeting.days.some(day=>constraints.blockedDays.includes(day))||(constraints.noClassesBefore!==null&&timeMinutes(meeting.startTime)!==null&&timeMinutes(meeting.startTime)!<constraints.noClassesBefore)||(constraints.noClassesAfter!==null&&timeMinutes(meeting.endTime)!==null&&timeMinutes(meeting.endTime)!>constraints.noClassesAfter));}
+function scoreSchedule(sections:CatalogRecord[],preferences:SchedulePreferences):Omit<GeneratedSchedule,"id"|"sections">{
+  const meetings=sections.flatMap(section=>section.meetings),starts=meetings.map(meeting=>timeMinutes(meeting.startTime)).filter((value):value is number=>value!==null),ends=meetings.map(meeting=>timeMinutes(meeting.endTime)).filter((value):value is number=>value!==null),openSeats=sections.reduce((sum,section)=>sum+Math.max(0,section.capacity-section.enrolled),0),activeDays=new Set(meetings.flatMap(meeting=>meeting.days)),daysOnCampus=activeDays.size;
+  const windowFit=meetings.length?meetings.filter(meeting=>{const start=timeMinutes(meeting.startTime),end=timeMinutes(meeting.endTime);return start===null||end===null||(start>=preferences.earliestStart&&end<=preferences.latestEnd);}).length/meetings.length:0;
+  const lunchFit=meetings.length?meetings.filter(meeting=>{const start=timeMinutes(meeting.startTime),end=timeMinutes(meeting.endTime);return start===null||end===null||end<=12*60||start>=13*60;}).length/meetings.length:0;
+  const daySpans=[...activeDays].map(day=>{const daily=meetings.filter(meeting=>meeting.days.includes(day)),dailyStarts=daily.map(item=>timeMinutes(item.startTime)).filter((value):value is number=>value!==null),dailyEnds=daily.map(item=>timeMinutes(item.endTime)).filter((value):value is number=>value!==null),classTime=daily.reduce((sum,item)=>{const start=timeMinutes(item.startTime),end=timeMinutes(item.endTime);return sum+(start!==null&&end!==null?end-start:0);},0);return dailyStarts.length&&dailyEnds.length?Math.max(0,Math.max(...dailyEnds)-Math.min(...dailyStarts)-classTime):0;}),gapMinutes=daySpans.reduce((sum,value)=>sum+value,0),gradeAverage=sections.reduce((sum,section)=>sum+gradeValue(section.medianGrade),0)/Math.max(1,sections.length);
+  const contributions:ScoreContribution[]=[
+    {label:"Feasible foundation",points:30,detail:"All selected sections satisfy hard constraints and have no detected overlaps."},
+    {label:"Open-seat confidence",points:preferences.prioritizeSeats?Math.round(Math.min(1,openSeats/20)*15):0,detail:preferences.prioritizeSeats?`${openSeats} seats are currently open across this option.`:"Open seats are not an active priority."},
+    {label:"Preferred time window",points:Math.round(windowFit*15),detail:`${Math.round(windowFit*100)}% of meetings fall inside your preferred hours.`},
+    {label:"Protected lunch",points:preferences.protectLunch?Math.round(lunchFit*10):0,detail:preferences.protectLunch?`${Math.round(lunchFit*100)}% of meetings avoid noon–1 PM.`:"Lunch protection is off."},
+    {label:"Compact days",points:preferences.preferCompact?Math.round(Math.max(0,1-gapMinutes/300)*10):0,detail:preferences.preferCompact?`${gapMinutes} total minutes between classes.`:"Compactness is not an active priority."},
+    {label:"Days off",points:preferences.preferDaysOff?Math.max(0,5-daysOnCampus)*2:0,detail:preferences.preferDaysOff?`${Math.max(0,5-daysOnCampus)} weekday(s) remain class-free.`:"Days off are not an active priority."},
+    {label:"Historical signal",points:preferences.prioritizeGrades?Math.round(gradeAverage*10):0,detail:preferences.prioritizeGrades?"Uses clearly labeled historical course-grade data, not a predicted personal grade.":"Historical grade signal is not an active priority."}
+  ];
+  return {score:contributions.reduce((sum,item)=>sum+item.points,0),openSeats,earliestStart:starts.length?Math.min(...starts):null,latestEnd:ends.length?Math.max(...ends):null,daysOnCampus,contributions};
 }
 
-export function formatMeeting(meeting:Meeting){
-  const time=(value:string|null)=>{const total=timeMinutes(value);if(total===null)return "time TBA";const hour=Math.floor(total/60),minute=total%60;return `${hour%12||12}:${String(minute).padStart(2,"0")} ${hour>=12?"PM":"AM"}`;};
-  return `${meeting.days.length?meeting.days.map(day=>day.slice(0,3)).join("/"):"Days TBA"} · ${time(meeting.startTime)}–${time(meeting.endTime)}${meeting.location?` · ${meeting.location}`:""}`;
+export function generateConflictFreeSchedules(pool:CatalogRecord[],preferences=defaultSchedulePreferences,constraints=defaultScheduleConstraints,limit=5):GeneratedSchedule[]{
+  const grouped=new Map<string,CatalogRecord[]>();for(const section of pool)if(!violatesConstraints(section,constraints))grouped.set(section.code,[...(grouped.get(section.code)??[]),section]);
+  const courseCount=new Set(pool.map(section=>section.code)).size,groups=[...grouped.values()].slice(0,8);if(groups.length!==courseCount)return [];
+  const combinations:CatalogRecord[][]=[];const visit=(index:number,current:CatalogRecord[])=>{if(combinations.length>=5000)return;if(index===groups.length){if(current.length)combinations.push([...current]);return;}for(const section of groups[index])if(!current.some(chosen=>sectionsConflict(chosen,section))){current.push(section);visit(index+1,current);current.pop();}};visit(0,[]);
+  return combinations.map(sections=>({id:sections.map(section=>section.id).join("|"),sections,...scoreSchedule(sections,preferences)})).sort((a,b)=>b.score-a.score||b.openSeats-a.openSeats||a.id.localeCompare(b.id)).slice(0,limit);
 }
+
+export function scheduleToIcs(schedule:GeneratedSchedule,termStart="20260826"){
+  const dayOffset:Record<string,number>={Monday:0,Tuesday:1,Wednesday:2,Thursday:3,Friday:4};
+  const events=schedule.sections.flatMap(section=>section.meetings.flatMap((meeting,index)=>meeting.days.flatMap(day=>{const start=timeMinutes(meeting.startTime),end=timeMinutes(meeting.endTime),offset=dayOffset[day];if(start===null||end===null||offset===undefined)return[];const date=new Date(`${termStart.slice(0,4)}-${termStart.slice(4,6)}-${termStart.slice(6)}T00:00:00Z`);date.setUTCDate(date.getUTCDate()+offset);const stamp=(minutes:number)=>`${date.toISOString().slice(0,10).replaceAll("-","")}T${String(Math.floor(minutes/60)).padStart(2,"0")}${String(minutes%60).padStart(2,"0")}00`;return[`BEGIN:VEVENT\r\nUID:${section.id}-${index}-${day}@courseflowplanner.com\r\nDTSTART;TZID=America/Los_Angeles:${stamp(start)}\r\nDTEND;TZID=America/Los_Angeles:${stamp(end)}\r\nRRULE:FREQ=WEEKLY;COUNT=15\r\nSUMMARY:${section.code} ${section.sectionNumber}\r\nLOCATION:${meeting.location??"TBA"}\r\nEND:VEVENT`];})));
+  return `BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//CourseFlow//Schedule//EN\r\nCALSCALE:GREGORIAN\r\n${events.join("\r\n")}\r\nEND:VCALENDAR\r\n`;
+}
+
+export function formatMeeting(meeting:Meeting){const time=(value:string|null)=>{const total=timeMinutes(value);if(total===null)return "time TBA";const hour=Math.floor(total/60),minute=total%60;return `${hour%12||12}:${String(minute).padStart(2,"0")} ${hour>=12?"PM":"AM"}`;};return `${meeting.days.length?meeting.days.map(day=>day.slice(0,3)).join("/"):"Days TBA"} · ${time(meeting.startTime)}–${time(meeting.endTime)}${meeting.location?` · ${meeting.location}`:""}`;}
