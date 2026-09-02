@@ -45,12 +45,13 @@ test("course intelligence connects discovery, comparison, and semester health",a
 test("real-data catalog exposes provenance and filters the snapshot",async({page})=>{
   await page.goto("/catalog");
   await expect(page.getByText("Data provenance")).toBeVisible();
-  await expect(page.getByText("Catalog: BerkeleyTime public GraphQL",{exact:true})).toBeVisible();
+  await expect(page.getByText("Course metadata: UC Berkeley Catalog",{exact:true})).toBeVisible();
+  await expect(page.getByText("Sections/enrollment: BerkeleyTime fallback",{exact:true})).toBeVisible();
   await page.getByLabel("Search real catalog").fill("AHMA 298");
   await expect(page.getByText("AHMA 298 · 003")).toBeVisible();
   await expect(page.getByRole("link",{name:"Enrollment history for AHMA 298 section 003"})).toBeVisible();
   await expect(page.getByRole("article").filter({hasText:"AHMA 298 · 003"}).getByRole("button",{name:/Watch section/})).toBeVisible();
-  await expect(page.getByText("Official: No · transitional adapters")).toBeVisible();
+  await expect(page.getByRole("article").filter({hasText:"AHMA 298 · 003"}).getByText("Metadata fallback",{exact:true})).toBeVisible();
 });
 
 test("historical grade explorer exposes filters, provenance, and an accessible table",async({page})=>{

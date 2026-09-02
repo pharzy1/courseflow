@@ -15,4 +15,10 @@ The production importer paginates the public GraphQL catalog in bounded 500-row 
 
 CourseFlow does not describe these enrollment values as official or instantaneous. Berkeley's official Registrar directs students to the Class Schedule, but no approved public enrollment API contract has been identified. BerkeleyTime remains a transparent transitional source until one is documented and approved.
 
+## Production hybrid quality gate
+
+Course titles, descriptions, and cross-listings are now overlaid from UC Berkeley's official Coursedog catalog export. Section identifiers, meetings, term-specific units, enrollment, and waitlist values remain sourced from the labeled BerkeleyTime fallback. Each catalog result exposes both sources separately.
+
+Before writes begin, every refresh compares a deterministic 250-course sample with the official export. Coverage below 99%, a missing required CSV column, an invalid bootstrap response, or a failed export request stops the refresh, records a failed run, and fails the scheduled GitHub Actions job. Live evidence is published at [courseflowplanner.com/status](https://courseflowplanner.com/status).
+
 Detailed course/term/instructor cohorts load on demand and are cached in Neon for 24 hours. Bulk grade backfills are intentionally separate from the catalog ingestion job, so a slow transitional provider cannot make core catalog refreshes fail. The UI links to the source endpoint, labels the data non-official, exposes the sample size, and never presents historical grades as a prediction or guarantee. The adapter boundary allows an approved campus source to replace BerkeleyTime without changing the API or grade-explorer UI.

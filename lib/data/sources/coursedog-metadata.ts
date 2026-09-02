@@ -12,6 +12,7 @@ export function parseCsv(text:string){
 const numberValue=(value:string)=>{const parsed=Number(value);return Number.isFinite(parsed)?parsed:0;};
 export function parseCoursedogMetadata(text:string){
   const [headers,...rows]=parseCsv(text),indexes=new Map((headers??[]).map((header,index)=>[header,index])),value=(row:string[],name:string)=>row[indexes.get(name)??-1]??"";
+  for(const required of ["Subject","Course Number","Course Title","Course Description"])if(!indexes.has(required))throw new Error(`Official catalog export is missing required column: ${required}`);
   const result=new Map<string,CourseMetadata>();
   for(const row of rows){const subject=value(row,"Subject"),number=value(row,"Course Number");if(!subject||!number)continue;const unitsMin=numberValue(value(row,"Credits - Units - Minimum Units")),unitsMax=numberValue(value(row,"Credits - Units - Maximum Units"));result.set(courseKey(subject,number),{subject,number,department:value(row,"Department(s)")||subject,title:value(row,"Course Title")||`${subject} ${number}`,description:value(row,"Course Description"),unitsMin,unitsMax:unitsMax||unitsMin,crossListings:value(row,"Cross-Listed Course(s)").split(",").map(item=>item.trim()).filter(item=>item&&item!=="-")});}
   return result;
