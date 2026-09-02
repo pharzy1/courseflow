@@ -1,7 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-test.beforeEach(async({page})=>{await page.goto("/");await page.evaluate(()=>localStorage.clear());await page.reload();});
+test.beforeEach(async({page})=>{await page.goto("/demo");await page.evaluate(()=>localStorage.clear());await page.reload();});
 
 test("search, selection, scoring, and persistence work end to end",async({page})=>{
   const search=page.getByLabel("Search courses");
@@ -43,7 +43,8 @@ test("course intelligence connects discovery, comparison, and semester health",a
 });
 
 test("real-data catalog exposes provenance and filters the snapshot",async({page})=>{
-  await page.goto("/catalog");
+  await page.goto("/");
+  await expect(page.getByRole("link",{name:"Curated demo"})).toBeVisible();
   await expect(page.getByText("Data provenance")).toBeVisible();
   await expect(page.getByText("Course metadata: UC Berkeley Catalog",{exact:true})).toBeVisible();
   await expect(page.getByText("Sections/enrollment: BerkeleyTime fallback",{exact:true})).toBeVisible();
@@ -57,6 +58,7 @@ test("real-data catalog exposes provenance and filters the snapshot",async({page
   await expect(page.getByRole("heading",{name:"1 section · 1 course"})).toBeVisible();
   await page.getByRole("button",{name:"Generate conflict-free schedules"}).click();
   await expect(page.getByRole("heading",{name:"1 best conflict-free option"})).toBeVisible();
+  await expect(page.getByLabel("Weekly calendar")).toBeVisible();
 });
 
 test("historical grade explorer exposes filters, provenance, and an accessible table",async({page})=>{

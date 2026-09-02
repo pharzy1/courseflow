@@ -6,7 +6,7 @@
 
 CourseFlow is a unified Berkeley course-intelligence and schedule-planning prototype. It connects discovery, historical signals, prerequisites, course comparison, degree value, workload planning, and conflict-free schedule ranking in one explainable workflow.
 
-Stage 2 of the real-data architecture is implemented: `/catalog` exposes thousands of Fall 2026 sections through a typed repository/API boundary, the resilient importer refreshes catalog and enrollment history in Neon Postgres every 15 minutes, and Clerk-aware accounts persist plans across devices. The catalog now connects real section discovery to meeting-time comparison and conflict-free schedule generation, with visible source provenance on every record.
+The live homepage exposes thousands of Fall 2026 sections through a typed repository/API boundary, the resilient importer refreshes catalog and enrollment history in Neon Postgres every 15 minutes, and Clerk-aware accounts persist plans across devices. Real section discovery now flows into a persistent schedule drawer with meeting-time comparison, conflict-free combination generation, and weekly calendar previews. The original curated planner remains available at `/demo` as a clearly labeled engine demonstration.
 
 > Course metadata is overlaid from UC Berkeley's official public catalog; section, enrollment, and grade facts remain transparently labeled transitional data while API Central access is pending. CourseFlow does not claim CalCentral integration or a degree audit.
 
@@ -84,6 +84,7 @@ Open `http://localhost:3000`.
 6. Open **Intelligence**, switch courses, inspect prerequisite paths, and compare up to three choices.
 7. Open the real catalog, add multiple section alternatives to the schedule pool, and generate conflict-free combinations.
 8. Navigate entirely by keyboard or open **All schedule meetings** for the semantic alternative.
+9. Open `/demo` to inspect the curated preference-ranking and intentional conflict fixture independently of live catalog data.
 
 ## Technology
 
