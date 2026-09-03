@@ -43,8 +43,9 @@ test("course intelligence connects discovery, comparison, and semester health",a
 });
 
 test("real-data catalog exposes provenance and filters the snapshot",async({page})=>{
-  await page.goto("/");
-  await expect(page.getByRole("link",{name:"Curated demo"})).toBeVisible();
+  await page.goto("/catalog");
+  if((page.viewportSize()?.width??1000)<=900)await expect(page.getByRole("button",{name:/Menu/})).toBeVisible();
+  else await expect(page.getByRole("navigation",{name:"Primary navigation"}).getByRole("link",{name:"Guided Demo"})).toBeVisible();
   await expect(page.getByText("Data provenance")).toBeVisible();
   await expect(page.getByText("Course metadata: UC Berkeley Catalog",{exact:true})).toBeVisible();
   await expect(page.getByText("Sections/enrollment: BerkeleyTime fallback",{exact:true})).toBeVisible();
@@ -63,6 +64,21 @@ test("real-data catalog exposes provenance and filters the snapshot",async({page
   await page.getByText("Why this score?").click();
   await expect(page.getByText(/Total: \d+\/100/)).toBeVisible();
   await expect(page.getByRole("button",{name:"Export calendar (.ics)"})).toBeVisible();
+});
+
+test("student navigation separates core planning tasks",async({page})=>{
+  await page.goto("/");
+  await expect(page.getByRole("heading",{name:"Plan your semester without the tab chaos."})).toBeVisible();
+  if((page.viewportSize()?.width??1000)<=900)await page.getByRole("button",{name:/Menu/}).click();
+  const navigation=page.getByRole("navigation",{name:"Primary navigation"});
+  await expect(navigation).toBeVisible();
+  await navigation.getByRole("link",{name:"Find Courses"}).click();
+  await expect(page).toHaveURL(/\/catalog/);
+  await expect(page.getByRole("heading",{name:/Berkeley courses/})).toBeVisible();
+  if((page.viewportSize()?.width??1000)<=900)await page.getByRole("button",{name:/Menu/}).click();
+  await page.getByRole("navigation",{name:"Primary navigation"}).getByRole("link",{name:"Degree Plan"}).click();
+  await expect(page).toHaveURL(/\/roadmap/);
+  await expect(page.getByRole("heading",{name:"Plan the path, not just the term."})).toBeVisible();
 });
 
 test("historical grade explorer exposes filters, provenance, and an accessible table",async({page})=>{
@@ -116,7 +132,7 @@ test("engineering status exposes truthful operational checks",async({page,reques
   expect(response.ok()).toBe(true);
   const health=await response.json();
   expect(["operational","degraded"]).toContain(health.status);
-  expect(health.release).toMatchObject({version:"38",tag:"v38"});
+  expect(health.release).toMatchObject({version:"39",tag:"v39"});
   await page.goto("/status");
   await expect(page.getByRole("heading",{name:"Trust, made observable."})).toBeVisible();
   await expect(page.getByRole("heading",{name:"Production readiness"})).toBeVisible();

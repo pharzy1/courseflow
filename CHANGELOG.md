@@ -1,5 +1,14 @@
 # Changelog
 
+## v39 — 2026-09-03
+
+- Replaced the catalog-first landing experience with a focused student orientation hub.
+- Added consistent task-based navigation across Home, Find Courses, Degree Plan, Guided Demo, and System Status.
+- Added active-page states and an accessible responsive menu for tablet and mobile.
+- Clarified the three-step student journey: search, build, and plan.
+- Updated shareable schedule links to open the canonical catalog workspace.
+- Added cross-page and cross-viewport navigation regression coverage.
+
 ## v38 — 2026-09-03
 
 - Made Neon-backed account-isolation tests mandatory in CI with an ephemeral PostgreSQL service and self-contained fixtures.
