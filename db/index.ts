@@ -4,8 +4,8 @@ import * as schema from "./schema";
 
 let localDatabase:ReturnType<typeof drizzle>|null=null;
 if(process.env.COURSEFLOW_DATABASE_DRIVER==="postgres-js"){
-  const runtimeImport=new Function("specifier","return import(specifier)") as (specifier:string)=>Promise<Record<string,unknown>>,drizzleModule=await runtimeImport("drizzle-orm/postgres-js"),postgresModule=await runtimeImport("postgres"),drizzlePostgres=drizzleModule.drizzle as typeof drizzle,postgres=postgresModule.default as (url:string,options:{max:number})=>unknown;
-  localDatabase=drizzlePostgres(postgres(process.env.DATABASE_URL!,{max:4}) as never,{schema}) as unknown as ReturnType<typeof drizzle>;
+  const runtimeImport=new Function("specifier","return import(specifier)") as (specifier:string)=>Promise<Record<string,unknown>>,drizzleModule=await runtimeImport("drizzle-orm/postgres-js"),postgresModule=await runtimeImport("postgres"),drizzlePostgres=drizzleModule.drizzle as typeof drizzle,postgres=postgresModule.default as (url:string,options:{max:number;idle_timeout:number})=>unknown;
+  localDatabase=drizzlePostgres(postgres(process.env.DATABASE_URL!,{max:4,idle_timeout:1}) as never,{schema}) as unknown as ReturnType<typeof drizzle>;
 }
 
 export function getDb(connectionString=process.env.DATABASE_URL){
