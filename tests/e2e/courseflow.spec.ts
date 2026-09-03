@@ -95,7 +95,7 @@ test("analytics accepts only bounded allowlisted product events",async({request}
   expect((await request.post("/api/analytics",{data:{event:"email_address_collected",properties:{email:"private@example.com"}}})).status()).toBe(400);
 });
 
-test("production responses include baseline security headers",async({request})=>{const response=await request.get("/");expect(response.headers()["x-content-type-options"]).toBe("nosniff");expect(response.headers()["x-frame-options"]).toBe("DENY");expect(response.headers()["permissions-policy"]).toContain("camera=()");});
+test("production responses include baseline security headers",async({request})=>{const response=await request.get("/");expect(response.headers()["x-content-type-options"]).toBe("nosniff");expect(response.headers()["x-frame-options"]).toBe("DENY");expect(response.headers()["permissions-policy"]).toContain("camera=()");expect(response.headers()["content-security-policy-report-only"]).toContain("default-src 'self'");});
 
 test("degree pathfinder explains unlocks and invalid sequences",async({page})=>{
   await page.goto("/roadmap");
@@ -116,6 +116,7 @@ test("engineering status exposes truthful operational checks",async({page,reques
   expect(response.ok()).toBe(true);
   const health=await response.json();
   expect(["operational","degraded"]).toContain(health.status);
+  expect(health.release).toMatchObject({version:"38",tag:"v38"});
   await page.goto("/status");
   await expect(page.getByRole("heading",{name:"Trust, made observable."})).toBeVisible();
   await expect(page.getByRole("heading",{name:"Production readiness"})).toBeVisible();

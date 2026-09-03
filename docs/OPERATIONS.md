@@ -18,4 +18,4 @@ Incident sequence: confirm impact, stop harmful writes, preserve logs, communica
 - Quarterly: restore a Neon branch from retained history and run integration tests against it.
 - Monthly: dependency audit, secret review, access review, and unsubscribe test.
 - Per release: unit/integration/build/browser/accessibility/performance checks and production health verification.
-- Security headers deny framing, MIME sniffing, camera, microphone, and geolocation; authenticated APIs enforce Clerk identity and ownership; analytics has an allowlist, bounded properties, and rate limiting.
+- Security headers deny framing, MIME sniffing, camera, microphone, and geolocation, with Content Security Policy running in report-only mode before enforcement. Authenticated APIs enforce Clerk identity and ownership. Analytics accepts only same-origin, allowlisted, size-bounded aggregate events and includes a best-effort per-instance abuse guard; hosting-edge global rate limiting remains an infrastructure control rather than an application claim.

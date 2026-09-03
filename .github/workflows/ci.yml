@@ -8,6 +8,25 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgresql://courseflow:courseflow@localhost:5432/courseflow_test
+      COURSEFLOW_DATABASE_DRIVER: postgres-js
+      COURSEFLOW_REQUIRE_DATABASE_TESTS: "1"
+      COURSEFLOW_UNSUBSCRIBE_SECRET: ci-only-unsubscribe-signing-secret
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: courseflow
+          POSTGRES_PASSWORD: courseflow
+          POSTGRES_DB: courseflow_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U courseflow -d courseflow_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -19,6 +38,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium
-      - run: pnpm test:integration
+      - run: pnpm db:migrate
+      - run: pnpm lint
       - run: pnpm test:ci
       - run: pnpm test:performance
