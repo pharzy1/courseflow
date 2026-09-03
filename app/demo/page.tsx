@@ -9,7 +9,6 @@ type SavedSchedule = { selected:string[]; priorities:Priority[]; variant:Variant
 
 const initial = ["COMPSCI 61B","DATA C100","STAT 134","DES INV 25"];
 const priorityLabels: Record<Priority,string> = { morning:"No classes before 9", lunch:"Protect lunch break", rating:"Highly rated instructors" };
-const realCatalogEnabled=process.env.NEXT_PUBLIC_COURSEFLOW_REAL_DATA==="true";
 const accountsEnabled=Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
 
 export default function Home() {
@@ -67,7 +66,7 @@ export default function Home() {
       <button className="brand" onClick={()=>navigate("Discover")} aria-label="CourseFlow home"><span className="brand-mark">CF</span><span>Course<span>Flow</span></span></button>
       <nav aria-label="Primary navigation" className={mobileNav?"open":""}>{["Discover","My schedule","Intelligence","Roadmap"].map(tab=><button key={tab} aria-current={activeTab===tab?"location":undefined} className={activeTab===tab?"active":""} onClick={()=>navigate(tab)}>{tab}{tab==="My schedule"&&<i>{selected.length}</i>}</button>)}</nav>
       <button className="mobile-menu" aria-label="Toggle navigation" aria-expanded={mobileNav} onClick={()=>setMobileNav(!mobileNav)}>Menu</button>
-      <div className="term">{realCatalogEnabled&&<Link className="beta-link" href="/">Live catalog</Link>}<span>Curated demo</span><AccountControl configured={accountsEnabled}/></div>
+      <div className="term"><Link className="beta-link" href="/">Back to CourseFlow</Link><span>Curated demo</span><AccountControl configured={accountsEnabled}/></div>
     </header>
     <CloudPlanManager configured={accountsEnabled} current={{selected,priorities,variant,savedAt:new Date().toISOString()}} onRestore={snapshot=>{if(snapshot.kind!=="real-sections")restoreCloud(snapshot);}}/>
 

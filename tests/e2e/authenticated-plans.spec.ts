@@ -10,6 +10,8 @@ const stamp=`${Date.now()}-${Math.random().toString(36).slice(2)}`;
 const emails=[`courseflow-a+${stamp}@example.com`,`courseflow-b+${stamp}@example.com`];
 const createdUserIds:string[]=[];
 
+if(process.env.COURSEFLOW_REQUIRE_AUTH_E2E==="1"&&!canRun)throw new Error("Authenticated release verification requires Clerk keys and PLAYWRIGHT_BASE_URL");
+
 test.describe("authenticated cloud plan lifecycle",()=>{
   test.describe.configure({mode:"serial"});
   test.skip(!canRun,"Requires Clerk production keys and PLAYWRIGHT_BASE_URL");

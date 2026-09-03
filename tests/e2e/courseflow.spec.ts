@@ -81,6 +81,24 @@ test("student navigation separates core planning tasks",async({page})=>{
   await expect(page.getByRole("heading",{name:"Plan the path, not just the term."})).toBeVisible();
 });
 
+test("every product page renders one primary navigation",async({page})=>{
+  for(const path of ["/","/catalog","/roadmap","/status","/grades/104426","/enrollment/missing"]){
+    await page.goto(path);
+    await expect(page.locator('nav[aria-label="Primary navigation"]'),path).toHaveCount(1);
+  }
+});
+
+test("mobile menu closes with Escape and restores focus",async({page})=>{
+  test.skip((page.viewportSize()?.width??1000)>900,"Mobile navigation behavior");
+  await page.goto("/");
+  const menu=page.getByRole("button",{name:/Menu/});
+  await menu.click();
+  await expect(page.getByRole("navigation",{name:"Primary navigation"})).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("navigation",{name:"Primary navigation"})).toBeHidden();
+  await expect(menu).toBeFocused();
+});
+
 test("historical grade explorer exposes filters, provenance, and an accessible table",async({page})=>{
   await page.route("**/api/grades/104426**",route=>route.fulfill({contentType:"application/json",body:JSON.stringify({course:{id:"104426",code:"COMPSCI 61B",title:"The Structure and Interpretation of Computer Programs"},term:"All terms",instructor:"All instructors",counts:{A:120,B:60,C:20},mean:3.45,median:"A",sampleSize:200,updatedAt:"2026-09-01T00:00:00.000Z",provenance:{sourceName:"BerkeleyTime public grade distributions",sourceUrl:"https://berkeleytime.com/api/graphql",official:false},options:{terms:[{value:"2026|Spring|1",label:"Spring 2026"}],instructors:[{value:"Hug|Joshua",label:"Joshua Hug"}]}})}));
   await page.goto("/grades/104426");
@@ -111,7 +129,7 @@ test("analytics accepts only bounded allowlisted product events",async({request}
   expect((await request.post("/api/analytics",{data:{event:"email_address_collected",properties:{email:"private@example.com"}}})).status()).toBe(400);
 });
 
-test("production responses include baseline security headers",async({request})=>{const response=await request.get("/");expect(response.headers()["x-content-type-options"]).toBe("nosniff");expect(response.headers()["x-frame-options"]).toBe("DENY");expect(response.headers()["permissions-policy"]).toContain("camera=()");expect(response.headers()["content-security-policy-report-only"]).toContain("default-src 'self'");});
+test("production responses enforce baseline security headers",async({request})=>{const response=await request.get("/");expect(response.headers()["x-content-type-options"]).toBe("nosniff");expect(response.headers()["x-frame-options"]).toBe("DENY");expect(response.headers()["permissions-policy"]).toContain("camera=()");expect(response.headers()["content-security-policy"]).toContain("default-src 'self'");expect(response.headers()["content-security-policy-report-only"]).toBeUndefined();});
 
 test("degree pathfinder explains unlocks and invalid sequences",async({page})=>{
   await page.goto("/roadmap");
@@ -132,7 +150,8 @@ test("engineering status exposes truthful operational checks",async({page,reques
   expect(response.ok()).toBe(true);
   const health=await response.json();
   expect(["operational","degraded"]).toContain(health.status);
-  expect(health.release).toMatchObject({version:"39",tag:"v39"});
+  expect(health.release.tag).toMatch(/^(v\d+|[0-9a-f]{7,40}(?:-dirty)?|development)$/);
+  expect(health.release.version).toBe(health.release.tag.startsWith("v")?health.release.tag.slice(1):health.release.tag);
   await page.goto("/status");
   await expect(page.getByRole("heading",{name:"Trust, made observable."})).toBeVisible();
   await expect(page.getByRole("heading",{name:"Production readiness"})).toBeVisible();
